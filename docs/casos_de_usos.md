@@ -1,6 +1,6 @@
 # Especificaciones del Sistema
 
-![Diagrama de Casos de Uso](/imagenes/casos_de_uso.png)
+![Diagrama de Casos de Uso](/Imagenes/casos_de_uso.png)
 
 ## Actores
 
@@ -27,7 +27,7 @@
 | Relaciones | Relación directa con el contenido de la aplicación. |
 | Referencias | Relacionado con los casos de uso CU1, CU3 y CU6. |
 | Notas | Los usuarios tienen acceso limitado al contenido y no pueden modificarlo. |
-| Autor | alexfdb |
+| Autor | Giancarlo |
 | Fecha | 20/03/2025 |
 
 ---
@@ -41,7 +41,7 @@
 | Relaciones | Relación directa con el contenido de la aplicación. |
 | Referencias | Relacionado con los casos de uso CU1, CU3 y CU6. |
 | Notas | Los usuarios tienen acceso limitado al contenido y no pueden modificarlo. |
-| Autor | alexfdb |
+| Autor | Giancarlo |
 | Fecha | 20/03/2025 |
 
 ---
@@ -68,5 +68,3 @@
 * **Dar roles**: Si hay un usuario destacado puede darle un roll como premio.
 | Requerimientos | Base de datos que relacione usuarios con sus favoritos, funcionalidad para agregar y eliminar elementos de favoritos. |
 | Notas | Se debe considerar un manejo adecuado de las listas de favoritos en la base de datos para que se actualicen correctamente. |
-| Autor | alexfdb |
-| Fecha | 20/03/2025 |
