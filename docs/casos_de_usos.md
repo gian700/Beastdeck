@@ -9,10 +9,7 @@
 | Actor | Usuario |
 |---|---|
 | Descripción | Persona que utiliza la aplicacion |
-| Características | Puede crear, editar, actualizar y eliminar contenido. |
-| Relaciones | Relación directa con el contenido gestionado en la base de datos. |
-| Referencias | Relacionado con los casos de uso CU2, CU4 y CU5. |
-| Notas | Los administradores tienen acceso exclusivo a las funciones de gestión. |
+| Características | Puede hacer cualquier accion relacionada con preparar el equipo, e ir al siguiente combate. |
 | Autor | Giancarlo |
 | Fecha | 20/03/2025 |
 
@@ -20,13 +17,10 @@
 
 ### Sistema
 
-| Actor | Usuario |
+| Actor | Sistema |
 |---|---|
-| Descripción | Persona que utiliza la aplicación para explorar y consultar información sobre mitologías. |
-| Características | Puede autenticarse, visualizar contenido y marcar elementos como favoritos. |
-| Relaciones | Relación directa con el contenido de la aplicación. |
-| Referencias | Relacionado con los casos de uso CU1, CU3 y CU6. |
-| Notas | Los usuarios tienen acceso limitado al contenido y no pueden modificarlo. |
+| Descripción | Sistema que lleva la aplicacion. |
+| Características | Realiza todas las acciones que tengan que ver con los calculos, y preparar las batallas. |
 | Autor | Giancarlo |
 | Fecha | 20/03/2025 |
 
@@ -36,32 +30,29 @@
 
 | Actor | Usuario |
 |---|---|
-| Descripción | Persona que utiliza la aplicación para explorar y consultar información sobre mitologías. |
-| Características | Puede autenticarse, visualizar contenido y marcar elementos como favoritos. |
-| Relaciones | Relación directa con el contenido de la aplicación. |
-| Referencias | Relacionado con los casos de uso CU1, CU3 y CU6. |
-| Notas | Los usuarios tienen acceso limitado al contenido y no pueden modificarlo. |
+| Descripción | Realizacion del combate. |
+| Características | Realiza los combates, y permite todas las acciones dentro de este. |
 | Autor | Giancarlo |
 | Fecha | 20/03/2025 |
 
 ---
 
 ### Casos de uso
-#### Usuario común
-* **Subir contenido a el muro de la plataforma**: El usuario sube una publicacion a la plataforma, puede ser texto, foto o video.
-* **Participar en torneo**: El usuario participa en los torneos creados.
-* **Reportar contenido**: Avisa a los administradores de que una publicación no podria ser adecuada. 
-* **Comentar publicacion**: Puede comentar en el contenido subido por otros usuarios.
+#### Usuario
+* **Sacrificar bestia**: Eliminar bestia del equipo acambio de posibilidad de ganar otra bestia.
+* **Comprar objetos**: Conseguir objetos que puedes usar en el combate.
+* **Cambiar combate**: Ir al siguiente combate. 
+* **Agregar bestia**: Agregar bestia al equipo.
 * **Ver contenido**: Puede ver el contenido creado por usuarios, ya sea publicaciones, guias o listas.
 
-#### Usuario premium
+#### Sistema
 * **Crear un clan**: Crea un clan al que el resto de usuarios pueden entrar.
 * **Crear un torneo**: Crea un torneo en el que pueden participar otros usuarios.
 * **Crear guia**: Puede crear guias sin limites para ayudar a otros usuarios.
 * **Crear listas:**: Puede crear listas de ejercito sin limite, donde se ve como haría los distintos ejercito del juego de mesa.
 * **Premiar contenido**: Da me gustas y premios simbolicos especiales a las publicaciones de otros usuarios.
 
-#### Administrador
+#### Batalla
 * **Gestionar contenido**: Puede borrar o recuperar publicaciones.
 * **Banear cuentas**: Borra o bloqua una cuenta que ya haya subido muchas publicaciones que sean hirientes sensibles o por haber tenido un mal comportamiento de forma continuada.
 * **Cancelar torneo**: Si un torneo esta teniendo un comportamiento inadecuado o toxico puede cancelarlo en el acto.
