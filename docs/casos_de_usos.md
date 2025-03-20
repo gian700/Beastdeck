@@ -43,19 +43,20 @@
 * **Comprar objetos**: Conseguir objetos que puedes usar en el combate.
 * **Cambiar combate**: Ir al siguiente combate. 
 * **Agregar bestia**: Agregar bestia al equipo.
-* **Ver contenido**: Puede ver el contenido creado por usuarios, ya sea publicaciones, guias o listas.
+* **canjear bestia**: Permite agregar una nueva bestia al equipo.
+* **trucar bestia**: El sistema da una bestia basado en el nivel que deberias tener.
 
 #### Sistema
-* **Crear un clan**: Crea un clan al que el resto de usuarios pueden entrar.
-* **Crear un torneo**: Crea un torneo en el que pueden participar otros usuarios.
-* **Crear guia**: Puede crear guias sin limites para ayudar a otros usuarios.
-* **Crear listas:**: Puede crear listas de ejercito sin limite, donde se ve como haría los distintos ejercito del juego de mesa.
-* **Premiar contenido**: Da me gustas y premios simbolicos especiales a las publicaciones de otros usuarios.
+* **Dar recompensa**: Darle al usuario las recompensas por ganar una batalla.
+* **guardar partida**: Guarda la informacion de tu equipo, y tus progresos.
+* **Buscar partida**: Buscar partidas validas para enfrentar al usuario.
+* **Desbloquear bestias:**: Permite ganar la posibilidad de conseguir bestias nuevas a usar, segun tus progresos.
+* **Adaptar dificultad**: calcular la fuerza del usuario, para poder darle batallas con su nivel.
+* **Activar efectos**: Realiza los calculos de las distintas habilidades.
+* **Calcular puntos**: Realiza los calculos de los puntos ganados en cada ronda
 
 #### Batalla
-* **Gestionar contenido**: Puede borrar o recuperar publicaciones.
-* **Banear cuentas**: Borra o bloqua una cuenta que ya haya subido muchas publicaciones que sean hirientes sensibles o por haber tenido un mal comportamiento de forma continuada.
-* **Cancelar torneo**: Si un torneo esta teniendo un comportamiento inadecuado o toxico puede cancelarlo en el acto.
-* **Dar roles**: Si hay un usuario destacado puede darle un roll como premio.
-| Requerimientos | Base de datos que relacione usuarios con sus favoritos, funcionalidad para agregar y eliminar elementos de favoritos. |
-| Notas | Se debe considerar un manejo adecuado de las listas de favoritos en la base de datos para que se actualicen correctamente. |
+* **Activar pasivas**: Activar pasivas desactivadas.
+* **Desactivar pasivas**: Desactiva pasivas activadas.
+* **Cambiar criaturas**: Permite cambiar la bestia activa.
+* **Usar objetos**: Permite usar objetos, y resuelve la ventaja que da.
