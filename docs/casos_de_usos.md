@@ -1,6 +1,6 @@
-# Especificaciones del Sistema
+# Casos de usos
 
-<img src="Imagenes/casos de uso.png">
+<img src="/Imagenes/casosDeUso.png">
 
 ## Actores
 
