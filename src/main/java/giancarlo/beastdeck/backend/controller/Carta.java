@@ -2,21 +2,23 @@ package giancarlo.beastdeck.backend.controller;
 
 import java.util.Objects;
 
+import giancarlo.beastdeck.backend.controller.abstractas_interfaces.TipoFuncionamiento;
 import giancarlo.beastdeck.backend.controller.dependencias.Habilidades;
-import giancarlo.beastdeck.backend.controller.dependencias.Tipo;
 import giancarlo.beastdeck.backend.controller.enums.EnumRarezas;
+import giancarlo.beastdeck.backend.controller.enums.EnumTipos;
+
 
 /**
  * @author Giancarlo
  * @version 1.0.0
  */
-public class Carta {
+public class Carta extends TipoFuncionamiento{
 
     private Integer id;
     private String nombre;
     private String descripcion;
     private EnumRarezas rareza;
-    private Tipo tipo;
+    private EnumTipos tipo;
     private Habilidades habilidad;
     private int fuerza;
 
@@ -36,7 +38,7 @@ public class Carta {
      * @param habilidad
      * @param fuerza
      */
-    public Carta(Integer id, String nombre, String descripcion, EnumRarezas rareza, Tipo tipo, Habilidades habilidad, int fuerza) {
+    public Carta(Integer id, String nombre, String descripcion, EnumRarezas rareza, EnumTipos tipo, Habilidades habilidad, int fuerza) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -82,11 +84,11 @@ public class Carta {
         this.rareza = rareza;
     }
 
-    public Tipo getTipo() {
+    public EnumTipos getTipo() {
         return this.tipo;
     }
 
-    public void setTipo(Tipo tipo) {
+    public void setTipo(EnumTipos tipo) {
         this.tipo = tipo;
     }
 
@@ -134,4 +136,5 @@ public class Carta {
             ", fuerza='" + getFuerza() + "'" +
             "}";
     }
+
 }
