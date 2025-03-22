@@ -18,7 +18,7 @@ public class Fuego implements TiposInterfaz{
 
     @Override
     public List<EnumTipos> debilidades() {
-        List<EnumTipos> debilidadesFuego = new ArrayList<>(Arrays.asList(EnumTipos.AGUA, EnumTipos.TIERRA, EnumTipos.ELECTRICO));
+        List<EnumTipos> debilidadesFuego = new ArrayList<>(Arrays.asList(EnumTipos.AGUA, EnumTipos.TIERRA, EnumTipos.VOLADOR));
         return debilidadesFuego;
     }
 
