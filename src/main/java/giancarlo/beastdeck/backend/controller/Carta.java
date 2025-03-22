@@ -2,7 +2,6 @@ package giancarlo.beastdeck.backend.controller;
 
 import java.util.Objects;
 
-import giancarlo.beastdeck.backend.controller.abstractas_interfaces.TipoFuncionamiento;
 import giancarlo.beastdeck.backend.controller.dependencias.Habilidades;
 import giancarlo.beastdeck.backend.controller.enums.EnumRarezas;
 import giancarlo.beastdeck.backend.controller.enums.EnumTipos;
@@ -12,7 +11,7 @@ import giancarlo.beastdeck.backend.controller.enums.EnumTipos;
  * @author Giancarlo
  * @version 1.0.0
  */
-public class Carta extends TipoFuncionamiento{
+public class Carta{
 
     private Integer id;
     private String nombre;

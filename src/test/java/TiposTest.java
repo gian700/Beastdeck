@@ -7,11 +7,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import giancarlo.beastdeck.backend.controller.Carta;
+import giancarlo.beastdeck.backend.controller.Combate;
 import giancarlo.beastdeck.backend.controller.enums.EnumTipos;
 
 public class TiposTest {
 
-    private Carta cartaController;
+    private Combate cartaController;
     private Carta carta1;
     private Carta carta2;
     List<EnumTipos> tipos;
@@ -20,7 +21,7 @@ public class TiposTest {
 
     @BeforeEach
     void beforeEach() {
-        cartaController = new Carta();
+        cartaController = new Combate();
         carta1 = new Carta(null, null, null, null, null, null, 0);
         carta2 = new Carta(null, null, null, null, null, null, 0);
         tipos = new ArrayList<>(Arrays.asList(EnumTipos.AGUA, EnumTipos.FUEGO, EnumTipos.PLANTA, EnumTipos.BESTIA, EnumTipos.TIERRA, EnumTipos.ELECTRICO, EnumTipos.VOLADOR));
