@@ -12,16 +12,16 @@ import giancarlo.beastdeck.backend.controller.enums.EnumTipos;
 
 public class TiposTest {
 
-    private Combate cartaController;
+    private Combate combateController;
     private Carta carta1;
     private Carta carta2;
-    List<EnumTipos> tipos;
-    double lucha;
-    double luchaComprobar;
+    private List<EnumTipos> tipos;
+    private double lucha;
+    private double luchaComprobar;
 
     @BeforeEach
     void beforeEach() {
-        cartaController = new Combate();
+        combateController = new Combate();
         carta1 = new Carta();
         carta2 = new Carta();
         tipos = new ArrayList<>(Arrays.asList(EnumTipos.AGUA, EnumTipos.FUEGO, EnumTipos.PLANTA, EnumTipos.BESTIA, EnumTipos.TIERRA, EnumTipos.ELECTRICO, EnumTipos.VOLADOR));
@@ -31,7 +31,7 @@ public class TiposTest {
     void TipoNullTest() {
         
         try {
-             lucha = cartaController.comprobarGanador(carta1, carta2);
+             lucha = combateController.comprobarGanador(carta1, carta2);
         } catch (Exception e) {
             if (!(e instanceof IllegalArgumentException) || !e.getMessage().contains("tipos no son validos")) {
                 Assertions.fail();
@@ -44,20 +44,20 @@ public class TiposTest {
         carta1.setTipo(EnumTipos.AGUA);
         for (EnumTipos tipo : tipos) {
             carta2.setTipo(tipo);
-            lucha = cartaController.comprobarGanador(carta1, carta2);
+            lucha = combateController.comprobarGanador(carta1, carta2);
             int luchaSwitch = (int) lucha;
             
             switch (luchaSwitch) {
                 case 1 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(1.0, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 case 2 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(0.5, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 case 0 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(2, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 default -> Assertions.fail();
@@ -70,20 +70,20 @@ public class TiposTest {
         carta1.setTipo(EnumTipos.FUEGO);
         for (EnumTipos tipo : tipos) {
             carta2.setTipo(tipo);
-            lucha = cartaController.comprobarGanador(carta1, carta2);
+            lucha = combateController.comprobarGanador(carta1, carta2);
             int luchaSwitch = (int) lucha;
             
             switch (luchaSwitch) {
                 case 1 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(1.0, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 case 2 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(0.5, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 case 0 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(2, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 default -> Assertions.fail();
@@ -96,20 +96,20 @@ public class TiposTest {
         carta1.setTipo(EnumTipos.PLANTA);
         for (EnumTipos tipo : tipos) {
             carta2.setTipo(tipo);
-            lucha = cartaController.comprobarGanador(carta1, carta2);
+            lucha = combateController.comprobarGanador(carta1, carta2);
             int luchaSwitch = (int) lucha;
             
             switch (luchaSwitch) {
                 case 1 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(1.0, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 case 2 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(0.5, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 case 0 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(2, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 default -> Assertions.fail();
@@ -122,20 +122,20 @@ public class TiposTest {
         carta1.setTipo(EnumTipos.BESTIA);
         for (EnumTipos tipo : tipos) {
             carta2.setTipo(tipo);
-            lucha = cartaController.comprobarGanador(carta1, carta2);
+            lucha = combateController.comprobarGanador(carta1, carta2);
             int luchaSwitch = (int) lucha;
             
             switch (luchaSwitch) {
                 case 1 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(1.0, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 case 2 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(0.5, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 case 0 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(2, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 default -> Assertions.fail();
@@ -148,20 +148,20 @@ public class TiposTest {
         carta1.setTipo(EnumTipos.TIERRA);
         for (EnumTipos tipo : tipos) {
             carta2.setTipo(tipo);
-            lucha = cartaController.comprobarGanador(carta1, carta2);
+            lucha = combateController.comprobarGanador(carta1, carta2);
             int luchaSwitch = (int) lucha;
             
             switch (luchaSwitch) {
                 case 1 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(1.0, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 case 2 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(0.5, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 case 0 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(2, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 default -> Assertions.fail();
@@ -174,20 +174,20 @@ public class TiposTest {
         carta1.setTipo(EnumTipos.ELECTRICO);
         for (EnumTipos tipo : tipos) {
             carta2.setTipo(tipo);
-            lucha = cartaController.comprobarGanador(carta1, carta2);
+            lucha = combateController.comprobarGanador(carta1, carta2);
             int luchaSwitch = (int) lucha;
             
             switch (luchaSwitch) {
                 case 1 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(1.0, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 case 2 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(0.5, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 case 0 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(2, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 default -> Assertions.fail();
@@ -200,20 +200,20 @@ public class TiposTest {
         carta1.setTipo(EnumTipos.VOLADOR);
         for (EnumTipos tipo : tipos) {
             carta2.setTipo(tipo);
-            lucha = cartaController.comprobarGanador(carta1, carta2);
+            lucha = combateController.comprobarGanador(carta1, carta2);
             int luchaSwitch = (int) lucha;
             
             switch (luchaSwitch) {
                 case 1 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(1.0, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 case 2 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(0.5, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 case 0 -> {
-                    luchaComprobar = cartaController.comprobarGanador(carta2, carta1);
+                    luchaComprobar = combateController.comprobarGanador(carta2, carta1);
                     Assertions.assertEquals(2, luchaComprobar, "tipo que falla: "+carta2.getTipo());
                 }
                 default -> Assertions.fail();

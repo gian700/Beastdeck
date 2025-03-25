@@ -5,5 +5,4 @@ package giancarlo.beastdeck.backend.controller;
  * @version 1.0.0
  */
 public class Huevo {
-    int combates;
 }

@@ -9,15 +9,14 @@ import giancarlo.beastdeck.backend.controller.abstractas_interfaces.TipoFunciona
  * @version 1.0.0
  */
 public class Combate extends TipoFuncionamiento{
-    Jugador jugador;
-    Deck deckPropio;
-    Rival rival;
-    Deck deckRival;
-    int puntuacionPropia;
-    int puntuacionRival;
-    int puntuacionTemporalPropia;
-    int puntuacionTemporalRival;
-    Combate combateCopy;
+    private Jugador jugador;
+    private Deck deckPropio;
+    private Rival rival;
+    private Deck deckRival;
+    private double puntuacionPropia;
+    private double puntuacionRival;
+    private double puntuacionTemporalPropia;
+    private double puntuacionTemporalRival;
 
     public Combate() {
     }
@@ -65,102 +64,36 @@ public class Combate extends TipoFuncionamiento{
         this.deckRival = deckRival;
     }
 
-    public int getPuntuacionPropia() {
+    public double getPuntuacionPropia() {
         return this.puntuacionPropia;
     }
 
-    public void setPuntuacionPropia(int puntuacionPropia) {
+    public void setPuntuacionPropia(double puntuacionPropia) {
         this.puntuacionPropia = puntuacionPropia;
     }
 
-    public int getPuntuacionRival() {
+    public double getPuntuacionRival() {
         return this.puntuacionRival;
     }
 
-    public void setPuntuacionRival(int puntuacionRival) {
+    public void setPuntuacionRival(double puntuacionRival) {
         this.puntuacionRival = puntuacionRival;
     }
 
-    public int getPuntuacionTemporalPropia() {
+    public double getPuntuacionTemporalPropia() {
         return this.puntuacionTemporalPropia;
     }
 
-    public void setPuntuacionTemporalPropia(int puntuacionTemporalPropia) {
+    public void setPuntuacionTemporalPropia(double puntuacionTemporalPropia) {
         this.puntuacionTemporalPropia = puntuacionTemporalPropia;
     }
 
-    public int getPuntuacionTemporalRival() {
+    public double getPuntuacionTemporalRival() {
         return this.puntuacionTemporalRival;
     }
 
-    public void setPuntuacionTemporalRival(int puntuacionTemporalRival) {
+    public void setPuntuacionTemporalRival(double puntuacionTemporalRival) {
         this.puntuacionTemporalRival = puntuacionTemporalRival;
-    }
-
-    public Combate getCombateCopy() {
-        return this.combateCopy;
-    }
-
-    public void setCombateCopy(Combate combateCopy) {
-        this.combateCopy = combateCopy;
-    }
-
-
-    public Combate(Jugador jugador, Deck deckPropio, Rival rival, Deck deckRival, int puntuacionPropia, int puntuacionRival, int puntuacionTemporalPropia, int puntuacionTemporalRival, Combate combateCopy) {
-        this.jugador = jugador;
-        this.deckPropio = deckPropio;
-        this.rival = rival;
-        this.deckRival = deckRival;
-        this.puntuacionPropia = puntuacionPropia;
-        this.puntuacionRival = puntuacionRival;
-        this.puntuacionTemporalPropia = puntuacionTemporalPropia;
-        this.puntuacionTemporalRival = puntuacionTemporalRival;
-        this.combateCopy = combateCopy;
-    }
-
-    public Combate jugador(Jugador jugador) {
-        setJugador(jugador);
-        return this;
-    }
-
-    public Combate deckPropio(Deck deckPropio) {
-        setDeckPropio(deckPropio);
-        return this;
-    }
-
-    public Combate rival(Rival rival) {
-        setRival(rival);
-        return this;
-    }
-
-    public Combate deckRival(Deck deckRival) {
-        setDeckRival(deckRival);
-        return this;
-    }
-
-    public Combate puntuacionPropia(int puntuacionPropia) {
-        setPuntuacionPropia(puntuacionPropia);
-        return this;
-    }
-
-    public Combate puntuacionRival(int puntuacionRival) {
-        setPuntuacionRival(puntuacionRival);
-        return this;
-    }
-
-    public Combate puntuacionTemporalPropia(int puntuacionTemporalPropia) {
-        setPuntuacionTemporalPropia(puntuacionTemporalPropia);
-        return this;
-    }
-
-    public Combate puntuacionTemporalRival(int puntuacionTemporalRival) {
-        setPuntuacionTemporalRival(puntuacionTemporalRival);
-        return this;
-    }
-
-    public Combate combateCopy(Combate combateCopy) {
-        setCombateCopy(combateCopy);
-        return this;
     }
 
     @Override
@@ -191,8 +124,28 @@ public class Combate extends TipoFuncionamiento{
             ", puntuacionRival='" + getPuntuacionRival() + "'" +
             ", puntuacionTemporalPropia='" + getPuntuacionTemporalPropia() + "'" +
             ", puntuacionTemporalRival='" + getPuntuacionTemporalRival() + "'" +
-            ", combateCopy='" + getCombateCopy() + "'" +
             "}";
+    }
+
+    public void ronda (Carta cartaPropia, Carta cartaRival){
+        if (cartaPropia == null || cartaRival == null) {
+            throw new IllegalArgumentException("Carta nula");
+        }
+        if (!cartaPropia.validar() || !cartaRival.validar()) {
+            throw new IllegalArgumentException("Una o mas variable es nula");
+        }
+        if (cartaPropia.getUtilizada() || cartaRival.getUtilizada()) {
+            return;
+        }
+        cartaPropia.activarHabilidades(this, cartaRival,true);
+        cartaRival.activarHabilidades(this, cartaPropia,true);
+        double multiplicador = comprobarGanador(cartaPropia, cartaRival);
+        puntuacionTemporalPropia = (cartaPropia.getFuerza()*multiplicador) * 100;
+        puntuacionTemporalRival = (cartaRival.getFuerza()/multiplicador) * 100;
+        cartaPropia.activarHabilidades(this, cartaRival,false);
+        cartaRival.activarHabilidades(this, cartaPropia,false);
+        puntuacionPropia += puntuacionTemporalPropia;
+        puntuacionRival += puntuacionTemporalRival;
     }
 
 }

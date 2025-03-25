@@ -57,7 +57,7 @@ public class Deck {
         if (!deck.contains(carta)) {
             return false;
         }
-        deck.remove(id);
+        deck.remove(carta);
         return true;
     }
 

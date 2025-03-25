@@ -1,5 +1,6 @@
 package giancarlo.beastdeck.backend.controller;
 
+import java.util.List;
 import java.util.Objects;
 
 import giancarlo.beastdeck.backend.controller.enums.EnumRarezas;
@@ -17,9 +18,10 @@ public class Carta{
     private String descripcion;
     private EnumRarezas rareza;
     private EnumTipos tipo;
-    private Habilidades habilidades;
+    private List<Habilidades> habilidades;
     private int fuerza;
     private int ordenRecomendado;
+    private boolean utilizada;
 
     /**
      * Constructor vacio 
@@ -38,7 +40,7 @@ public class Carta{
      * @param fuerza
      * @param ordenRecomendado
      */
-    public Carta(Integer id, String nombre, String descripcion, EnumRarezas rareza, EnumTipos tipo, Habilidades habilidades, int fuerza, int ordenRecomendado) {
+    public Carta(Integer id, String nombre, String descripcion, EnumRarezas rareza, EnumTipos tipo, List<Habilidades> habilidades, int fuerza, int ordenRecomendado) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -47,6 +49,7 @@ public class Carta{
         this.habilidades = habilidades;
         this.fuerza = fuerza;
         this.ordenRecomendado = ordenRecomendado;
+        this.utilizada = false;
     }
 
     public Carta(Integer id){
@@ -97,11 +100,11 @@ public class Carta{
         this.tipo = tipo;
     }
 
-    public Habilidades getHabilidades() {
+    public List<Habilidades> getHabilidades() {
         return this.habilidades;
     }
 
-    public void setHabilidades(Habilidades habilidades) {
+    public void setHabilidades(List<Habilidades> habilidades) {
         this.habilidades = habilidades;
     }
 
@@ -117,6 +120,15 @@ public class Carta{
     }
     public void setordenRecomendado(int ordenRecomendado){
         this.ordenRecomendado = ordenRecomendado;
+    }
+    public boolean getUtilizada(){
+        return utilizada;
+    }
+    /**
+     * funcion que cambia el boolean a su contraparte
+     */
+    public void cambioUtilizada(){
+        utilizada = !utilizada;
     }
     
     @Override
@@ -154,8 +166,29 @@ public class Carta{
      * @param combate
      * @param cartaRival
      */
-    public void activarHabilidades(Combate combate, Carta cartaRival){
+    public void activarHabilidades(Combate combate, Carta cartaRival, boolean primeraFase){
 
+    }
+
+    /**
+     * Metodo que valida que una carta tenga toda la informacion que necesita
+     * @return
+     */
+    public boolean validar(){
+
+        if (id == null || id < 0) {
+            return false;
+        }
+        if (nombre == null || nombre.isBlank()) {
+            return false;
+        }
+        if (descripcion == null || descripcion.isBlank()) {
+            return false;
+        }
+        if (rareza == null || tipo == null) {
+            return false;
+        }
+        return habilidades != null;
     }
 
 }
