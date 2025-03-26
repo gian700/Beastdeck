@@ -137,13 +137,16 @@ public class Combate extends TipoFuncionamiento{
         if (cartaPropia.getUtilizada() || cartaRival.getUtilizada()) {
             return;
         }
-        cartaPropia.activarHabilidades(this, cartaRival,true);
-        cartaRival.activarHabilidades(this, cartaPropia,true);
+        cartaPropia.activarHabilidades(this, cartaRival, cartaPropia);
+        cartaRival.activarHabilidades(this, cartaPropia, cartaPropia);
+
         double multiplicador = comprobarGanador(cartaPropia, cartaRival);
         puntuacionTemporalPropia = (cartaPropia.getFuerza()*multiplicador) * 100;
         puntuacionTemporalRival = (cartaRival.getFuerza()/multiplicador) * 100;
-        cartaPropia.activarHabilidades(this, cartaRival,false);
-        cartaRival.activarHabilidades(this, cartaPropia,false);
+
+        cartaPropia.activarHabilidades(this, cartaRival, cartaPropia);
+        cartaRival.activarHabilidades(this, cartaPropia, cartaPropia);
+        
         puntuacionPropia += puntuacionTemporalPropia;
         puntuacionRival += puntuacionTemporalRival;
     }

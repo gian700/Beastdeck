@@ -18,7 +18,7 @@ public class Carta{
     private String descripcion;
     private EnumRarezas rareza;
     private EnumTipos tipo;
-    private List<Habilidades> habilidades;
+    private List<Habilidad> habilidades;
     private int fuerza;
     private int ordenRecomendado;
     private boolean utilizada;
@@ -40,7 +40,7 @@ public class Carta{
      * @param fuerza
      * @param ordenRecomendado
      */
-    public Carta(Integer id, String nombre, String descripcion, EnumRarezas rareza, EnumTipos tipo, List<Habilidades> habilidades, int fuerza, int ordenRecomendado) {
+    public Carta(Integer id, String nombre, String descripcion, EnumRarezas rareza, EnumTipos tipo, List<Habilidad> habilidades, int fuerza, int ordenRecomendado) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -100,11 +100,11 @@ public class Carta{
         this.tipo = tipo;
     }
 
-    public List<Habilidades> getHabilidades() {
+    public List<Habilidad> getHabilidades() {
         return this.habilidades;
     }
 
-    public void setHabilidades(List<Habilidades> habilidades) {
+    public void setHabilidades(List<Habilidad> habilidades) {
         this.habilidades = habilidades;
     }
 
@@ -166,8 +166,14 @@ public class Carta{
      * @param combate
      * @param cartaRival
      */
-    public void activarHabilidades(Combate combate, Carta cartaRival, boolean primeraFase){
-
+    public void activarHabilidades(Combate combate, Carta cartaRival, Carta cartaPropia){
+        for (Habilidad habilidad : getHabilidades()) {
+            if (habilidad.getActiva() && habilidad.getRapida()) {
+                habilidad.activar(cartaPropia, combate, cartaRival);
+            }
+            habilidad.setRapida();
+            
+        }
     }
 
     /**
@@ -190,5 +196,4 @@ public class Carta{
         }
         return habilidades != null;
     }
-
 }
