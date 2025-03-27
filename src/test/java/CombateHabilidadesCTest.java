@@ -12,8 +12,6 @@ import giancarlo.beastdeck.backend.controller.enums.EnumRarezas;
 import giancarlo.beastdeck.backend.controller.enums.EnumTipos;
 
 public class CombateHabilidadesCTest {
-    
-
 
     private Combate combateController;
     private Habilidad habilidad;

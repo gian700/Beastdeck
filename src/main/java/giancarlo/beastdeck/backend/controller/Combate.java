@@ -13,10 +13,10 @@ public class Combate extends TipoFuncionamiento{
     private Deck deckPropio;
     private Rival rival;
     private Deck deckRival;
-    private double puntuacionPropia;
-    private double puntuacionRival;
-    private double puntuacionTemporalPropia;
-    private double puntuacionTemporalRival;
+    private float puntuacionPropia;
+    private float puntuacionRival;
+    private float puntuacionTemporalPropia;
+    private float puntuacionTemporalRival;
 
     public Combate() {
     }
@@ -64,35 +64,35 @@ public class Combate extends TipoFuncionamiento{
         this.deckRival = deckRival;
     }
 
-    public double getPuntuacionPropia() {
+    public float getPuntuacionPropia() {
         return this.puntuacionPropia;
     }
 
-    public void setPuntuacionPropia(double puntuacionPropia) {
+    public void setPuntuacionPropia(float puntuacionPropia) {
         this.puntuacionPropia = puntuacionPropia;
     }
 
-    public double getPuntuacionRival() {
+    public float getPuntuacionRival() {
         return this.puntuacionRival;
     }
 
-    public void setPuntuacionRival(double puntuacionRival) {
+    public void setPuntuacionRival(float puntuacionRival) {
         this.puntuacionRival = puntuacionRival;
     }
 
-    public double getPuntuacionTemporalPropia() {
+    public float getPuntuacionTemporalPropia() {
         return this.puntuacionTemporalPropia;
     }
 
-    public void setPuntuacionTemporalPropia(double puntuacionTemporalPropia) {
+    public void setPuntuacionTemporalPropia(float puntuacionTemporalPropia) {
         this.puntuacionTemporalPropia = puntuacionTemporalPropia;
     }
 
-    public double getPuntuacionTemporalRival() {
+    public float getPuntuacionTemporalRival() {
         return this.puntuacionTemporalRival;
     }
 
-    public void setPuntuacionTemporalRival(double puntuacionTemporalRival) {
+    public void setPuntuacionTemporalRival(float puntuacionTemporalRival) {
         this.puntuacionTemporalRival = puntuacionTemporalRival;
     }
 
@@ -140,7 +140,7 @@ public class Combate extends TipoFuncionamiento{
         cartaPropia.activarHabilidades(this, cartaRival, cartaPropia);
         cartaRival.activarHabilidades(this, cartaPropia, cartaPropia);
 
-        double multiplicador = comprobarGanador(cartaPropia, cartaRival);
+        float multiplicador = comprobarGanador(cartaPropia, cartaRival);
         puntuacionTemporalPropia = (cartaPropia.getFuerza()*multiplicador) * 100;
         puntuacionTemporalRival = (cartaRival.getFuerza()/multiplicador) * 100;
 
