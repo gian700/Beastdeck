@@ -24,9 +24,9 @@ public abstract class TipoFuncionamiento {
      * 
      * @param cartaPropia
      * @param cartaRival
-     * @return double
+     * @return float
      */
-    public double comprobarGanador(Carta cartaPropia, Carta cartaRival) {
+    public float comprobarGanador(Carta cartaPropia, Carta cartaRival) {
 
         if (cartaPropia == null || cartaRival == null) {
             throw new IllegalArgumentException("Alguna de las cartas no son validas");
@@ -45,7 +45,7 @@ public abstract class TipoFuncionamiento {
 
         List<EnumTipos> debilidades = comprobarDebilidades(tipoPropio);
         if (debilidades.contains(tipoRival)) {
-            return 0.5;
+            return (float) 0.5;
         }
         return 2;
     }
