@@ -2,11 +2,6 @@ package giancarlo.beastdeck.backend.controller;
 
 import java.util.Objects;
 
-import giancarlo.beastdeck.backend.controller.dependencias.habilidades.habilidadesActivas.HabilidadActC;
-import giancarlo.beastdeck.backend.controller.dependencias.habilidades.habilidadesActivas.HabilidadActLegendary;
-import giancarlo.beastdeck.backend.controller.dependencias.habilidades.habilidadesActivas.HabilidadActR;
-import giancarlo.beastdeck.backend.controller.dependencias.habilidades.habilidadesActivas.HabilidadActSR;
-import giancarlo.beastdeck.backend.controller.dependencias.habilidades.habilidadesActivas.HabilidadActUR;
 import giancarlo.beastdeck.backend.controller.enums.EnumRarezas;
 
 /**
@@ -108,26 +103,42 @@ public class Habilidad{
             "}";
     }
     
-    
-    public void activar(Carta cartaPropia, Combate combate, Carta cartaRival){
-        switch (getRareza()) {
-            case C -> {
-                new HabilidadActC(getId(), cartaPropia, combate, cartaRival);
-            }
-            case R -> {
-                new HabilidadActR(getId(), cartaPropia, combate, cartaRival);
-            }
-            case SR -> {
-                new HabilidadActSR(getId(), cartaPropia, combate, cartaRival);
-            }
-            case UR -> {
-                new HabilidadActUR(getId(), cartaPropia, combate, cartaRival);
-            }
-            case LEGENDARY -> {
-                new HabilidadActLegendary(getId(), cartaPropia, combate, cartaRival);
-            }
-            default -> {
-            }
+    public void activar(Carta cartaPropia, Combate combate, Carta cartaRival) {
+        switch (id) {
+            case 0 -> generico(cartaPropia, combate, cartaRival);
+            case 1 -> DobleFuerza(cartaPropia, combate, cartaRival);
+            case 2 -> inutilidad(cartaPropia, combate, cartaRival);
+            default -> throw new AssertionError("habilidad no existente");
         }
     }
+
+    /**
+     * Metodo generico, copiar este metodo para crear nueva habilidad
+     * @param cartaPropia
+     * @param combate
+     * @param cartaRival
+     */
+    private void generico(Carta cartaPropia, Combate combate, Carta cartaRival){}
+
+    /**
+     * Habilidad que multiplica por 2 la fuerza de la carta
+     * @param cartaPropia
+     * @param combate
+     * @param cartaRival
+     */
+    private void DobleFuerza(Carta cartaPropia, Combate combate, Carta cartaRival){
+        cartaPropia.setFuerza(cartaPropia.getFuerza()*2);
+    }
+
+    /**
+     * Habilidad que le baja a la mitad la fuerza, redondeando hacia bajo en caso, 
+     * @param cartaPropia
+     * @param combate
+     * @param cartaRival
+     */
+    private void inutilidad(Carta cartaPropia, Combate combate, Carta cartaRival){
+        cartaRival.setFuerza(cartaRival.getFuerza()/2);
+        
+    }
+    
 }

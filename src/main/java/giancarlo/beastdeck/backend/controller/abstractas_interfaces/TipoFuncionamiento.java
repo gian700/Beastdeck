@@ -1,15 +1,10 @@
 package giancarlo.beastdeck.backend.controller.abstractas_interfaces;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import giancarlo.beastdeck.backend.controller.Carta;
-import giancarlo.beastdeck.backend.controller.dependencias.tipos.Agua;
-import giancarlo.beastdeck.backend.controller.dependencias.tipos.Bestia;
-import giancarlo.beastdeck.backend.controller.dependencias.tipos.Electrico;
-import giancarlo.beastdeck.backend.controller.dependencias.tipos.Fuego;
-import giancarlo.beastdeck.backend.controller.dependencias.tipos.Planta;
-import giancarlo.beastdeck.backend.controller.dependencias.tipos.Tierra;
-import giancarlo.beastdeck.backend.controller.dependencias.tipos.Volador;
 import giancarlo.beastdeck.backend.controller.enums.EnumTipos;
 
 
@@ -61,38 +56,31 @@ public abstract class TipoFuncionamiento {
 
         switch (tipoPropio) {
             case FUEGO -> {
-                Fuego fuego = new Fuego();
-                return fuego.debilidades();
+                return new ArrayList<>(Arrays.asList(EnumTipos.AGUA, EnumTipos.TIERRA, EnumTipos.VOLADOR));
             }
 
             case AGUA -> {
-                Agua agua = new Agua();
-                return agua.debilidades();
+                return new ArrayList<>(Arrays.asList(EnumTipos.PLANTA, EnumTipos.ELECTRICO, EnumTipos.BESTIA));
             }
 
             case PLANTA -> {
-                Planta planta = new Planta();
-                return planta.debilidades();
+                return new ArrayList<>(Arrays.asList(EnumTipos.FUEGO, EnumTipos.ELECTRICO, EnumTipos.BESTIA));
             }
 
             case TIERRA -> {
-                Tierra tierra = new Tierra();
-                return tierra.debilidades();
+                return new ArrayList<>(Arrays.asList(EnumTipos.VOLADOR, EnumTipos.AGUA, EnumTipos.PLANTA));
             }
 
             case ELECTRICO -> {
-                Electrico electrico = new Electrico();
-                return electrico.debilidades();
+                return new ArrayList<>(Arrays.asList(EnumTipos.TIERRA, EnumTipos.FUEGO, EnumTipos.BESTIA));
             }
 
             case VOLADOR -> {
-                Volador volador = new Volador();
-                return volador.debilidades();
+                return new ArrayList<>(Arrays.asList(EnumTipos.ELECTRICO, EnumTipos.AGUA, EnumTipos.PLANTA));
             }
 
             case BESTIA -> {
-                Bestia bestia = new Bestia();
-                return bestia.debilidades();
+                return new ArrayList<>(Arrays.asList(EnumTipos.FUEGO, EnumTipos.TIERRA, EnumTipos.VOLADOR));
             }
 
         }
