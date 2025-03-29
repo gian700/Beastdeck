@@ -103,11 +103,17 @@ public class Habilidad{
             "}";
     }
     
+    /**
+     * Metodo que activa las habilidades
+     * @param cartaPropia
+     * @param combate
+     * @param cartaRival
+     */
     public void activar(Carta cartaPropia, Combate combate, Carta cartaRival) {
         switch (id) {
-            case 0 -> generico(cartaPropia, combate, cartaRival);
-            case 1 -> DobleFuerza(cartaPropia, combate, cartaRival);
-            case 2 -> inutilidad(cartaPropia, combate, cartaRival);
+            case 0 -> generico();
+            case 1 -> DobleFuerza(cartaPropia);
+            case 2 -> inutilidad(cartaRival);
             default -> throw new AssertionError("habilidad no existente");
         }
     }
@@ -118,7 +124,7 @@ public class Habilidad{
      * @param combate
      * @param cartaRival
      */
-    private void generico(Carta cartaPropia, Combate combate, Carta cartaRival){}
+    private void generico(){}
 
     /**
      * Habilidad que multiplica por 2 la fuerza de la carta
@@ -126,7 +132,7 @@ public class Habilidad{
      * @param combate
      * @param cartaRival
      */
-    private void DobleFuerza(Carta cartaPropia, Combate combate, Carta cartaRival){
+    private void DobleFuerza(Carta cartaPropia){
         cartaPropia.setFuerza(cartaPropia.getFuerza()*2);
     }
 
@@ -136,7 +142,7 @@ public class Habilidad{
      * @param combate
      * @param cartaRival
      */
-    private void inutilidad(Carta cartaPropia, Combate combate, Carta cartaRival){
+    private void inutilidad(Carta cartaRival){
         cartaRival.setFuerza(cartaRival.getFuerza()/2);
         
     }

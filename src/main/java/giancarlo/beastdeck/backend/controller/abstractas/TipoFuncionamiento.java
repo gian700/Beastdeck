@@ -1,4 +1,4 @@
-package giancarlo.beastdeck.backend.controller.abstractas_interfaces;
+package giancarlo.beastdeck.backend.controller.abstractas;
 
 import java.util.ArrayList;
 import java.util.Arrays;

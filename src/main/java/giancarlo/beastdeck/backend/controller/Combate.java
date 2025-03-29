@@ -2,7 +2,7 @@ package giancarlo.beastdeck.backend.controller;
 
 import java.util.Objects;
 
-import giancarlo.beastdeck.backend.controller.abstractas_interfaces.TipoFuncionamiento;
+import giancarlo.beastdeck.backend.controller.abstractas.TipoFuncionamiento;
 
 /**
  * @author Giancarlo
@@ -127,6 +127,11 @@ public class Combate extends TipoFuncionamiento{
             "}";
     }
 
+    /**
+     * Metodo que permite llevar las rondas de la batalla despues de elegir las cartas a usar
+     * @param cartaPropia
+     * @param cartaRival
+     */
     public void ronda (Carta cartaPropia, Carta cartaRival){
         if (cartaPropia == null || cartaRival == null) {
             throw new IllegalArgumentException("Carta nula");

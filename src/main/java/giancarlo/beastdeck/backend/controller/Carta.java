@@ -52,6 +52,10 @@ public class Carta{
         this.utilizada = false;
     }
 
+    /**
+     * Constructor solo id
+     * @param id
+     */
     public Carta(Integer id){
         this.id = id;
     }

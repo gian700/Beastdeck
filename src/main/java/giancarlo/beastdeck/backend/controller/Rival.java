@@ -17,23 +17,32 @@ public class Rival {
         return this.deck;
     }
 
+    /**
+     * Metodo que permite al bot elegir la carta a usar
+     * @param deckUsuario
+     * @return
+     */
     public int mejorOpcion(Deck deckUsuario){
 
         List<Integer> comprobar = new ArrayList<>();
-        Integer orden = 0;
+        Combate combate = new Combate();
+        Integer orden;
+        Carta carta;
+        Carta cartaUsuario;
+        int ordenRival;
+
 
         for (int i = 0; i < deck.getDeck().size(); i++) {
-            Carta carta = deck.getDeck().get(i);
+            carta = deck.getDeck().get(i);
             orden = carta.getordenRecomendado();
 
             for (int j = 0; j < deckUsuario.getDeck().size(); j++) {
-                Carta cartaUsuario = deckUsuario.getDeck().get(j);
-                Combate combate = new Combate();
+                cartaUsuario = deckUsuario.getDeck().get(j);
+                ordenRival = (cartaUsuario.getordenRecomendado())/2;
                 int batalla = (int) combate.comprobarGanador(carta, cartaUsuario);
                 switch (batalla) {
-                    case 2 -> {orden += 1;}
-                    case 0 -> {orden -= 1;}
-                    default -> {}
+                    case 2 -> {orden += 1 + ordenRival;}
+                    case 0 -> {orden -= (1 + ordenRival);}
                 }
             }
             comprobar.add(orden);
