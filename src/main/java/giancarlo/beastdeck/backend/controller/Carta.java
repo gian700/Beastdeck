@@ -170,10 +170,10 @@ public class Carta{
      * @param combate
      * @param cartaRival
      */
-    public void activarHabilidades(Combate combate, Carta cartaRival, Carta cartaPropia){
+    public void activarHabilidades(Combate combate, Carta cartaRival){
         for (Habilidad habilidad : getHabilidades()) {
             if (habilidad.getActiva() && habilidad.getRapida()) {
-                habilidad.activar(cartaPropia, combate, cartaRival);
+                habilidad.activar(this, combate, cartaRival);
             }
             habilidad.setRapida();
             
