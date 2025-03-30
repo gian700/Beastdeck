@@ -30,6 +30,7 @@ public class Rival {
         Carta carta;
         Carta cartaUsuario;
         int ordenRival;
+        int batalla;
 
 
         for (int i = 0; i < deck.getDeck().size(); i++) {
@@ -39,7 +40,7 @@ public class Rival {
             for (int j = 0; j < deckUsuario.getDeck().size(); j++) {
                 cartaUsuario = deckUsuario.getDeck().get(j);
                 ordenRival = (cartaUsuario.getordenRecomendado())/2;
-                int batalla = (int) combate.comprobarGanador(carta, cartaUsuario);
+                batalla = (int) combate.comprobarGanador(carta, cartaUsuario);
                 switch (batalla) {
                     case 2 -> {orden += 1 + ordenRival;}
                     case 0 -> {orden -= (1 + ordenRival);}
@@ -47,13 +48,16 @@ public class Rival {
             }
             comprobar.add(orden);
         }
+
         Integer ganador = comprobar.get(0);
+
         for (int i = 0; i < comprobar.size(); i++) {
             orden = comprobar.get(i);
             if (orden > ganador) {
                 ganador = orden;
             }
         }
+        
         int posicion = comprobar.indexOf(ganador);
         return posicion;
     }
