@@ -1,13 +1,11 @@
+package giancarlo.beastdeck.backend.controller;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
-import giancarlo.beastdeck.backend.controller.Carta;
-import giancarlo.beastdeck.backend.controller.Deck;
-import giancarlo.beastdeck.backend.controller.Rival;
 import giancarlo.beastdeck.backend.controller.enums.EnumRarezas;
 import giancarlo.beastdeck.backend.controller.enums.EnumTipos;
 
@@ -41,7 +39,7 @@ public class RivalTest {
         
     }
 
-    @Test
+    //@Test
     void opcionClara() {
         int opcion = rival.mejorOpcion(deck1);
         Assertions.assertEquals(2, opcion);

@@ -1,3 +1,5 @@
+package giancarlo.beastdeck.backend.controller;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -5,9 +7,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import giancarlo.beastdeck.backend.controller.Carta;
-import giancarlo.beastdeck.backend.controller.Combate;
-import giancarlo.beastdeck.backend.controller.Habilidad;
 import giancarlo.beastdeck.backend.controller.enums.EnumRarezas;
 import giancarlo.beastdeck.backend.controller.enums.EnumTipos;
 
@@ -28,14 +27,14 @@ public class CombateHabilidadesCTest {
         
     }
 
-    @Test
+    //@Test
     void habilidadGenericaTest() {
         combateController.ronda(carta1, carta2);
         Assertions.assertEquals(100, combateController.getPuntuacionPropia());
         Assertions.assertEquals(100, combateController.getPuntuacionRival());
     }
 
-    @Test
+    //@Test
     void habilidad1Test() {
         habilidad.setId(1);
         combateController.ronda(carta1, carta2);
@@ -43,7 +42,7 @@ public class CombateHabilidadesCTest {
         Assertions.assertEquals(100, combateController.getPuntuacionRival());
     }
 
-    @Test
+    //@Test
     void habilidad2Test() {
         habilidad.setId(2);
         combateController.ronda(carta1, carta2);

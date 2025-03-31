@@ -1,5 +1,5 @@
 package giancarlo.beastdeck.config;
 
-public class Vacio {
-    
+public class ConfigManager {
+
 }
