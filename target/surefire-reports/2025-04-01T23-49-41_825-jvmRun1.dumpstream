@@ -1,0 +1,3 @@
+# Created at 2025-04-01T23:49:42.755
+java.lang.IllegalAccessError: class org.junit.platform.launcher.core.LauncherFactory (in unnamed module @0x2c039ac6) cannot access class org.junit.platform.commons.util.Preconditions (in module org.junit.platform.commons) because module org.junit.platform.commons does not export org.junit.platform.commons.util to unnamed module @0x2c039ac6
+

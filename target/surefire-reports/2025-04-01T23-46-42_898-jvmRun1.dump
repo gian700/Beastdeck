@@ -1,0 +1,19 @@
+# Created at 2025-04-01T23:46:43.808
+org.apache.maven.surefire.api.util.SurefireReflectionException: java.lang.IllegalAccessError: class org.junit.platform.launcher.core.LauncherFactory (in unnamed module @0xfad74ee) cannot access class org.junit.platform.commons.util.Preconditions (in module org.junit.platform.commons) because module org.junit.platform.commons does not export org.junit.platform.commons.util to unnamed module @0xfad74ee
+	at org.apache.maven.surefire.api.util.ReflectionUtils.instantiateOneArg(ReflectionUtils.java:127)
+	at org.apache.maven.surefire.booter.ForkedBooter.createProviderInCurrentClassloader(ForkedBooter.java:491)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+Caused by: java.lang.IllegalAccessError: class org.junit.platform.launcher.core.LauncherFactory (in unnamed module @0xfad74ee) cannot access class org.junit.platform.commons.util.Preconditions (in module org.junit.platform.commons) because module org.junit.platform.commons does not export org.junit.platform.commons.util to unnamed module @0xfad74ee
+	at org.junit.platform.launcher.core.LauncherFactory.create(LauncherFactory.java:83)
+	at org.junit.platform.launcher.core.LauncherFactory.create(LauncherFactory.java:67)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.<init>(JUnitPlatformProvider.java:90)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
+	at org.apache.maven.surefire.api.util.ReflectionUtils.instantiateOneArg(ReflectionUtils.java:123)
+	... 5 more
+
+
