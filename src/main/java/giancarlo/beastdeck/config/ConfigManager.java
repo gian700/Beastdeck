@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Properties;
 
 public class ConfigManager {
+    
     public static class ConfigProperties {
 
         static String path;

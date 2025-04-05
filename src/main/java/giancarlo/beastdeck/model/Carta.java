@@ -1,7 +1,6 @@
 package giancarlo.beastdeck.model;
 
 import java.util.List;
-import java.util.Objects;
 
 import giancarlo.beastdeck.model.Constructores.CartaConstructor;
 import giancarlo.beastdeck.model.enums.EnumRarezas;
@@ -14,9 +13,17 @@ import giancarlo.beastdeck.model.enums.EnumTipos;
  */
 public class Carta extends CartaConstructor{
 
-    public Carta(Integer id){}
-    
-    
+    public Carta(){
+    }
+
+    public Carta(Integer id) {
+        super(id);
+    }
+
+    public Carta(Integer id, String nombre, String descripcion, EnumRarezas rareza, EnumTipos tipo, List<HabilidadActiva> habilidadesActivas, List<HabilidadPasiva> habilidadesPasivas, int fuerza, int ordenRecomendado, boolean utilizada, boolean desbloqueada) {
+        super(id, nombre, descripcion, rareza, tipo, habilidadesActivas, habilidadesPasivas, fuerza, ordenRecomendado, utilizada, desbloqueada);
+    }
+
     /**
      * Metodo que activa la habilidades de una carta
      * @param combate

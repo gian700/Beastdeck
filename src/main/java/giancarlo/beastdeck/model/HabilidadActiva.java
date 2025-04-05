@@ -1,6 +1,5 @@
 package giancarlo.beastdeck.model;
 
-import java.util.Objects;
 
 import giancarlo.beastdeck.model.Constructores.HabilidadActivaConstructor;
 import giancarlo.beastdeck.model.enums.EnumRarezas;
@@ -11,6 +10,9 @@ import giancarlo.beastdeck.model.enums.EnumRarezas;
  */
 public class HabilidadActiva extends HabilidadActivaConstructor{
     
+    public HabilidadActiva(int id, String nombre, String descripcion, EnumRarezas rareza, boolean activa, boolean rapida) {
+        super(id, nombre, descripcion, rareza, activa, rapida);
+    }
     
     /**
      * Metodo que activa las habilidades

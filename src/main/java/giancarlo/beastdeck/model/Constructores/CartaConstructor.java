@@ -20,6 +20,29 @@ public abstract class CartaConstructor {
     private boolean utilizada;
     private boolean desbloqueada;
 
+
+    public CartaConstructor() {
+    }
+
+    public CartaConstructor(Integer id) {
+        this.id = id;
+    }
+
+    public CartaConstructor(Integer id, String nombre, String descripcion, EnumRarezas rareza, EnumTipos tipo, List<HabilidadActiva> habilidadesActivas, List<HabilidadPasiva> habilidadesPasivas, int fuerza, int ordenRecomendado, boolean utilizada, boolean desbloqueada) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.rareza = rareza;
+        this.tipo = tipo;
+        this.habilidadesActivas = habilidadesActivas;
+        this.habilidadesPasivas = habilidadesPasivas;
+        this.fuerza = fuerza;
+        this.ordenRecomendado = ordenRecomendado;
+        this.utilizada = utilizada;
+        this.desbloqueada = desbloqueada;
+    }
+
+
     public Integer getId() {
         return this.id;
     }

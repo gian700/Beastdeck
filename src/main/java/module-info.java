@@ -20,4 +20,5 @@ module giancarlo.beastdeck {
     exports giancarlo.beastdeck.controller.abstracta;
     exports giancarlo.beastdeck.config;
     opens giancarlo.beastdeck.controller to javafx.fxml;
+    opens giancarlo.beastdeck.controller.abstracta to javafx.fxml;
 }

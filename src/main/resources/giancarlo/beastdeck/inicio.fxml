@@ -10,10 +10,10 @@
    <children>
       <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="427.0">
          <children>
-            <Button fx:id="ajusteBoton" mnemonicParsing="false" onAction="#ajustesClick" text="ajustes" />
+            <Button fx:id="ajustesBoton" mnemonicParsing="false" onAction="#ajustesClick" text="ajustes" />
          </children>
       </HBox>
-      <Button fx:id="newRunClick" mnemonicParsing="false" onAction="#newRunClick" text="Nueva partida">
+      <Button fx:id="newRunBoton" mnemonicParsing="false" onAction="#newRunClick" text="Nueva partida">
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" top="10.0" />
          </VBox.margin>

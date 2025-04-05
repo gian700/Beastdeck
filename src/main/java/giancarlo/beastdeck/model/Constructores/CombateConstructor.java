@@ -1,8 +1,5 @@
 package giancarlo.beastdeck.model.Constructores;
 
-import java.util.Objects;
-
-import giancarlo.beastdeck.model.Combate;
 import giancarlo.beastdeck.model.Deck;
 import giancarlo.beastdeck.model.Jugador;
 import giancarlo.beastdeck.model.Rival;

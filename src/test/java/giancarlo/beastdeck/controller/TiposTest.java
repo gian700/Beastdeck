@@ -1,4 +1,4 @@
-package giancarlo.beastdeck.backend.controller;
+package giancarlo.beastdeck.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +31,6 @@ public class TiposTest {
 
     @Test
     void TipoNullTest() {
-        
         try {
              lucha = combateController.comprobarGanador(carta1, carta2);
         } catch (Exception e) {

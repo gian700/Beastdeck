@@ -1,9 +1,6 @@
 package giancarlo.beastdeck.model;
 
-import java.util.Objects;
-
 import giancarlo.beastdeck.model.Constructores.CombateConstructor;
-import giancarlo.beastdeck.model.abstractas.TipoFuncionamiento;
 
 /**
  * @author Giancarlo
@@ -11,6 +8,9 @@ import giancarlo.beastdeck.model.abstractas.TipoFuncionamiento;
  */
 public class Combate extends CombateConstructor{
     
+    public Combate(){
+        
+    }
 
     /**
      * Metodo que permite llevar las rondas de la batalla despues de elegir las cartas a usar
