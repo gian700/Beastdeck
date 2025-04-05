@@ -1,5 +1,7 @@
 package giancarlo.beastdeck.controller.abstracta;
 
+import java.io.IOException;
+
 import giancarlo.beastdeck.PrincipalApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,7 +18,7 @@ public abstract class AbstractController {
             stage.setTitle(pagina);
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

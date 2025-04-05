@@ -23,9 +23,7 @@ public class InicioController extends AbstractController{
 
     @FXML
     public void initialize() {
-        if (ConfigManager.ConfigProperties.getProperty("ajustesBoton") == null) {
-            return;
-        }
+        if (ConfigManager.ConfigProperties.getProperty("ajustesBoton") == null) {return;}
         ajustesBoton.setText(ConfigManager.ConfigProperties.getProperty("ajustesBoton"));
         newRunBoton.setText(ConfigManager.ConfigProperties.getProperty("newRunBoton"));
         coleccionBoton.setText(ConfigManager.ConfigProperties.getProperty("coleccionBoton"));
