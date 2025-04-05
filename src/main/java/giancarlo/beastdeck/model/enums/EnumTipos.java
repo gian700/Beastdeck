@@ -1,4 +1,4 @@
-package giancarlo.beastdeck.backend.controller.enums;
+package giancarlo.beastdeck.model.enums;
 /**
  * @author Giancarlo
  * @version 1.0.0

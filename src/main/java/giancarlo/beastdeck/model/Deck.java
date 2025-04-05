@@ -1,4 +1,4 @@
-package giancarlo.beastdeck.backend.controller;
+package giancarlo.beastdeck.model;
 
 import java.util.List;
 /**

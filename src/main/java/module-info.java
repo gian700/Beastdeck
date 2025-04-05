@@ -13,7 +13,11 @@ module giancarlo.beastdeck {
     opens giancarlo.beastdeck to javafx.fxml;
     exports giancarlo.beastdeck;
     exports giancarlo.beastdeck.servicio;
-    exports giancarlo.beastdeck.backend.controller;
     exports giancarlo.beastdeck.model;
+    exports giancarlo.beastdeck.model.abstractas;
+    exports giancarlo.beastdeck.model.enums;
+    exports giancarlo.beastdeck.controller;
+    exports giancarlo.beastdeck.controller.abstracta;
+    exports giancarlo.beastdeck.config;
     opens giancarlo.beastdeck.controller to javafx.fxml;
 }

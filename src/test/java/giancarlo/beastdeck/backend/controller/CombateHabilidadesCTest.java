@@ -7,13 +7,16 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import giancarlo.beastdeck.backend.controller.enums.EnumRarezas;
-import giancarlo.beastdeck.backend.controller.enums.EnumTipos;
+import giancarlo.beastdeck.model.Carta;
+import giancarlo.beastdeck.model.Combate;
+import giancarlo.beastdeck.model.HabilidadActiva;
+import giancarlo.beastdeck.model.enums.EnumRarezas;
+import giancarlo.beastdeck.model.enums.EnumTipos;
 
 public class CombateHabilidadesCTest {
 
     private Combate combateController;
-    private Habilidad habilidad;
+    private HabilidadActiva habilidad;
     private Carta carta1;
     private Carta carta2;
 
@@ -21,20 +24,20 @@ public class CombateHabilidadesCTest {
     @BeforeEach
     void beforeEach() {
         combateController = new Combate();
-        habilidad = new Habilidad(0, "null", "null", EnumRarezas.C, true, true);
+        habilidad = new HabilidadActiva(0, "null", "null", EnumRarezas.C, true, true);
         carta1 = new Carta(1, "nombre", "descripcion", EnumRarezas.C, EnumTipos.AGUA, new ArrayList<>(Arrays.asList(habilidad)), 1, 5);
         carta2 = new Carta(2, "nombre", "descripcion", EnumRarezas.R, EnumTipos.AGUA, new ArrayList<>(), 1, 5);
         
     }
 
-    //@Test
+    @Test
     void habilidadGenericaTest() {
         combateController.ronda(carta1, carta2);
         Assertions.assertEquals(100, combateController.getPuntuacionPropia());
         Assertions.assertEquals(100, combateController.getPuntuacionRival());
     }
 
-    //@Test
+    @Test
     void habilidad1Test() {
         habilidad.setId(1);
         combateController.ronda(carta1, carta2);
@@ -42,7 +45,7 @@ public class CombateHabilidadesCTest {
         Assertions.assertEquals(100, combateController.getPuntuacionRival());
     }
 
-    //@Test
+    @Test
     void habilidad2Test() {
         habilidad.setId(2);
         combateController.ronda(carta1, carta2);
