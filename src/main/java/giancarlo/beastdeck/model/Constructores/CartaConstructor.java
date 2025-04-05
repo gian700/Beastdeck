@@ -2,8 +2,8 @@ package giancarlo.beastdeck.model.Constructores;
 
 import java.util.List;
 
-import giancarlo.beastdeck.model.HabilidadActiva;
-import giancarlo.beastdeck.model.HabilidadPasiva;
+import giancarlo.beastdeck.model.clases.HabilidadActiva;
+import giancarlo.beastdeck.model.clases.HabilidadPasiva;
 import giancarlo.beastdeck.model.enums.EnumRarezas;
 import giancarlo.beastdeck.model.enums.EnumTipos;
 

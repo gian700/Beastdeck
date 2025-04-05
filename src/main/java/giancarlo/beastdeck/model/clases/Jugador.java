@@ -1,4 +1,4 @@
-package giancarlo.beastdeck.model;
+package giancarlo.beastdeck.model.clases;
 
 /**
  * @author Giancarlo

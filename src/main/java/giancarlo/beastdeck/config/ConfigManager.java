@@ -5,12 +5,14 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
+import giancarlo.beastdeck.model.clases.Usuario;
+
 public class ConfigManager {
     
     public static class ConfigProperties {
 
         static String path;
-
+        static private Usuario usuario = null;
         private static final Properties properties = new Properties();
 
 
@@ -19,6 +21,14 @@ public class ConfigManager {
          **/
         public static String getProperty(String key) {
             return properties.getProperty(key);
+        }
+
+        public static Usuario getUsuario() {
+            return usuario;
+        }        
+
+        public static void setUsuario(Usuario usuario){
+            ConfigProperties.usuario = usuario;
         }
 
         public static void setPath(String rutaPath) {
@@ -37,5 +47,7 @@ public class ConfigManager {
                 e.printStackTrace();
             }
         }
+
+        
     }
 }

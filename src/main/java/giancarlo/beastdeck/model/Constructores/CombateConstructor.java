@@ -1,9 +1,9 @@
 package giancarlo.beastdeck.model.Constructores;
 
-import giancarlo.beastdeck.model.Deck;
-import giancarlo.beastdeck.model.Jugador;
-import giancarlo.beastdeck.model.Rival;
 import giancarlo.beastdeck.model.abstractas.TipoFuncionamiento;
+import giancarlo.beastdeck.model.clases.Deck;
+import giancarlo.beastdeck.model.clases.Jugador;
+import giancarlo.beastdeck.model.clases.Rival;
 
 public abstract class CombateConstructor extends TipoFuncionamiento{
 private Jugador jugador;

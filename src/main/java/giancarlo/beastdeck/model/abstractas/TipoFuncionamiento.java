@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import giancarlo.beastdeck.model.clases.Carta;
 import giancarlo.beastdeck.model.enums.EnumTipos;
-import giancarlo.beastdeck.model.Carta;
 
 
 /**

@@ -1,4 +1,4 @@
-package giancarlo.beastdeck.model;
+package giancarlo.beastdeck.model.clases;
 
 import giancarlo.beastdeck.model.Constructores.CombateConstructor;
 

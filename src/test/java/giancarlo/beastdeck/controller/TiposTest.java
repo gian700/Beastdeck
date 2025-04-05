@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import giancarlo.beastdeck.model.Carta;
-import giancarlo.beastdeck.model.Combate;
+import giancarlo.beastdeck.model.clases.Carta;
+import giancarlo.beastdeck.model.clases.Combate;
 import giancarlo.beastdeck.model.enums.EnumTipos;
 
 public class TiposTest {

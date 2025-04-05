@@ -19,13 +19,16 @@ public class AjustesController extends AbstractController{
 
     @FXML
     public void initialize() {
+        if (ConfigManager.ConfigProperties.getProperty("volver") != null) {
+            volverBoton.setText(ConfigManager.ConfigProperties.getProperty("volver"));
+            comboIdioma.setPromptText(ConfigManager.ConfigProperties.getProperty("idioma"));
+        }
+        
         List<String> idiomas = new ArrayList<>();
         idiomas.add("Español");
         idiomas.add("Ingles");
         comboIdioma.getItems().addAll(idiomas);
-        if (ConfigManager.ConfigProperties.getProperty("ajustesBoton") == null) {return;}
-        volverBoton.setText(ConfigManager.ConfigProperties.getProperty("volver"));
-        comboIdioma.setPromptText(ConfigManager.ConfigProperties.getProperty("idioma"));
+        
     }
 
     @FXML

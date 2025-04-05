@@ -23,12 +23,12 @@ public class InicioController extends AbstractController{
 
     @FXML
     public void initialize() {
-        if (ConfigManager.ConfigProperties.getProperty("ajustesBoton") == null) {return;}
-        ajustesBoton.setText(ConfigManager.ConfigProperties.getProperty("ajustesBoton"));
-        newRunBoton.setText(ConfigManager.ConfigProperties.getProperty("newRunBoton"));
-        coleccionBoton.setText(ConfigManager.ConfigProperties.getProperty("coleccionBoton"));
-        logrosBroton.setText(ConfigManager.ConfigProperties.getProperty("logrosBroton"));
-        usuarioBoton.setText(ConfigManager.ConfigProperties.getProperty("usuarioBoton"));
+        if (ConfigManager.ConfigProperties.getProperty("ajustes") == null) {return;}
+        ajustesBoton.setText(ConfigManager.ConfigProperties.getProperty("ajustes"));
+        newRunBoton.setText(ConfigManager.ConfigProperties.getProperty("newRun"));
+        coleccionBoton.setText(ConfigManager.ConfigProperties.getProperty("coleccion"));
+        logrosBroton.setText(ConfigManager.ConfigProperties.getProperty("logros"));
+        usuarioBoton.setText(ConfigManager.ConfigProperties.getProperty("usuario"));
     }
 
     @FXML
@@ -53,6 +53,12 @@ public class InicioController extends AbstractController{
 
     @FXML
     public void usuariosClick(){
-        cambiarPagina(usuarioBoton, "usuarios");
+        if (ConfigManager.ConfigProperties.getUsuario()==null) {
+            cambiarPagina(usuarioBoton, "login");
+        }
+        usuarioBoton.setText("Ya estas registrado");
+        if (ConfigManager.ConfigProperties.getProperty("registrado") != null) {
+            usuarioBoton.setText(ConfigManager.ConfigProperties.getProperty("yaRegistrado"));
+        }
     }
 }
