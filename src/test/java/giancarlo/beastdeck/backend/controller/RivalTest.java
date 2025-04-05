@@ -5,9 +5,13 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import giancarlo.beastdeck.backend.controller.enums.EnumRarezas;
-import giancarlo.beastdeck.backend.controller.enums.EnumTipos;
+import giancarlo.beastdeck.model.Carta;
+import giancarlo.beastdeck.model.Deck;
+import giancarlo.beastdeck.model.Rival;
+import giancarlo.beastdeck.model.enums.EnumRarezas;
+import giancarlo.beastdeck.model.enums.EnumTipos;
 
 public class RivalTest {
     private Rival rival;
@@ -39,7 +43,7 @@ public class RivalTest {
         
     }
 
-    //@Test
+    @Test
     void opcionClara() {
         int opcion = rival.mejorOpcion(deck1);
         Assertions.assertEquals(2, opcion);

@@ -1,4 +1,5 @@
 package giancarlo.beastdeck.model;
 
-public class UsuarioServiceModel{
+public class HabilidadPasiva {
+
 }

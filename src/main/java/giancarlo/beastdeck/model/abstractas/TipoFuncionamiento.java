@@ -1,11 +1,11 @@
-package giancarlo.beastdeck.backend.controller.abstractas;
+package giancarlo.beastdeck.model.abstractas;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import giancarlo.beastdeck.backend.controller.Carta;
-import giancarlo.beastdeck.backend.controller.enums.EnumTipos;
+import giancarlo.beastdeck.model.enums.EnumTipos;
+import giancarlo.beastdeck.model.Carta;
 
 
 /**
