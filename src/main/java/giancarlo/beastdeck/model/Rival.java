@@ -1,4 +1,4 @@
-package giancarlo.beastdeck.backend.controller;
+package giancarlo.beastdeck.model;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,11 +35,11 @@ public class Rival {
 
         for (int i = 0; i < deck.getDeck().size(); i++) {
             carta = deck.getDeck().get(i);
-            orden = carta.getordenRecomendado();
+            orden = carta.getOrdenRecomendado();
 
             for (int j = 0; j < deckUsuario.getDeck().size(); j++) {
                 cartaUsuario = deckUsuario.getDeck().get(j);
-                ordenUsuario = (cartaUsuario.getordenRecomendado())/2;
+                ordenUsuario = (cartaUsuario.getOrdenRecomendado())/2;
                 batalla = (int) combate.comprobarGanador(carta, cartaUsuario);
                 switch (batalla) {
                     case 2 -> {orden += 1 + ordenUsuario;}
