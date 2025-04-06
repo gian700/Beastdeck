@@ -46,7 +46,6 @@ public class LoginController extends AbstractController {
             usuarioManager = new UsuarioManager();
         } catch (Exception e) {
         }
-        if (ConfigManager.ConfigProperties.getProperty("volver") == null) {return;}
         openRegistrar.setText(ConfigManager.ConfigProperties.getProperty("crearCuenta"));
         volverBoton.setText(ConfigManager.ConfigProperties.getProperty("volver"));
         aceptarBoton.setText(ConfigManager.ConfigProperties.getProperty("aceptar"));
@@ -59,37 +58,24 @@ public class LoginController extends AbstractController {
         
         if (textFieldUsuario== null || textFieldUsuario.getText().isEmpty() || 
             textFieldPassword == null || textFieldPassword.getText().isEmpty() ) {
-
-            textFieldMensaje.setText("Credenciales nulas o vacias");
-            if (ConfigManager.ConfigProperties.getProperty("volver") != null) {
-                textFieldMensaje.setText(ConfigManager.ConfigProperties.getProperty("Vacio"));
-                }
-                return;
+            textFieldMensaje.setText(ConfigManager.ConfigProperties.getProperty("Vacio"));
+            return;
         }
 
         Usuario usuario = usuarioManager.obtenerUsuarioPorNombre(textFieldUsuario.getText());
         
         if (usuario == null) {
-            textFieldMensaje.setText("El usuario no existe");
-            if (ConfigManager.ConfigProperties.getProperty("volver") != null) {
-                textFieldMensaje.setText(ConfigManager.ConfigProperties.getProperty("noExistente"));
-            }
+            textFieldMensaje.setText(ConfigManager.ConfigProperties.getProperty("noExistente"));
             return;
         }
 
         if (
             !textFieldPassword.getText().equals(usuario.getContrasenia())) {
-            textFieldMensaje.setText("Credenciales invalidas");
-            if (ConfigManager.ConfigProperties.getProperty("volver") != null) {
-                textFieldMensaje.setText(ConfigManager.ConfigProperties.getProperty("credencialesInvalidas"));
-            }
+            textFieldMensaje.setText(ConfigManager.ConfigProperties.getProperty("credencialesInvalidas"));
             return;
         } 
 
-        textFieldMensaje.setText("Usuario validado correctamente");
-        if (ConfigManager.ConfigProperties.getProperty("volver") != null) {
-            textFieldMensaje.setText(ConfigManager.ConfigProperties.getProperty("credencialesValidas"));
-        }
+        textFieldMensaje.setText(ConfigManager.ConfigProperties.getProperty("credencialesValidas"));
         usuario = new Usuario(textFieldUsuario.getText(), textFieldPassword.getText());
         ConfigManager.ConfigProperties.setUsuario(usuario);
         cambiarPagina(volverBoton, "inicio");

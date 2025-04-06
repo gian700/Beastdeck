@@ -43,7 +43,6 @@ public class RegistroController extends AbstractController {
 
     @FXML
     public void initialize() {        
-        if (ConfigManager.ConfigProperties.getProperty("usuario") == null) {return;}
         textUsuario.setText(ConfigManager.ConfigProperties.getProperty("usuario"));
         textContrasenia.setText(ConfigManager.ConfigProperties.getProperty("contrasenia"));
         textContrasenia2.setText(ConfigManager.ConfigProperties.getProperty("contrasenia2"));
@@ -57,36 +56,32 @@ public class RegistroController extends AbstractController {
         if (textFieldPassword == null ||  textFieldPassword.getText().isEmpty() 
             || textFieldPasswordRepit == null || textFieldPasswordRepit.getText().isEmpty()) {
 
-            textMensaje.setText("Credenciales nulas o vacias");
-            if (ConfigManager.ConfigProperties.getProperty("volver") != null) {
-                textMensaje.setText(ConfigManager.ConfigProperties.getProperty("Vacio"));
-            }
+            textMensaje.setText(ConfigManager.ConfigProperties.getProperty("Vacio"));
             return;
         }
 
         if (!(textFieldPassword.getText().equals(textFieldPasswordRepit.getText()))) {
-            textMensaje.setText("¡Las contraseñas no coinciden!");
-            if (ConfigManager.ConfigProperties.getProperty("contraseniaOtraVez") != null) {
-                textMensaje.setText(ConfigManager.ConfigProperties.getProperty("contraseniaOtraVez"));
-            }
+            textMensaje.setText(ConfigManager.ConfigProperties.getProperty("contraseniaOtraVez"));
             return;       
         }
         UsuarioManager usuarioManager = new UsuarioManager();
-        Usuario usuarios = usuarioManager.obtenerUsuarioPorNombre(textFiledUsuario.getText());
+        Usuario usuario = usuarioManager.obtenerUsuarioPorNombre(textFiledUsuario.getText());
 
-        if (usuarios!=null) {
-            textMensaje.setText("Usuario Existente");
-            if (ConfigManager.ConfigProperties.getProperty("volver") != null) {
-                textMensaje.setText(ConfigManager.ConfigProperties.getProperty("usuarioExistente"));
-            }
+        if (usuario!=null) {
+            textMensaje.setText(ConfigManager.ConfigProperties.getProperty("usuarioExistente"));
             return;
         }
-        Usuario usuario = new Usuario(textFiledUsuario.getText(), textFieldPassword.getText());
 
-        textMensaje.setText("Usuario creado con exito");
-        if (ConfigManager.ConfigProperties.getProperty("volver") != null) {
-            textMensaje.setText(ConfigManager.ConfigProperties.getProperty("usuarioCreado"));
+        usuario = new Usuario(textFiledUsuario.getText(), textFieldPassword.getText());
+        boolean comprobar = usuarioManager.crearUsuario(usuario);
+
+        if (!comprobar) {
+            textMensaje.setText(ConfigManager.ConfigProperties.getProperty("errorDB"));
+            return;
         }
+
+        textMensaje.setText(ConfigManager.ConfigProperties.getProperty("usuarioCreado"));
+        
         ConfigManager.ConfigProperties.setUsuario(usuario);
         cambiarPagina(volver, "inicio");
     }

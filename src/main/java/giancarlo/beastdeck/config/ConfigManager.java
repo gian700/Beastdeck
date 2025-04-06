@@ -16,7 +16,7 @@ public class ConfigManager {
      */
     public static class ConfigProperties {
 
-        static String path;
+        static String path = "src/main/resources/idiomas/Español.properties";
         static private Usuario usuario = null;
         private static final Properties properties = new Properties();
 
@@ -60,5 +60,10 @@ public class ConfigManager {
                 e.printStackTrace();
             }
         }
+
+        public static String getPath() {
+            return path;
+        }
+
     }
 }

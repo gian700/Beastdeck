@@ -23,7 +23,7 @@ public class InicioController extends AbstractController{
 
     @FXML
     protected void initialize() {
-        if (ConfigManager.ConfigProperties.getProperty("ajustes") == null) {return;}
+        ConfigManager.ConfigProperties.setPath(ConfigManager.ConfigProperties.getPath());
         ajustesBoton.setText(ConfigManager.ConfigProperties.getProperty("ajustes"));
         newRunBoton.setText(ConfigManager.ConfigProperties.getProperty("newRun"));
         coleccionBoton.setText(ConfigManager.ConfigProperties.getProperty("coleccion"));
@@ -56,8 +56,6 @@ public class InicioController extends AbstractController{
         if (ConfigManager.ConfigProperties.getUsuario()==null) {
             cambiarPagina(usuarioBoton, "login");
         }
-        usuarioBoton.setText("Ya estas registrado");
-        if (ConfigManager.ConfigProperties.getProperty("yaRegistrado") == null) {return;}
         usuarioBoton.setText(ConfigManager.ConfigProperties.getProperty("yaRegistrado"));
     }
 }

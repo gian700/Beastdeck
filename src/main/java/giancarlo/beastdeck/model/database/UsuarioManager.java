@@ -66,13 +66,16 @@ public class UsuarioManager extends DatabaseManager{
             PreparedStatement pStatement = conectar().prepareStatement(query);
             pStatement.setString(1, usuario.getNombre());
             pStatement.setString(2, usuario.getContrasenia());
-            pStatement.executeUpdate();
+            if (pStatement.executeUpdate() == 1) {
+                cerrar();
+                return true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
             cerrar();
         }
-        return true;
+        return false;
     }
 
 }
