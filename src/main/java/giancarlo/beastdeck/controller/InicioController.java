@@ -22,7 +22,7 @@ public class InicioController extends AbstractController{
     private Button usuarioBoton;
 
     @FXML
-    public void initialize() {
+    protected void initialize() {
         if (ConfigManager.ConfigProperties.getProperty("ajustes") == null) {return;}
         ajustesBoton.setText(ConfigManager.ConfigProperties.getProperty("ajustes"));
         newRunBoton.setText(ConfigManager.ConfigProperties.getProperty("newRun"));
@@ -32,33 +32,32 @@ public class InicioController extends AbstractController{
     }
 
     @FXML
-    public void ajustesClick(){
+    protected void ajustesClick(){
         cambiarPagina(ajustesBoton, "ajustes");
     }
 
     @FXML
-    public void newRunClick(){
+    protected void newRunClick(){
         cambiarPagina(newRunBoton, "combate");
     }
 
     @FXML
-    public void coleccionClick(){
+    protected void coleccionClick(){
         cambiarPagina(coleccionBoton, "coleccion");
     }
 
     @FXML
-    public void logrosClick(){
+    protected void logrosClick(){
         cambiarPagina(logrosBroton,"logros");
     }
 
     @FXML
-    public void usuariosClick(){
+    protected void usuariosClick(){
         if (ConfigManager.ConfigProperties.getUsuario()==null) {
             cambiarPagina(usuarioBoton, "login");
         }
         usuarioBoton.setText("Ya estas registrado");
-        if (ConfigManager.ConfigProperties.getProperty("yaRegistrado") != null) {
-            usuarioBoton.setText(ConfigManager.ConfigProperties.getProperty("yaRegistrado"));
-        }
+        if (ConfigManager.ConfigProperties.getProperty("yaRegistrado") == null) {return;}
+        usuarioBoton.setText(ConfigManager.ConfigProperties.getProperty("yaRegistrado"));
     }
 }

@@ -10,8 +10,9 @@ import giancarlo.beastdeck.model.clases.Usuario;
 public class UsuarioManager extends DatabaseManager{
 
 
-    public UsuarioManager() throws SQLException{
+    public UsuarioManager() throws SQLException {
         super();
+
     }
 
     public Usuario obtenerUsuarioPorNombre(String nombre) {

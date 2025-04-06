@@ -14,7 +14,6 @@ import javafx.scene.text.Text;
 
 public class LoginController extends AbstractController {
 
-    
     @FXML
     private TextField textFieldUsuario;
     
@@ -35,12 +34,18 @@ public class LoginController extends AbstractController {
 
     @FXML
     private Text textUsuario;
+    
+    UsuarioManager usuarioManager;
 
     @FXML
     private Text textContrasenia;
 
     @FXML
-    public void initialize() {
+    protected void initialize() {
+        try {
+            usuarioManager = new UsuarioManager();
+        } catch (Exception e) {
+        }
         if (ConfigManager.ConfigProperties.getProperty("volver") == null) {return;}
         openRegistrar.setText(ConfigManager.ConfigProperties.getProperty("crearCuenta"));
         volverBoton.setText(ConfigManager.ConfigProperties.getProperty("volver"));
@@ -54,13 +59,14 @@ public class LoginController extends AbstractController {
         
         if (textFieldUsuario== null || textFieldUsuario.getText().isEmpty() || 
             textFieldPassword == null || textFieldPassword.getText().isEmpty() ) {
-                textFieldMensaje.setText("Credenciales nulas o vacias");
-                if (ConfigManager.ConfigProperties.getProperty("volver") != null) {
-                    textFieldMensaje.setText(ConfigManager.ConfigProperties.getProperty("Vacio"));
+
+            textFieldMensaje.setText("Credenciales nulas o vacias");
+            if (ConfigManager.ConfigProperties.getProperty("volver") != null) {
+                textFieldMensaje.setText(ConfigManager.ConfigProperties.getProperty("Vacio"));
                 }
                 return;
         }
-        UsuarioManager usuarioManager = new UsuarioManager();
+
         Usuario usuario = usuarioManager.obtenerUsuarioPorNombre(textFieldUsuario.getText());
         
         if (usuario == null) {

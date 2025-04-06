@@ -9,6 +9,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
+/**
+ * @author Giancarlo
+ * @version 1.0.0
+ */
 public class AjustesController extends AbstractController{
 
     @FXML
@@ -18,17 +22,15 @@ public class AjustesController extends AbstractController{
     private Button  volverBoton;
 
     @FXML
-    public void initialize() {
-        if (ConfigManager.ConfigProperties.getProperty("volver") != null) {
-            volverBoton.setText(ConfigManager.ConfigProperties.getProperty("volver"));
-            comboIdioma.setPromptText(ConfigManager.ConfigProperties.getProperty("idioma"));
-        }
-        
+    protected void initialize() {
         List<String> idiomas = new ArrayList<>();
         idiomas.add("Español");
         idiomas.add("English");
         comboIdioma.getItems().addAll(idiomas);
-        
+
+        if (ConfigManager.ConfigProperties.getProperty("volver") == null) {return;}
+            volverBoton.setText(ConfigManager.ConfigProperties.getProperty("volver"));
+            comboIdioma.setPromptText(ConfigManager.ConfigProperties.getProperty("idioma"));
     }
 
     @FXML

@@ -16,6 +16,7 @@ public class DatabaseManager {
      * 
      * @throws SQLException error controlado.
      */
+
     protected DatabaseManager() throws SQLException {
         databasePath = "src/main/resources/db/usuario.db";
         file = new File(databasePath);
