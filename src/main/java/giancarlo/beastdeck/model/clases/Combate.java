@@ -12,6 +12,10 @@ public class Combate extends CombateConstructor{
         
     }
 
+    public Combate(Jugador jugador, Rival rival){
+        super(jugador, rival);
+    }
+
     /**
      * Metodo que permite llevar las rondas de la batalla despues de elegir las cartas a usar
      * @param cartaPropia

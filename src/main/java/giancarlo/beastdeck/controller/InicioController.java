@@ -2,6 +2,9 @@ package giancarlo.beastdeck.controller;
 
 import giancarlo.beastdeck.config.ConfigManager;
 import giancarlo.beastdeck.controller.abstracta.AbstractController;
+import giancarlo.beastdeck.model.clases.Deck;
+import giancarlo.beastdeck.model.clases.Jugador;
+import giancarlo.beastdeck.model.clases.Rival;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -38,7 +41,9 @@ public class InicioController extends AbstractController{
 
     @FXML
     protected void newRunClick(){
-        cambiarPagina(newRunBoton, "combate");
+        ConfigManager.ConfigObjects.setRival(new Rival(new Deck()));
+        ConfigManager.ConfigObjects.setJugador(new Jugador());
+        cambiarPagina(newRunBoton, "combate", 1000, 600);
     }
 
     @FXML

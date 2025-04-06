@@ -1,6 +1,9 @@
 package giancarlo.beastdeck.model.Constructores;
 
+import java.util.List;
+
 import giancarlo.beastdeck.model.abstractas.TipoFuncionamiento;
+import giancarlo.beastdeck.model.clases.Carta;
 import giancarlo.beastdeck.model.clases.Deck;
 import giancarlo.beastdeck.model.clases.Jugador;
 import giancarlo.beastdeck.model.clases.Rival;
@@ -15,6 +18,23 @@ private Jugador jugador;
     private float puntuacionTemporalPropia;
     private float puntuacionTemporalRival;
 
+
+    public CombateConstructor() {
+    }
+
+
+    public CombateConstructor(Jugador jugador, Rival rival) {
+        this.jugador = jugador;
+        this.deckPropio = jugador.getDeck();
+        this.rival = rival;
+        this.deckRival = rival.getDeck();
+        this.puntuacionPropia = 0;
+        this.puntuacionRival = 0;
+        this.puntuacionTemporalPropia = 0;
+        this.puntuacionTemporalRival = 0;
+    }
+    
+
     public Jugador getJugador() {
         return this.jugador;
     }
@@ -23,8 +43,8 @@ private Jugador jugador;
         this.jugador = jugador;
     }
 
-    public Deck getDeckPropio() {
-        return this.deckPropio;
+    public List<Carta> getDeckPropio() {
+        return this.deckPropio.getDeck();
     }
 
     public void setDeckPropio(Deck deckPropio) {
@@ -39,8 +59,8 @@ private Jugador jugador;
         this.rival = rival;
     }
 
-    public Deck getDeckRival() {
-        return this.deckRival;
+    public List<Carta> getDeckRival() {
+        return this.deckRival.getDeck();
     }
 
     public void setDeckRival(Deck deckRival) {

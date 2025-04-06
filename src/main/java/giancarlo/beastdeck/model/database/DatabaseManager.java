@@ -18,7 +18,7 @@ public class DatabaseManager {
      */
 
     protected DatabaseManager() throws SQLException {
-        databasePath = "src/main/resources/db/usuario.db";
+        databasePath = "src/main/resources/db/Data.db";
         file = new File(databasePath);
         try {
             if (!file.exists()) {

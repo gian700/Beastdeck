@@ -22,8 +22,8 @@ public class CombateSinHabilidadesTest {
     @BeforeEach
     void beforeEach() {
         combateController = new Combate();
-        carta1 = new Carta(1, "nombre", "descripcion", EnumRarezas.C, EnumTipos.AGUA, new ArrayList<>(), new ArrayList<>(), 1, 5, true, false);
-        carta2 = new Carta(2, "nombre", "descripcion", EnumRarezas.R, EnumTipos.AGUA, new ArrayList<>(), new ArrayList<>(), 1, 5, false, false);
+        carta1 = new Carta(1, "nombre", "descripcion", EnumRarezas.C, EnumTipos.AGUA, new ArrayList<>(), new ArrayList<>(), 1, 5, true, null);
+        carta2 = new Carta(2, "nombre", "descripcion", EnumRarezas.R, EnumTipos.AGUA, new ArrayList<>(), new ArrayList<>(), 1, 5, false, null);
         
     }
 

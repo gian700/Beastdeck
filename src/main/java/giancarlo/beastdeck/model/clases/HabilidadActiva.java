@@ -13,6 +13,7 @@ public class HabilidadActiva extends HabilidadActivaConstructor{
     public HabilidadActiva(int id, String nombre, String descripcion, EnumRarezas rareza, boolean activa, boolean rapida) {
         super(id, nombre, descripcion, rareza, activa, rapida);
     }
+
     
     /**
      * Metodo que activa las habilidades
@@ -55,7 +56,8 @@ public class HabilidadActiva extends HabilidadActivaConstructor{
      */
     private void inutilidad(Carta cartaRival){
         cartaRival.setFuerza(cartaRival.getFuerza()/2);
-        
     }
+
+
     
 }

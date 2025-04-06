@@ -19,6 +19,7 @@ public abstract class CartaConstructor {
     private int ordenRecomendado;
     private boolean utilizada;
     private boolean desbloqueada;
+    private String imagen;
 
 
     public CartaConstructor() {
@@ -28,7 +29,7 @@ public abstract class CartaConstructor {
         this.id = id;
     }
 
-    public CartaConstructor(Integer id, String nombre, String descripcion, EnumRarezas rareza, EnumTipos tipo, List<HabilidadActiva> habilidadesActivas, List<HabilidadPasiva> habilidadesPasivas, int fuerza, int ordenRecomendado, boolean utilizada, boolean desbloqueada) {
+    public CartaConstructor(Integer id, String nombre, String descripcion, EnumRarezas rareza, EnumTipos tipo, List<HabilidadActiva> habilidadesActivas, List<HabilidadPasiva> habilidadesPasivas, int fuerza, int ordenRecomendado, boolean desbloqueada, String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -38,8 +39,9 @@ public abstract class CartaConstructor {
         this.habilidadesPasivas = habilidadesPasivas;
         this.fuerza = fuerza;
         this.ordenRecomendado = ordenRecomendado;
-        this.utilizada = utilizada;
+        this.utilizada = false;
         this.desbloqueada = desbloqueada;
+        this.imagen = imagen;
     }
 
 
@@ -142,4 +144,13 @@ public abstract class CartaConstructor {
     public boolean cambiarEstadoPasivas(){
         return false;
     }
+
+    public String getImagen() {
+        return this.imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
 }

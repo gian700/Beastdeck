@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
+import giancarlo.beastdeck.model.clases.Jugador;
+import giancarlo.beastdeck.model.clases.Rival;
 import giancarlo.beastdeck.model.clases.Usuario;
 /**
  * @author Giancarlo
@@ -15,11 +17,9 @@ public class ConfigManager {
      * Clase estatica que maneja el idioma y guarda el usuario activo
      */
     public static class ConfigProperties {
-
         static String path = "src/main/resources/idiomas/Español.properties";
         static private Usuario usuario = null;
         private static final Properties properties = new Properties();
-
 
         /**
          * Metodo estatico para obtener una propiedad
@@ -65,5 +65,28 @@ public class ConfigManager {
             return path;
         }
 
+
+    }
+
+    public static class ConfigObjects {
+        
+        static private Jugador jugador;
+        static private Rival rival;
+
+        public static  Jugador getJugador(){
+            return jugador;
+        }
+
+        public static Rival getRival(){
+            return rival;
+        }
+
+        public static void setRival(Rival rival){
+            ConfigObjects.rival = rival; 
+        }
+
+        public static void setJugador(Jugador jugador){
+            ConfigObjects.jugador = jugador;
+        }
     }
 }
