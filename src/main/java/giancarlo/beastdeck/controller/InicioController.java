@@ -57,7 +57,7 @@ public class InicioController extends AbstractController{
             cambiarPagina(usuarioBoton, "login");
         }
         usuarioBoton.setText("Ya estas registrado");
-        if (ConfigManager.ConfigProperties.getProperty("registrado") != null) {
+        if (ConfigManager.ConfigProperties.getProperty("yaRegistrado") != null) {
             usuarioBoton.setText(ConfigManager.ConfigProperties.getProperty("yaRegistrado"));
         }
     }

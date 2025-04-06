@@ -26,7 +26,7 @@ public class AjustesController extends AbstractController{
         
         List<String> idiomas = new ArrayList<>();
         idiomas.add("Español");
-        idiomas.add("Ingles");
+        idiomas.add("English");
         comboIdioma.getItems().addAll(idiomas);
         
     }
