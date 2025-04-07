@@ -62,7 +62,7 @@ public class CartaManager extends DatabaseManager{
             return null;
         }  
     }
-
+/*
     public Carta obtenerCartaPorRarezayTipo(String nombre) {
         try {
             String sql = "SELECT * FROM Carta " + "where Name='"+nombre+"'";
@@ -76,7 +76,7 @@ public class CartaManager extends DatabaseManager{
             return null;
         }  
     }
-
+*/
     public ArrayList<Carta> obtenerCartas() throws SQLException {
         String sql = "SELECT * FROM carta";
         return obtenerCarta(sql);
@@ -91,12 +91,14 @@ public class CartaManager extends DatabaseManager{
 
             while (resultado.next()) {
 
-                PreparedStatement sentenciaIdioma = getConnection().prepareStatement("SELECT * FROM esp where id='"+resultado.getInt("id")+"'");
-                ResultSet resultadoIdioma = sentenciaIdioma.executeQuery();
+                //PreparedStatement sentenciaIdioma = getConnection().prepareStatement("SELECT * FROM " +
+                //ConfigManager.ConfigProperties.getProperty("idioma") +"where id='"+resultado.getInt("id")+"'");
+
+                //ResultSet resultadoIdioma = sentenciaIdioma.executeQuery();
                 
                 Integer id = resultado.getInt("id");
-                String nombre = resultadoIdioma.getString("nombreCarta");
-                String descripcion = resultadoIdioma.getString("nombreCarta");
+                String nombre = "carta"; //resultadoIdioma.getString("nombreCarta");
+                String descripcion = "descripcion"; //resultadoIdioma.getString("nombreCarta");
                 EnumRarezas rareza = rarezas.get(resultado.getInt("rareza"));
                 EnumTipos tipo = tipos.get(resultado.getInt("tipo"));
                 List<HabilidadActiva> habilidadesActivas = new ArrayList<>();
@@ -104,7 +106,7 @@ public class CartaManager extends DatabaseManager{
                 int fuerza = resultado.getInt("fuerza");
                 int ordenRecomendado = resultado.getInt("ordenRec");
                 boolean desbloqueada = true;
-                String imagen = resultadoIdioma.getString("Imagen");
+                String imagen = resultado.getString("Imagen");
 
                 Carta carta = new Carta(id, nombre, descripcion, rareza, tipo, habilidadesActivas, habilidadesPasivas, fuerza, ordenRecomendado, desbloqueada, imagen);
                 Cartas.add(carta);
@@ -118,26 +120,30 @@ public class CartaManager extends DatabaseManager{
         return Cartas;
     }
 
-    public boolean crearCarta(Carta Carta) throws SQLException{
-        if (Carta == null) {
+    public boolean crearCarta(Carta carta) throws SQLException{
+        if (carta == null) {
             return false;
         }
-        String query = "INSERT INTO Carta(Name, Password) VALUES (?, ?)";
+        String query = "INSERT INTO carta(id, rareza, tipo, habActivas, habPass, fuerza, ordenRec, desbloqueada, Imagen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement pStatement = conectar().prepareStatement(query);
-            pStatement.setInt(2, Carta.getOrdenRecomendado());
-            pStatement.setString(3, Carta.getNombre());
-            pStatement.setString(4, Carta.getNombre());
-            pStatement.setString(5, Carta.getNombre());
-            pStatement.setString(6, Carta.getNombre());
-            pStatement.setString(7, Carta.getNombre());
-            pStatement.setString(8, Carta.getNombre());
+            pStatement.setInt(1, carta.getId());
+            pStatement.setInt(2, rarezas.indexOf(carta.getRareza()));
+            pStatement.setInt(3, tipos.indexOf(carta.getTipo()));
+            pStatement.setInt(4, 0);
+            pStatement.setInt(5, 0);
+            pStatement.setInt(6, carta.getFuerza());
+            pStatement.setInt(7, carta.getOrdenRecomendado());
+            pStatement.setInt(8, 1);
+            pStatement.setString(9, carta.getImagen());
             if (pStatement.executeUpdate() == 1) {
                 cerrar();
                 return true;
             }
         } catch (SQLException e) {
+            System.out.println("");
+            System.out.println("pepe");
             e.printStackTrace();
         }finally {
             cerrar();

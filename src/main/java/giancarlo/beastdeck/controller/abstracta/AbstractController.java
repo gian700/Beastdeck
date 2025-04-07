@@ -27,6 +27,7 @@ public abstract class AbstractController {
             FXMLLoader fxmlLoader = new FXMLLoader(PrincipalApplication.class.getResource(pagina+".fxml"));
             Scene scene = new Scene(fxmlLoader.load(), width, heigh);
             Stage stage = (Stage) boton.getScene().getWindow();
+            stage.setResizable(false);
             stage.setTitle(pagina);
             stage.setScene(scene);
             stage.show();

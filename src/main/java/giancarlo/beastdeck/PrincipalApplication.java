@@ -14,6 +14,7 @@ public class PrincipalApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(PrincipalApplication.class.getResource("inicio.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 600);
         stage.setTitle("Pantalla Princial");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
