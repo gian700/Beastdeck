@@ -156,22 +156,11 @@ public abstract class CartaConstructor {
 
     @Override
     public String toString() {
-        return "id: " + getId() +"\n"+ 
-            getNombre() +" "+ getRareza() +" "+ getTipo() +" "+ getFuerza() +" \n"+
-            getHabilidadesActivas() +"\n"+
-            getHabilidadesPasivas() +"\n";
-        
-        
-        /*
-            "{" +
-             +
-            ", nombre='" + getNombre() + "'" +
-            ", descripcion='" + getDescripcion() + "'" +
- 
-            ", fuerza='" +  + "'" +
-
-            "}";
-        */
+        return 
+            (getUtilizada() ? "Utilizada \n": "")+ 
+            "id: " + getId() +" "+ getTipo() +" "+ getFuerza() +" \n" + 
+            getNombre() +" "+ getRareza() +"\n"+
+            (habilidadesActivas.isEmpty() ? "" : getHabilidadesActivas() + "\n") +
+            (habilidadesActivas.isEmpty() ? "" : getHabilidadesActivas());
     }
-
 }
