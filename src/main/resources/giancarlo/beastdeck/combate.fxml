@@ -44,22 +44,22 @@
          <children>
             <HBox alignment="CENTER" prefHeight="207.0" prefWidth="520.0" spacing="20.0">
                <children>
-                  <Button fx:id="boton5" mnemonicParsing="false" prefHeight="60.0" prefWidth="45.0">
+                  <Button fx:id="boton5" mnemonicParsing="false" onAction="#boton5Click" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
                         <ImageView fx:id="imageView5" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="boton6" mnemonicParsing="false" prefHeight="60.0" prefWidth="45.0">
+                  <Button fx:id="boton6" mnemonicParsing="false" onAction="#boton6Click" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
                         <ImageView fx:id="imageView6" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="boton7" mnemonicParsing="false" prefHeight="60.0" prefWidth="45.0">
+                  <Button fx:id="boton7" mnemonicParsing="false" onAction="#boton7Click" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
                         <ImageView fx:id="imageView7" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="boton8" mnemonicParsing="false" prefHeight="60.0" prefWidth="45.0">
+                  <Button fx:id="boton8" mnemonicParsing="false" onAction="#boton8Click" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
                         <ImageView fx:id="imageView8" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
@@ -85,22 +85,22 @@
             </VBox>
             <HBox alignment="CENTER" prefHeight="207.0" prefWidth="520.0" spacing="20.0">
                <children>
-                  <Button fx:id="boton1" mnemonicParsing="false"  prefHeight="60.0" prefWidth="45.0">
+                  <Button fx:id="boton1" mnemonicParsing="false" onAction="#boton1Click" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
                         <ImageView fx:id="imageView1" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="boton2" mnemonicParsing="false" prefHeight="60.0" prefWidth="45.0">
+                  <Button fx:id="boton2" mnemonicParsing="false" onAction="#boton2Click" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
                         <ImageView fx:id="imageView2" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="boton3" mnemonicParsing="false" prefHeight="60.0" prefWidth="45.0">
+                  <Button fx:id="boton3" mnemonicParsing="false" onAction="#boton3Click" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
                         <ImageView fx:id="imageView3" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="boton4" mnemonicParsing="false" prefHeight="60.0" prefWidth="45.0">
+                  <Button fx:id="boton4" mnemonicParsing="false" onAction="#boton4Click" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
                         <ImageView fx:id="imageView4" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>

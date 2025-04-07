@@ -38,4 +38,11 @@ public class Carta extends CartaConstructor{
             
         }
     }
+
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
 }

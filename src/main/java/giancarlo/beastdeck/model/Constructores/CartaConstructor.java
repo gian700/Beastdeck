@@ -153,4 +153,25 @@ public abstract class CartaConstructor {
         this.imagen = imagen;
     }
 
+
+    @Override
+    public String toString() {
+        return "id: " + getId() +"\n"+ 
+            getNombre() +" "+ getRareza() +" "+ getTipo() +" "+ getFuerza() +" \n"+
+            getHabilidadesActivas() +"\n"+
+            getHabilidadesPasivas() +"\n";
+        
+        
+        /*
+            "{" +
+             +
+            ", nombre='" + getNombre() + "'" +
+            ", descripcion='" + getDescripcion() + "'" +
+ 
+            ", fuerza='" +  + "'" +
+
+            "}";
+        */
+    }
+
 }

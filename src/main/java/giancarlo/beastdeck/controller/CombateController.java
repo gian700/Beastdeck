@@ -95,6 +95,8 @@ public class CombateController extends AbstractController{
 
     private Combate combate;
 
+    private Carta cartaSeleccionada;
+
     @FXML
     protected void initialize() {
         combate = new Combate(ConfigManager.ConfigObjects.getJugador(), ConfigManager.ConfigObjects.getRival());
@@ -111,6 +113,7 @@ public class CombateController extends AbstractController{
         }
         imageViewGrande.setImage(new Image("file:src/main/resources/imagenes/" + carta.getImagen()));
         descripcionText.setText(carta.toString());
+        cartaSeleccionada = carta;
     }
 
     protected void cambiarImagen(){
@@ -166,5 +169,45 @@ public class CombateController extends AbstractController{
             }
         }
         return null;
+    }
+
+    @FXML
+    protected void boton1Click(){
+        cambiarImagen(boton1, 0);
+    }
+
+    @FXML
+    protected void boton2Click(){
+        cambiarImagen(boton2, 1);
+    }
+
+    @FXML
+    protected void boton3Click(){
+        cambiarImagen(boton3, 2);
+    }
+
+    @FXML
+    protected void boton4Click(){
+        cambiarImagen(boton4, 3);
+    }
+
+    @FXML
+    protected void boton5Click(){
+        cambiarImagen(boton5, 4);
+    }
+
+    @FXML
+    protected void boton6Click(){
+        cambiarImagen(boton6, 5);
+    }
+
+    @FXML
+    protected void boton7Click(){
+        cambiarImagen(boton7, 6);
+    }
+
+    @FXML
+    protected void boton8Click(){
+        cambiarImagen(boton8, 7);
     }
 }
