@@ -1,6 +1,7 @@
 package giancarlo.beastdeck.controller;
 
 import giancarlo.beastdeck.config.ConfigManager;
+import giancarlo.beastdeck.controller.abstracta.AbstractController;
 import giancarlo.beastdeck.model.clases.Carta;
 import giancarlo.beastdeck.model.clases.Combate;
 import giancarlo.beastdeck.model.enums.EnumTipos;
@@ -15,7 +16,7 @@ import javafx.scene.text.Text;
  * @author Giancarlo
  * @version 1.0.0
  */
-public class CombateController {
+public class CombateController extends AbstractController{
 
     @FXML
     private ImageView imageView1;
@@ -105,7 +106,7 @@ public class CombateController {
         if (posicion<4) {
             carta = combate.getDeckPropio().get(posicion);
         }else{
-            posicion = posicion-4;
+            posicion -= 4;
             carta = combate.getDeckRival().get(posicion);
         }
         imageViewGrande.setImage(new Image("file:src/main/resources/imagenes/" + carta.getImagen()));
@@ -113,7 +114,7 @@ public class CombateController {
     }
 
     protected void cambiarImagen(){
-        //TODO: se rompe si alguna imagen no existe, asegurarse de que no puedes llegar sin asegurarse
+        //TODO: se rompe si alguna imagen no existe, asegurarse de que no puedes llegar sin validar
         
         imageView1.setImage(new Image("file:src/main/resources/imagenes/" + combate.getDeckPropio().get(0).getImagen()));
         boton1.setStyle("-fx-background-color: "+color(combate.getDeckPropio().get(0)));

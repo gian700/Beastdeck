@@ -85,7 +85,7 @@
             </VBox>
             <HBox alignment="CENTER" prefHeight="207.0" prefWidth="520.0" spacing="20.0">
                <children>
-                  <Button fx:id="boton1" mnemonicParsing="false" prefHeight="60.0" prefWidth="45.0">
+                  <Button fx:id="boton1" mnemonicParsing="false"  prefHeight="60.0" prefWidth="45.0">
                      <graphic>
                         <ImageView fx:id="imageView1" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
