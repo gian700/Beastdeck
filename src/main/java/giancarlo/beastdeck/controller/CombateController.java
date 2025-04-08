@@ -271,4 +271,12 @@ public class CombateController extends AbstractController{
         boton7.setDisable(value);
         boton8.setDisable(value);
     }
+
+    public void botonActivar(){
+        if (activarBoton.getText().equals(ConfigManager.ConfigProperties.getProperty("activar"))) {
+            textMensage.setText(ConfigManager.ConfigProperties.getProperty("proximamente"));
+            return;
+        }
+        cambiarPagina(activarBoton, "inicio");
+    }
 }
