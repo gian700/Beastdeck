@@ -153,6 +153,13 @@ public abstract class CartaConstructor {
         this.imagen = imagen;
     }
 
+    public String getCodigoActivas(){
+        String codigo = "0";
+        for (HabilidadActiva habilidadActiva : habilidadesActivas) {
+            codigo += ","+ habilidadActiva.getId();
+        }
+        return codigo;
+    }
 
     @Override
     public String toString() {

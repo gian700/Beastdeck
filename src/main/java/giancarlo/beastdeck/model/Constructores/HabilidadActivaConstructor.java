@@ -10,6 +10,7 @@ public abstract class HabilidadActivaConstructor {
     boolean activa;
     boolean rapida;
 
+    public HabilidadActivaConstructor(){}
 
     public HabilidadActivaConstructor(int id, String nombre, String descripcion, EnumRarezas rareza, boolean activa, boolean rapida) {
         this.id = id;

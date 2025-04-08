@@ -9,11 +9,12 @@ import giancarlo.beastdeck.model.enums.EnumRarezas;
  * @version 1.0.0
  */
 public class HabilidadActiva extends HabilidadActivaConstructor{
+
+    public HabilidadActiva(){}
     
     public HabilidadActiva(int id, String nombre, String descripcion, EnumRarezas rareza, boolean activa, boolean rapida) {
         super(id, nombre, descripcion, rareza, activa, rapida);
     }
-
     
     /**
      * Metodo que activa las habilidades

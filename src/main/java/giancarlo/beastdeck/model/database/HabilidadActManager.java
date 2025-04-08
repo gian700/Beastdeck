@@ -4,28 +4,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-import giancarlo.beastdeck.config.ConfigManager;
 import giancarlo.beastdeck.model.clases.Carta;
-import giancarlo.beastdeck.model.clases.HabilidadActiva;
-import giancarlo.beastdeck.model.clases.HabilidadPasiva;
-import giancarlo.beastdeck.model.enums.EnumRarezas;
-import giancarlo.beastdeck.model.enums.EnumTipos;
 
-public class CartaManager extends DatabaseManager{
+public class HabilidadActManager extends DatabaseManager{
 
-    List<EnumTipos> tipos = new ArrayList<>(Arrays.asList(EnumTipos.AGUA, EnumTipos.FUEGO, EnumTipos.PLANTA, EnumTipos.BESTIA, EnumTipos.TIERRA, EnumTipos.ELECTRICO, EnumTipos.VOLADOR));
-    List<EnumRarezas> rarezas = new ArrayList<>(Arrays.asList(EnumRarezas.C, EnumRarezas.R, EnumRarezas.SR, EnumRarezas.UR, EnumRarezas.LEGENDARY));
-
-    public CartaManager() throws SQLException {
+    public HabilidadActManager() throws SQLException {
         super();
 
     }
 
-    @SuppressWarnings("CallToPrintStackTrace")
-    public Carta obtenerCartaPorid(int id) {
+    public Carta obtenerHabActivaPorid(int id) {
         try {
             String sql = "SELECT * FROM Carta " + "where id='"+id+"'";
         ArrayList<Carta> cartas = obtenerCarta(sql);
@@ -33,61 +22,17 @@ public class CartaManager extends DatabaseManager{
             return null;
         }
         return cartas.get(0);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }  
     }
 
-    @SuppressWarnings("CallToPrintStackTrace")
-    public List<Carta> obtenerCartaPorRareza(EnumRarezas rareza) {
-        try {
-            int posicion = rarezas.indexOf(rareza);
-            String sql = "SELECT * FROM Carta " + "where rareza='"+posicion+"'";
-            ArrayList<Carta> cartas = obtenerCarta(sql);
-            return cartas;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }  
-    }
-
-    @SuppressWarnings("CallToPrintStackTrace")
-    public List<Carta> obtenerCartaPorTipo(EnumTipos tipo) {
-        try {
-            int posicion = tipos.indexOf(tipo);
-            String sql = "SELECT * FROM Carta " + "where tipo='"+posicion+"'";
-            ArrayList<Carta> cartas = obtenerCarta(sql);
-            return cartas;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }  
-    }
-
-    @SuppressWarnings("CallToPrintStackTrace")
-    public List<Carta> obtenerCartaPorRarezayTipo(EnumRarezas rareza, EnumTipos tipo ) {
-        int posicionT = tipos.indexOf(tipo);
-        int posicionR = rarezas.indexOf(rareza);
-        try {
-            String sql = "SELECT * FROM Carta " + "where rareza='"+posicionR+"' AND tipo='" + posicionT + "'";
-            ArrayList<Carta> Cartas = obtenerCarta(sql);
-            
-            return Cartas;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }  
-    }
-
-    public ArrayList<Carta> obtenerCartas() throws SQLException {
+    public ArrayList<Carta> obtenerHabAct() throws SQLException {
         String sql = "SELECT * FROM carta";
         return obtenerCarta(sql);
     }
 
-    @SuppressWarnings("CallToPrintStackTrace")
     protected ArrayList<Carta> obtenerCarta(String sql) throws SQLException {
         ArrayList<Carta> Cartas = new ArrayList<>();
         try {
@@ -95,7 +40,7 @@ public class CartaManager extends DatabaseManager{
             ResultSet resultado = sentencia.executeQuery();
            
 
-            while (resultado.next()) {
+           /* while (resultado.next()) {
 
                 PreparedStatement sentenciaIdioma = getConnection().prepareStatement("SELECT * FROM " +
                 ConfigManager.ConfigProperties.getProperty("idioma") +" where id='"+resultado.getInt("id")+"'");
@@ -113,15 +58,14 @@ public class CartaManager extends DatabaseManager{
                 String imagen = resultado.getString("Imagen");
 
                     List<HabilidadPasiva> habilidadesPasivas = new ArrayList<>();
-                
-                    //String habActCode = resultado.getString("habActivas");
+                    String habActCode = resultado.getString("habActivas");
                 
                 List<HabilidadActiva> habilidadesActivas = new ArrayList<>();
                 
                 Carta carta = new Carta(id, nombre, descripcion, rareza, tipo, habilidadesActivas, habilidadesPasivas, fuerza, ordenRecomendado, desbloqueada, imagen);
                 Cartas.add(carta);
-            }
-        } catch (SQLException e) {
+            }*/
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             
@@ -130,8 +74,7 @@ public class CartaManager extends DatabaseManager{
         return Cartas;
     }
 
-    @SuppressWarnings("CallToPrintStackTrace")
-    public boolean crearCarta(Carta carta) throws SQLException{
+    /*public boolean crearCarta(Carta carta) throws SQLException{
         if (carta == null) {
             return false;
         }
@@ -160,6 +103,6 @@ public class CartaManager extends DatabaseManager{
             cerrar();
         }
         return false;
-    }
+    }*/
 
 }

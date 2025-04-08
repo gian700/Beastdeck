@@ -17,6 +17,7 @@ public class DatabaseManager {
      * @throws SQLException error controlado.
      */
 
+    @SuppressWarnings("CallToPrintStackTrace")
     protected DatabaseManager() throws SQLException {
         databasePath = "src/main/resources/db/Data.db";
         file = new File(databasePath);
@@ -24,11 +25,12 @@ public class DatabaseManager {
             if (!file.exists()) {
                 throw new SQLException("No existe la base de datos: " + databasePath);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    @SuppressWarnings({"CallToPrintStackTrace", "UseSpecificCatch"})
     public Connection getConnection() {
         try {
             if (connection == null) {

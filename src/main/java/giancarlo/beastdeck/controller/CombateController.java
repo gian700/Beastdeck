@@ -81,8 +81,8 @@ public class CombateController extends AbstractController{
     @FXML
     private ImageView imageViewRival;
 
-    @FXML
-    private Button botonRival;
+    //@FXML
+    //private Button botonRival;
 
     @FXML
     private Button usarBoton;
@@ -108,9 +108,9 @@ public class CombateController extends AbstractController{
 
     private int posicion;
 
-    private Image imagePropia;
+    //private Image imagePropia;
 
-    private Image imageRival;
+    //private Image imageRival;
 
     @FXML
     protected void initialize() {

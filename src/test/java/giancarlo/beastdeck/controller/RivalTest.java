@@ -43,9 +43,9 @@ public class RivalTest {
         
     }
 
-    //@Test
+    @Test
     void opcionClara() {
-        //int opcion = rival.mejorOpcion(deck1);
-        //Assertions.assertEquals(2, opcion);
+        int opcion = rival.mejorOpcion(deck1.getDeck());
+        Assertions.assertEquals(2, opcion);
     }
 }
