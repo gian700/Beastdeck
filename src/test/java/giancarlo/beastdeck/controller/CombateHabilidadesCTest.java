@@ -24,7 +24,7 @@ public class CombateHabilidadesCTest {
     @BeforeEach
     void beforeEach() {
         combateController = new Combate();
-        habilidad = new HabilidadActiva(0, "null", "null", EnumRarezas.C, true, true);
+        habilidad = new HabilidadActiva(0, "null", "null", EnumRarezas.C, true);
         carta1 = new Carta(1, "nombre", "descripcion", EnumRarezas.C, EnumTipos.AGUA, new ArrayList<>(Arrays.asList(habilidad)), new ArrayList<>(), 1, 5, false, null);
         carta2 = new Carta(2, "nombre", "descripcion", EnumRarezas.R, EnumTipos.AGUA, new ArrayList<>(), new ArrayList<>(), 1, 5, false, null);
         

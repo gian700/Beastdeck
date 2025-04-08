@@ -108,10 +108,6 @@ public class CombateController extends AbstractController{
 
     private int posicion;
 
-    //private Image imagePropia;
-
-    //private Image imageRival;
-
     @FXML
     protected void initialize() {
         usarBoton.setText(ConfigManager.ConfigProperties.getProperty("usar"));
@@ -159,18 +155,27 @@ public class CombateController extends AbstractController{
 
         int opcionRival = combate.getRival().mejorOpcion(combate.getDeckPropio());
         Carta cRival = combate.getDeckRival().get(opcionRival);
-        cambiarImagen(opcionRival);
         cRival.setUtilizada(true);
         cartaSeleccionada.setUtilizada(true);
         combate.ronda(cartaSeleccionada, cRival);
+        cambiarImagen(opcionRival);
         descripcionText.setText(cartaSeleccionada.toString());
         puntuacionPropia.setText(""+combate.getPuntuacionPropia());
         puntuacionRival.setText(""+combate.getPuntuacionRival());
+
+        if (combate.getTurno()==0) {
+            if (combate.getPuntuacionPropia()>combate.getPuntuacionRival()) {
+                activarBoton.setText(ConfigManager.ConfigProperties.getProperty("ganar"));
+            }else{
+                activarBoton.setText(ConfigManager.ConfigProperties.getProperty("perder"));
+            }
+        }
          
     }
 
     protected void cambiarImagen(int posicionRival){
-        //cambiarEstado(false);
+        cambiarEstado(false);
+        cambiarImagen();
 
         switch (posicion) {
             case 0 -> { 

@@ -7,17 +7,15 @@ public abstract class HabilidadActivaConstructor {
     String nombre;
     String descripcion;
     EnumRarezas rareza;
-    boolean activa;
     boolean rapida;
 
     public HabilidadActivaConstructor(){}
 
-    public HabilidadActivaConstructor(int id, String nombre, String descripcion, EnumRarezas rareza, boolean activa, boolean rapida) {
+    public HabilidadActivaConstructor(int id, String nombre, String descripcion, EnumRarezas rareza, boolean rapida) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.rareza = rareza;
-        this.activa = activa;
         this.rapida = rapida;
     }
 
@@ -53,10 +51,6 @@ public abstract class HabilidadActivaConstructor {
         this.rareza = rareza;
     }
 
-    public boolean getActiva(){
-        return this.activa;
-    }
-
     public boolean getRapida(){
         return this.rapida;
     }
@@ -64,4 +58,12 @@ public abstract class HabilidadActivaConstructor {
     public void setRapida(){
         this.rapida = !rapida;
     }
+
+    @Override
+    public String toString() {
+        return
+            getNombre() + ": \n" +
+            getDescripcion();
+    }
+
 }

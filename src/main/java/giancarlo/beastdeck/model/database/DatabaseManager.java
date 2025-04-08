@@ -17,7 +17,6 @@ public class DatabaseManager {
      * @throws SQLException error controlado.
      */
 
-    @SuppressWarnings("CallToPrintStackTrace")
     protected DatabaseManager() throws SQLException {
         databasePath = "src/main/resources/db/Data.db";
         file = new File(databasePath);
@@ -30,7 +29,6 @@ public class DatabaseManager {
         }
     }
 
-    @SuppressWarnings({"CallToPrintStackTrace", "UseSpecificCatch"})
     public Connection getConnection() {
         try {
             if (connection == null) {

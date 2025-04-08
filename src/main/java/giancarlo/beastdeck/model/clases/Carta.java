@@ -31,7 +31,7 @@ public class Carta extends CartaConstructor{
      */
     public void activarHabilidades(Combate combate, Carta cartaRival){
         for (HabilidadActiva habilidad : getHabilidadesActivas()) {
-            if (habilidad.getActiva() && habilidad.getRapida()) {
+            if (habilidad.getRapida()) {
                 habilidad.activar(this, combate, cartaRival);
             }
             habilidad.setRapida();

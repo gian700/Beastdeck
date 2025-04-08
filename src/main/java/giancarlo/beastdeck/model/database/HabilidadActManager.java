@@ -16,7 +16,7 @@ public class HabilidadActManager extends DatabaseManager{
 
     public Carta obtenerHabActivaPorid(int id) {
         try {
-            String sql = "SELECT * FROM Carta " + "where id='"+id+"'";
+            String sql = "SELECT * FROM  " + "where id='"+id+"'";
         ArrayList<Carta> cartas = obtenerCarta(sql);
         if (cartas.isEmpty()) {
             return null;
@@ -29,7 +29,7 @@ public class HabilidadActManager extends DatabaseManager{
     }
 
     public ArrayList<Carta> obtenerHabAct() throws SQLException {
-        String sql = "SELECT * FROM carta";
+        String sql = "SELECT * FROM habActiva";
         return obtenerCarta(sql);
     }
 
@@ -40,7 +40,8 @@ public class HabilidadActManager extends DatabaseManager{
             ResultSet resultado = sentencia.executeQuery();
            
 
-           /* while (resultado.next()) {
+           /* 
+            while (resultado.next()) {
 
                 PreparedStatement sentenciaIdioma = getConnection().prepareStatement("SELECT * FROM " +
                 ConfigManager.ConfigProperties.getProperty("idioma") +" where id='"+resultado.getInt("id")+"'");
@@ -65,6 +66,7 @@ public class HabilidadActManager extends DatabaseManager{
                 Carta carta = new Carta(id, nombre, descripcion, rareza, tipo, habilidadesActivas, habilidadesPasivas, fuerza, ordenRecomendado, desbloqueada, imagen);
                 Cartas.add(carta);
             }*/
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

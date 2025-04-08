@@ -168,7 +168,8 @@ public abstract class CartaConstructor {
             "id: " + getId() +" "+ getTipo() +" "+ getFuerza() +" \n" + 
             getNombre() +" "+ getRareza() +"\n"+
             getDescripcion() + "\n" +
-            (habilidadesActivas.isEmpty() ? "" : getHabilidadesActivas() + "\n") +
-            (habilidadesActivas.isEmpty() ? "" : getHabilidadesActivas());
+
+            (habilidadesActivas.isEmpty() ? "" : "Al usarla: \n" + getHabilidadesActivas() + "\n") +
+            (habilidadesPasivas.isEmpty() ? "" : "Al Tenerla en el campo: \n" + getHabilidadesActivas());
     }
 }

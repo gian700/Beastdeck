@@ -24,7 +24,6 @@ public class CartaManager extends DatabaseManager{
 
     }
 
-    @SuppressWarnings("CallToPrintStackTrace")
     public Carta obtenerCartaPorid(int id) {
         try {
             String sql = "SELECT * FROM Carta " + "where id='"+id+"'";
@@ -39,7 +38,6 @@ public class CartaManager extends DatabaseManager{
         }  
     }
 
-    @SuppressWarnings("CallToPrintStackTrace")
     public List<Carta> obtenerCartaPorRareza(EnumRarezas rareza) {
         try {
             int posicion = rarezas.indexOf(rareza);
@@ -53,7 +51,6 @@ public class CartaManager extends DatabaseManager{
         }  
     }
 
-    @SuppressWarnings("CallToPrintStackTrace")
     public List<Carta> obtenerCartaPorTipo(EnumTipos tipo) {
         try {
             int posicion = tipos.indexOf(tipo);
@@ -67,7 +64,6 @@ public class CartaManager extends DatabaseManager{
         }  
     }
 
-    @SuppressWarnings("CallToPrintStackTrace")
     public List<Carta> obtenerCartaPorRarezayTipo(EnumRarezas rareza, EnumTipos tipo ) {
         int posicionT = tipos.indexOf(tipo);
         int posicionR = rarezas.indexOf(rareza);
@@ -87,7 +83,6 @@ public class CartaManager extends DatabaseManager{
         return obtenerCarta(sql);
     }
 
-    @SuppressWarnings("CallToPrintStackTrace")
     protected ArrayList<Carta> obtenerCarta(String sql) throws SQLException {
         ArrayList<Carta> Cartas = new ArrayList<>();
         try {
@@ -130,7 +125,6 @@ public class CartaManager extends DatabaseManager{
         return Cartas;
     }
 
-    @SuppressWarnings("CallToPrintStackTrace")
     public boolean crearCarta(Carta carta) throws SQLException{
         if (carta == null) {
             return false;
@@ -153,8 +147,6 @@ public class CartaManager extends DatabaseManager{
                 return true;
             }
         } catch (SQLException e) {
-            System.out.println("");
-            System.out.println("pepe");
             e.printStackTrace();
         }finally {
             cerrar();
