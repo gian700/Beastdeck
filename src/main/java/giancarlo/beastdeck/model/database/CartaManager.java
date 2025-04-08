@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import giancarlo.beastdeck.config.ConfigManager;
 import giancarlo.beastdeck.model.clases.Carta;
 import giancarlo.beastdeck.model.clases.HabilidadActiva;
 import giancarlo.beastdeck.model.clases.HabilidadPasiva;
@@ -91,14 +92,14 @@ public class CartaManager extends DatabaseManager{
 
             while (resultado.next()) {
 
-                //PreparedStatement sentenciaIdioma = getConnection().prepareStatement("SELECT * FROM " +
-                //ConfigManager.ConfigProperties.getProperty("idioma") +"where id='"+resultado.getInt("id")+"'");
+                PreparedStatement sentenciaIdioma = getConnection().prepareStatement("SELECT * FROM " +
+                ConfigManager.ConfigProperties.getProperty("idioma") +" where id='"+resultado.getInt("id")+"'");
 
-                //ResultSet resultadoIdioma = sentenciaIdioma.executeQuery();
+                ResultSet resultadoIdioma = sentenciaIdioma.executeQuery();
                 
                 Integer id = resultado.getInt("id");
-                String nombre = "carta"; //resultadoIdioma.getString("nombreCarta");
-                String descripcion = "descripcion"; //resultadoIdioma.getString("nombreCarta");
+                String nombre = resultadoIdioma.getString("nombreCarta");
+                String descripcion = resultadoIdioma.getString("descCarta");
                 EnumRarezas rareza = rarezas.get(resultado.getInt("rareza"));
                 EnumTipos tipo = tipos.get(resultado.getInt("tipo"));
                 List<HabilidadActiva> habilidadesActivas = new ArrayList<>();

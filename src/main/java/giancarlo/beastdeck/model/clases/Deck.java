@@ -23,6 +23,11 @@ public class Deck {
         this.deck = deck;
     }
 
+    public List<Deck> getCopia(){
+        
+        return null;
+    }
+
     @Override
     public String toString() {
         return getDeck().toString();

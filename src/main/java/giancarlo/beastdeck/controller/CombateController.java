@@ -114,6 +114,8 @@ public class CombateController extends AbstractController{
 
     @FXML
     protected void initialize() {
+        usarBoton.setText(ConfigManager.ConfigProperties.getProperty("usar"));
+        activarBoton.setText(ConfigManager.ConfigProperties.getProperty("activar"));
         combate = new Combate(ConfigManager.ConfigObjects.getJugador(), ConfigManager.ConfigObjects.getRival());
         cambiarImagen();
     }
@@ -140,13 +142,18 @@ public class CombateController extends AbstractController{
 
     @FXML
     protected void usarClick() {
+        if (cartaSeleccionada == null){
+            textMensage.setText(ConfigManager.ConfigProperties.getProperty("noCarta"));
+            return;
+        }
+
         if (posicion >3) {
-            textMensage.setText("Esta carta pertenece al rival");
+            textMensage.setText(ConfigManager.ConfigProperties.getProperty("cartaRival"));
             return;
         }
     
         if (cartaSeleccionada.getUtilizada()) {
-            textMensage.setText("Esta carta ya ha sido utilizada");
+            textMensage.setText(ConfigManager.ConfigProperties.getProperty("utilizada"));
             return;
         }
 
@@ -249,7 +256,7 @@ public class CombateController extends AbstractController{
         }
     }
 
-    public void cambiarEstado(boolean value){
+    protected void cambiarEstado(boolean value){
         boton1.setDisable(value);
         boton2.setDisable(value);
         boton3.setDisable(value);

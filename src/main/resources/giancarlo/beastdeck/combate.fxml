@@ -46,22 +46,22 @@
                <children>
                   <Button fx:id="boton5" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
-                        <ImageView fx:id="imageView5" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageView5" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <Button fx:id="boton6" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
-                        <ImageView fx:id="imageView6" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageView6" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <Button fx:id="boton7" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
-                        <ImageView fx:id="imageView7" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageView7" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <Button fx:id="boton8" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
-                        <ImageView fx:id="imageView8" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageView8" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                </children>
@@ -69,15 +69,15 @@
             <VBox alignment="CENTER" prefHeight="183.0" prefWidth="230.0" spacing="15.0">
                <children>
                   <Text fx:id="puntuacionRival" strokeType="OUTSIDE" strokeWidth="0.0" />
-                  <Button fx:id="botonRival" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="60.0">
+                  <Button fx:id="botonRival" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="110.0" prefWidth="90.0">
                      <graphic>
-                        <ImageView fx:id="imageViewRival" fitHeight="65.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageViewRival" fitHeight="100.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <Line endX="100.0" startX="-418.24615478515625" startY="2.792893171310425" />
-                  <Button fx:id="botonPropio" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="60.0">
+                  <Button fx:id="botonPropio" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="110.0" prefWidth="90.0">
                      <graphic>
-                        <ImageView fx:id="imageViewPropio" fitHeight="65.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageViewPropio" fitHeight="100.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <Text fx:id="puntuacionPropia" strokeType="OUTSIDE" strokeWidth="0.0" />
@@ -87,22 +87,22 @@
                <children>
                   <Button fx:id="boton1" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
-                        <ImageView fx:id="imageView1" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageView1" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <Button fx:id="boton2" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
-                        <ImageView fx:id="imageView2" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageView2" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <Button fx:id="boton3" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
-                        <ImageView fx:id="imageView3" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageView3" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <Button fx:id="boton4" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
                      <graphic>
-                        <ImageView fx:id="imageView4" fitHeight="65.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageView4" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                </children>

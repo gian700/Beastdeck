@@ -160,6 +160,7 @@ public abstract class CartaConstructor {
             (getUtilizada() ? "Utilizada \n": "")+ 
             "id: " + getId() +" "+ getTipo() +" "+ getFuerza() +" \n" + 
             getNombre() +" "+ getRareza() +"\n"+
+            getDescripcion() + "\n" +
             (habilidadesActivas.isEmpty() ? "" : getHabilidadesActivas() + "\n") +
             (habilidadesActivas.isEmpty() ? "" : getHabilidadesActivas());
     }
