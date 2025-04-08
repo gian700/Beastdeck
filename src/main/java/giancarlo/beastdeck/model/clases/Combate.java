@@ -25,9 +25,6 @@ public class Combate extends CombateConstructor{
         if (cartaPropia == null || cartaRival == null) {
             throw new IllegalArgumentException("Carta nula");
         }
-        if (cartaPropia.getUtilizada() || cartaRival.getUtilizada()) {
-            return;
-        }
         cartaPropia.activarHabilidades(this, cartaRival);
         cartaRival.activarHabilidades(this, cartaPropia);
 
@@ -40,6 +37,12 @@ public class Combate extends CombateConstructor{
 
         setPuntuacionPropia(getPuntuacionPropia() + getPuntuacionTemporalPropia());
         setPuntuacionRival(getPuntuacionRival() + getPuntuacionTemporalRival());
+
+        turnoM();
     }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

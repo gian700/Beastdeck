@@ -1,5 +1,6 @@
 package giancarlo.beastdeck.model.clases;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public class Rival {
      * @param deckUsuario
      * @return
      */
-    public int mejorOpcion(Deck deckUsuario){
+    public int mejorOpcion(List<Carta> deckUsuario){
 
         List<Integer> comprobar = new ArrayList<>();
         Combate combate = new Combate();
@@ -34,31 +35,40 @@ public class Rival {
 
 
         for (int i = 0; i < deck.getDeck().size(); i++) {
+
             carta = deck.getDeck().get(i);
+            if (!carta.getUtilizada()) {   
+            
             orden = carta.getOrdenRecomendado();
 
-            for (int j = 0; j < deckUsuario.getDeck().size(); j++) {
-                cartaUsuario = deckUsuario.getDeck().get(j);
-                ordenUsuario = (cartaUsuario.getOrdenRecomendado())/2;
-                batalla = (int) combate.comprobarGanador(carta, cartaUsuario);
-                switch (batalla) {
-                    case 2 -> {orden += 1 + ordenUsuario;}
-                    case 0 -> {orden -= (1 + ordenUsuario);}
+            for (int j = 0; j < deckUsuario.size(); j++) {
+
+                cartaUsuario = deckUsuario.get(j);
+                if (!cartaUsuario.getUtilizada()) {
+                    ordenUsuario = (cartaUsuario.getOrdenRecomendado())/2;
+                    batalla = (int) combate.comprobarGanador(carta, cartaUsuario);
+                    switch (batalla) {
+                        case 2 -> {orden += 1 + ordenUsuario;}
+                        case 0 -> {orden -= (1 + ordenUsuario);}
+                    }
                 }
             }
             comprobar.add(orden);
-        }
-
-        Integer ganador = comprobar.get(0);
-
-        for (int i = 0; i < comprobar.size(); i++) {
-            orden = comprobar.get(i);
-            if (orden > ganador) {
-                ganador = orden;
+            }else{
+                comprobar.add(-999);
             }
         }
-        
+        int ganador = Collections.max(comprobar);
         int posicion = comprobar.indexOf(ganador);
         return posicion;
     }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+            " deck='" + getDeck() +
+            "}";
+    }
+
 }

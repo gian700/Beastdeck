@@ -1,10 +1,13 @@
 package giancarlo.beastdeck.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import giancarlo.beastdeck.config.ConfigManager;
 import giancarlo.beastdeck.controller.abstracta.AbstractController;
 import giancarlo.beastdeck.model.clases.Carta;
 import giancarlo.beastdeck.model.clases.Combate;
-import giancarlo.beastdeck.model.enums.EnumTipos;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -91,11 +94,23 @@ public class CombateController extends AbstractController{
     private Text textMensage;
 
     @FXML
+    private Text puntuacionRival;
+
+    @FXML
+    private Text puntuacionPropia;
+
+    @FXML
     private TextArea descripcionText;
 
     private Combate combate;
 
     private Carta cartaSeleccionada;
+
+    private int posicion;
+
+    private Image imagePropia;
+
+    private Image imageRival;
 
     @FXML
     protected void initialize() {
@@ -103,8 +118,111 @@ public class CombateController extends AbstractController{
         cambiarImagen();
     }
 
+    
+
+    @FXML
+    protected void botonVerCarta(ActionEvent event){
+        Button boton = (Button) event.getSource();
+        String id = boton.getId();
+
+        switch (id) {
+            case "boton1" -> cambiarImagen(boton, 0);
+            case "boton2" -> cambiarImagen(boton, 1);
+            case "boton3" -> cambiarImagen(boton, 2);
+            case "boton4" -> cambiarImagen(boton, 3);
+            case "boton5" -> cambiarImagen(boton, 4);
+            case "boton6" -> cambiarImagen(boton, 5);
+            case "boton7" -> cambiarImagen(boton, 6);
+            case "boton8" -> cambiarImagen(boton, 7);
+        }
+    }
+
+
+    @FXML
+    protected void usarClick() {
+        if (posicion >3) {
+            textMensage.setText("Esta carta pertenece al rival");
+            return;
+        }
+    
+        if (cartaSeleccionada.getUtilizada()) {
+            textMensage.setText("Esta carta ya ha sido utilizada");
+            return;
+        }
+
+        int opcionRival = combate.getRival().mejorOpcion(combate.getDeckPropio());
+        Carta cRival = combate.getDeckRival().get(opcionRival);
+        cambiarImagen(opcionRival);
+        cRival.setUtilizada(true);
+        cartaSeleccionada.setUtilizada(true);
+        combate.ronda(cartaSeleccionada, cRival);
+        descripcionText.setText(cartaSeleccionada.toString());
+        puntuacionPropia.setText(""+combate.getPuntuacionPropia());
+        puntuacionRival.setText(""+combate.getPuntuacionRival());
+         
+    }
+
+    protected void cambiarImagen(int posicionRival){
+        //cambiarEstado(false);
+
+        switch (posicion) {
+            case 0 -> { 
+                imageView1.setImage(null);
+                boton1.setStyle("-fx-background-color: #000");
+                boton1.setDisable(true);
+            }
+            case 1 -> { 
+                imageView2.setImage(null);
+                boton2.setStyle("-fx-background-color: #000");
+                boton2.setDisable(true);
+            }
+            case 2 -> { 
+                imageView3.setImage(null);
+                boton3.setStyle("-fx-background-color: #000");
+                boton3.setDisable(true);
+            }
+            case 3 -> { 
+                imageView4.setImage(null);
+                boton4.setStyle("-fx-background-color: #000");
+                boton4.setDisable(true);
+            }
+        }
+        switch (posicionRival){ 
+            case 0 -> { 
+                imageView5.setImage(null);
+                boton5.setStyle("-fx-background-color: #000");
+                boton5.setDisable(true);
+            }
+            case 1 -> { 
+                imageView6.setImage(null);
+                boton6.setStyle("-fx-background-color: #000");
+                boton6.setDisable(true);
+            }
+            case 2 -> { 
+                imageView7.setImage(null);
+                boton7.setStyle("-fx-background-color: #000");
+                boton7.setDisable(true);
+            }
+            case 3 -> { 
+                imageView8.setImage(null);
+                boton8.setStyle("-fx-background-color: #000");
+                boton8.setDisable(true);
+            }
+        }
+
+        imageViewPropio.setImage(new Image("file:src/main/resources/imagenes/" + cartaSeleccionada.getImagen()));
+        botonPropio.setStyle("-fx-background-color: " + color(cartaSeleccionada));
+        Carta cRival = combate.getDeckRival().get(posicionRival);
+        imageViewRival.setImage(new Image("file:src/main/resources/imagenes/" + cRival.getImagen()));
+        
+    }
+
+
     protected void cambiarImagen(Button boton, int posicion){
+
+        textMensage.setText("");
         Carta carta;
+        this.posicion=posicion;
         if (posicion<4) {
             carta = combate.getDeckPropio().get(posicion);
         }else{
@@ -117,97 +235,28 @@ public class CombateController extends AbstractController{
     }
 
     protected void cambiarImagen(){
-        //TODO: se rompe si alguna imagen no existe, asegurarse de que no puedes llegar sin validar
-        
-        imageView1.setImage(new Image("file:src/main/resources/imagenes/" + combate.getDeckPropio().get(0).getImagen()));
-        boton1.setStyle("-fx-background-color: "+color(combate.getDeckPropio().get(0)));
-        imageView2.setImage(new Image("file:src/main/resources/imagenes/" + combate.getDeckPropio().get(1).getImagen()));
-        boton2.setStyle("-fx-background-color: "+color(combate.getDeckPropio().get(1)));
-        imageView3.setImage(new Image("file:src/main/resources/imagenes/" + combate.getDeckPropio().get(2).getImagen()));
-        boton3.setStyle("-fx-background-color: "+color(combate.getDeckPropio().get(2)));
-        imageView4.setImage(new Image("file:src/main/resources/imagenes/" + combate.getDeckPropio().get(3).getImagen()));
-        boton4.setStyle("-fx-background-color: "+color(combate.getDeckPropio().get(3)));
-        imageView5.setImage(new Image("file:src/main/resources/imagenes/" + combate.getDeckRival().get(0).getImagen()));
-        boton5.setStyle("-fx-background-color: "+color(combate.getDeckRival().get(0)));
-        imageView6.setImage(new Image("file:src/main/resources/imagenes/" + combate.getDeckRival().get(1).getImagen()));
-        boton6.setStyle("-fx-background-color: "+color(combate.getDeckRival().get(1)));
-        imageView7.setImage(new Image("file:src/main/resources/imagenes/" + combate.getDeckRival().get(2).getImagen()));
-        boton7.setStyle("-fx-background-color: "+color(combate.getDeckRival().get(2)));
-        imageView8.setImage(new Image("file:src/main/resources/imagenes/" + combate.getDeckRival().get(3).getImagen()));
-        boton8.setStyle("-fx-background-color: "+color(combate.getDeckRival().get(3))); 
-    }
+        List<ImageView> imageViews = List.of(imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7, imageView8);
+        List<Button> botones = List.of(boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8);
+        List<Carta> cartas = new ArrayList<>();
 
-    protected String color(Carta carta){
-        EnumTipos tipo = carta.getTipo();
-        switch (tipo) {
-            case FUEGO -> {
-                return "#ff0000";
-            }
+        cartas.addAll(combate.getDeckPropio());
+        cartas.addAll(combate.getDeckRival());
 
-            case AGUA -> {
-                return "#0000ff";
-            }
-
-            case PLANTA -> {
-                return "#00ff00";
-            }
-
-            case TIERRA -> {
-                return "#804000";
-            }
-
-            case ELECTRICO -> {
-                return "#ffea00";
-            }
-
-            case VOLADOR -> {
-                return "#9b9b9b";
-            }
-
-            case BESTIA -> {
-                return "#332233";
-            }
+        for (int i = 0; i < cartas.size(); i++) {
+            Carta carta = cartas.get(i);
+            imageViews.get(i).setImage(new Image("file:src/main/resources/imagenes/" + carta.getImagen()));
+            botones.get(i).setStyle("-fx-background-color: " + color(carta));
         }
-        return null;
     }
 
-    @FXML
-    protected void boton1Click(){
-        cambiarImagen(boton1, 0);
-    }
-
-    @FXML
-    protected void boton2Click(){
-        cambiarImagen(boton2, 1);
-    }
-
-    @FXML
-    protected void boton3Click(){
-        cambiarImagen(boton3, 2);
-    }
-
-    @FXML
-    protected void boton4Click(){
-        cambiarImagen(boton4, 3);
-    }
-
-    @FXML
-    protected void boton5Click(){
-        cambiarImagen(boton5, 4);
-    }
-
-    @FXML
-    protected void boton6Click(){
-        cambiarImagen(boton6, 5);
-    }
-
-    @FXML
-    protected void boton7Click(){
-        cambiarImagen(boton7, 6);
-    }
-
-    @FXML
-    protected void boton8Click(){
-        cambiarImagen(boton8, 7);
+    public void cambiarEstado(boolean value){
+        boton1.setDisable(value);
+        boton2.setDisable(value);
+        boton3.setDisable(value);
+        boton4.setDisable(value);
+        boton5.setDisable(value);
+        boton6.setDisable(value);
+        boton7.setDisable(value);
+        boton8.setDisable(value);
     }
 }

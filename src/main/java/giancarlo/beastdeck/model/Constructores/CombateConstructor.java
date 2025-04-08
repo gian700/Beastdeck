@@ -17,6 +17,7 @@ private Jugador jugador;
     private float puntuacionRival;
     private float puntuacionTemporalPropia;
     private float puntuacionTemporalRival;
+    private int turno;
 
 
     public CombateConstructor() {
@@ -32,6 +33,7 @@ private Jugador jugador;
         this.puntuacionRival = 0;
         this.puntuacionTemporalPropia = 0;
         this.puntuacionTemporalRival = 0;
+        this.turno = 4;
     }
     
 
@@ -97,6 +99,31 @@ private Jugador jugador;
 
     public void setPuntuacionTemporalRival(float puntuacionTemporalRival) {
         this.puntuacionTemporalRival = puntuacionTemporalRival;
+    }
+
+    public float getTurno() {
+        return this.turno;
+    }
+
+    public void setTurno(int turno) {
+        this.turno = turno;
+    }
+
+    public void turnoM(){
+        this.turno = turno-1;
+    }
+    @Override
+    public String toString() {
+        return "{" +
+            " jugador='" + getJugador() + "'" +
+            ", deckPropio='" + getDeckPropio() + "'" +
+            ", rival='" + getRival() + "'" +
+            ", deckRival='" + getDeckRival() + "'" +
+            ", puntuacionPropia='" + getPuntuacionPropia() + "'" +
+            ", puntuacionRival='" + getPuntuacionRival() + "'" +
+            ", puntuacionTemporalPropia='" + getPuntuacionTemporalPropia() + "'" +
+            ", puntuacionTemporalRival='" + getPuntuacionTemporalRival() + "'" +
+            "}";
     }
 
 }

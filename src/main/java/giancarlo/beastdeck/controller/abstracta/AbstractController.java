@@ -3,6 +3,8 @@ package giancarlo.beastdeck.controller.abstracta;
 import java.io.IOException;
 
 import giancarlo.beastdeck.PrincipalApplication;
+import giancarlo.beastdeck.model.clases.Carta;
+import giancarlo.beastdeck.model.enums.EnumTipos;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -36,5 +38,38 @@ public abstract class AbstractController {
         }
     }
 
+    protected String color(Carta carta){
+        EnumTipos tipo = carta.getTipo();
+        switch (tipo) {
+            case FUEGO -> {
+                return "#ff0000";
+            }
+
+            case AGUA -> {
+                return "#0000ff";
+            }
+
+            case PLANTA -> {
+                return "#00ff00";
+            }
+
+            case TIERRA -> {
+                return "#804000";
+            }
+
+            case ELECTRICO -> {
+                return "#ffea00";
+            }
+
+            case VOLADOR -> {
+                return "#9b9b9b";
+            }
+
+            case BESTIA -> {
+                return "#332233";
+            }
+        }
+        return null;
+    }
     
 }
