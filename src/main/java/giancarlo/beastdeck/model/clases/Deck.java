@@ -33,6 +33,12 @@ public class Deck {
         return getDeck().toString();
     }
 
+    public void activar(){
+        for (Carta carta : deck) {
+            
+        }
+    }
+
     /**
      * Metodo que permite agregar una carta al deck
      * @param carta

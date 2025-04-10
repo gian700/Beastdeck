@@ -25,15 +25,15 @@ public class Combate extends CombateConstructor{
         if (cartaPropia == null || cartaRival == null) {
             throw new IllegalArgumentException("Carta nula");
         }
-        cartaPropia.activarHabilidades(this, cartaRival);
-        cartaRival.activarHabilidades(this, cartaPropia);
+        cartaPropia.activarHabilidadActiva(this, cartaRival);
+        cartaRival.activarHabilidadActiva(this, cartaPropia);
 
         float multiplicador = comprobarGanador(cartaPropia, cartaRival);
         setPuntuacionTemporalPropia( (int)(((float) cartaPropia.getFuerza()*multiplicador) * 100));
         setPuntuacionTemporalRival((int)(((float) cartaRival.getFuerza()/multiplicador) * 100));
 
-        cartaPropia.activarHabilidades(this, cartaRival);
-        cartaRival.activarHabilidades(this, cartaPropia);
+        cartaPropia.activarHabilidadActiva(this, cartaRival);
+        cartaRival.activarHabilidadActiva(this, cartaPropia);
 
         setPuntuacionPropia(getPuntuacionPropia() + getPuntuacionTemporalPropia());
         setPuntuacionRival(getPuntuacionRival() + getPuntuacionTemporalRival());

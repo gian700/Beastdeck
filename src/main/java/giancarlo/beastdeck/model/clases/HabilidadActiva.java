@@ -45,11 +45,9 @@ public class HabilidadActiva extends HabilidadActivaConstructor{
         float ganador = combate.comprobarGanador(cartaPropia, cartaRival);
         if (ganador == 0.5) {
             cartaPropia.setFuerza(cartaPropia.getFuerza()/2);
-            System.out.println("bajo");
         }
         if (ganador == 2.0) {
             cartaPropia.setFuerza(cartaPropia.getFuerza()*2);
-            System.out.println("subio");
         }
     }
 
@@ -82,6 +80,5 @@ public class HabilidadActiva extends HabilidadActivaConstructor{
     public String toString() {
         return super.toString();
     }
-
     
 }

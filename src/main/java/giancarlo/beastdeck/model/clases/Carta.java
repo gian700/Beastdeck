@@ -16,20 +16,20 @@ public class Carta extends CartaConstructor{
     public Carta(){
     }
 
-    public Carta(Integer id) {
+    public Carta(int id) {
         super(id);
     }
 
-    public Carta(Integer id, String nombre, String descripcion, EnumRarezas rareza, EnumTipos tipo, List<HabilidadActiva> habilidadesActivas, List<HabilidadPasiva> habilidadesPasivas, int fuerza, int ordenRecomendado, boolean desbloqueada, String imagen) {
+    public Carta(int id, String nombre, String descripcion, EnumRarezas rareza, EnumTipos tipo, List<HabilidadActiva> habilidadesActivas, List<HabilidadPasiva> habilidadesPasivas, int fuerza, int ordenRecomendado, boolean desbloqueada, String imagen) {
         super(id, nombre, descripcion, rareza, tipo, habilidadesActivas, habilidadesPasivas, fuerza, ordenRecomendado, desbloqueada, imagen);
     }
 
     /**
-     * Metodo que activa la habilidades de una carta
+     * Metodo que activa las habilidades de uso de una carta
      * @param combate
      * @param cartaRival
      */
-    public void activarHabilidades(Combate combate, Carta cartaRival){
+    public void activarHabilidadActiva(Combate combate, Carta cartaRival){
         for (HabilidadActiva habilidad : getHabilidadesActivas()) {
             if (habilidad.getRapida()) {
                 habilidad.activar(this, combate, cartaRival);
@@ -38,6 +38,20 @@ public class Carta extends CartaConstructor{
             
         }
     }
+
+    /**
+     * Metodo que activa las habilidades de uso de una carta
+     * @param combate
+     * @param cartaRival
+     */
+    public void activarHabilidadPasiva(Combate combate, Carta cartaRival){
+        for (HabilidadPasiva habilidad : getHabilidadesPasivas()) {
+            if (habilidad.getActivada() && !habilidad.getGastada()) {
+                habilidad.activar(this, combate, cartaRival);
+            }
+        }
+    }
+
 
 
     @Override

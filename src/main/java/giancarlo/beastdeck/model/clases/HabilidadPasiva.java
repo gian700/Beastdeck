@@ -1,5 +1,39 @@
 package giancarlo.beastdeck.model.clases;
 
-public class HabilidadPasiva {
+import giancarlo.beastdeck.model.Constructores.HabilidadPasivaConstructor;
+
+public class HabilidadPasiva extends HabilidadPasivaConstructor{
+
+    public HabilidadPasiva() {
+    }
+
+    public HabilidadPasiva(int id, String nombre, String descripcion, boolean continua, boolean gastada, boolean bot) {
+        super(id, nombre, descripcion, continua, gastada, bot);
+    }
+
+    /**
+     * Metodo que activa las habilidades
+     * @param cartaPropia
+     * @param combate
+     * @param cartaRival
+     */
+    public void activar(Carta cartaPropia, Combate combate, Carta cartaRival) {
+        if (!getActivada()) {
+            return;
+        }
+
+        if (!getContinua()) {
+            setContinua(false);
+            setGastada(true);
+        }
+        switch (getId()) {
+            default -> throw new AssertionError("habilidad no existente");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 
 }

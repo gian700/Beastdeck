@@ -8,7 +8,7 @@ import giancarlo.beastdeck.model.enums.EnumRarezas;
 import giancarlo.beastdeck.model.enums.EnumTipos;
 
 public abstract class CartaConstructor {
-    private Integer id;
+    private int id;
     private String nombre;
     private String descripcion;
     private EnumRarezas rareza;
@@ -25,11 +25,11 @@ public abstract class CartaConstructor {
     public CartaConstructor() {
     }
 
-    public CartaConstructor(Integer id) {
+    public CartaConstructor(int id) {
         this.id = id;
     }
 
-    public CartaConstructor(Integer id, String nombre, String descripcion, EnumRarezas rareza, EnumTipos tipo, List<HabilidadActiva> habilidadesActivas, List<HabilidadPasiva> habilidadesPasivas, int fuerza, int ordenRecomendado, boolean desbloqueada, String imagen) {
+    public CartaConstructor(int id, String nombre, String descripcion, EnumRarezas rareza, EnumTipos tipo, List<HabilidadActiva> habilidadesActivas, List<HabilidadPasiva> habilidadesPasivas, int fuerza, int ordenRecomendado, boolean desbloqueada, String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -45,11 +45,11 @@ public abstract class CartaConstructor {
     }
 
 
-    public Integer getId() {
+    public int getId() {
         return this.id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
