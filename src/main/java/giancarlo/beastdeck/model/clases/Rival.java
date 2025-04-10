@@ -33,20 +33,17 @@ public class Rival {
         int ordenUsuario;
         int batalla;
 
-
         for (int i = 0; i < deck.getDeck().size(); i++) {
-
             carta = deck.getDeck().get(i);
             if (!carta.getUtilizada()) {   
-            
             orden = carta.getOrdenRecomendado();
 
             for (int j = 0; j < deckUsuario.size(); j++) {
-
                 cartaUsuario = deckUsuario.get(j);
                 if (!cartaUsuario.getUtilizada()) {
                     ordenUsuario = (cartaUsuario.getOrdenRecomendado())/2;
                     batalla = (int) combate.comprobarGanador(carta, cartaUsuario);
+                    
                     switch (batalla) {
                         case 2 -> {orden += 1 + ordenUsuario;}
                         case 0 -> {orden -= (1 + ordenUsuario);}

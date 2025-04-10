@@ -21,6 +21,8 @@ import javafx.scene.text.Text;
  */
 public class CombateController extends AbstractController{
 
+    
+
     @FXML
     private ImageView imageView1;
 
@@ -235,7 +237,6 @@ public class CombateController extends AbstractController{
         Carta cRival = combate.getDeckRival().get(posicionRival);
         imageViewRival.setImage(new Image("file:src/main/resources/imagenes/" + cRival.getImagen()));
         botonRival.setStyle("-fx-background-color: " + color(cRival));
-        
     }
 
 

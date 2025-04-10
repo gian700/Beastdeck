@@ -35,14 +35,14 @@ public abstract class TipoFuncionamiento {
         }
 
         if (tipoPropio == tipoRival) {
-            return 1;
+            return 1f;
         }
 
         List<EnumTipos> debilidades = comprobarDebilidades(tipoPropio);
         if (debilidades.contains(tipoRival)) {
-            return (float) 0.5;
+            return 0.5f;
         }
-        return 2;
+        return 2f;
     }
 
     /**

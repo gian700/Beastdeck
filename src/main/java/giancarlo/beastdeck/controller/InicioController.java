@@ -54,12 +54,14 @@ public class InicioController extends AbstractController{
         try {
             //TODO: cuando la base de datos este lista arreglar lo de abajo
 
-            HabilidadActiva habilidadActiva1 = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, pero la divide si pierdes", EnumRarezas.R, true);
+            HabilidadActiva habilidadActiva1 = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, \npero la divide si pierdes", EnumRarezas.R, true);
+            HabilidadActiva habilidadActiva1C = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, \npero la divide si pierdes", EnumRarezas.R, true);
             HabilidadActiva habilidadActiva2 = new HabilidadActiva(2, "Inutilidad", "baja a la mitad la fuerza del rival", EnumRarezas.C, true);
+            HabilidadActiva habilidadActiva2C = new HabilidadActiva(2, "Inutilidad", "baja a la mitad la fuerza del rival", EnumRarezas.C, true);
             HabilidadActiva habilidadActiva3 = new HabilidadActiva(3, "adaptativo", "si tienes desventaja de tipo, cambia tu tipo aleatoriamente", EnumRarezas.R, true);
             List<Carta> cartas = new CartaManager().obtenerCartas();
             cartas.get(0).setHabilidadesActivas(new ArrayList<>(Arrays.asList(habilidadActiva1)));
-            cartas.get(2).setHabilidadesActivas(new ArrayList<>(Arrays.asList(habilidadActiva1, habilidadActiva2)));
+            cartas.get(2).setHabilidadesActivas(new ArrayList<>(Arrays.asList(habilidadActiva1C, habilidadActiva2C)));
             cartas.get(3).setHabilidadesActivas(new ArrayList<>(Arrays.asList(habilidadActiva3)));
             cartas.get(6).setHabilidadesActivas(new ArrayList<>(Arrays.asList(habilidadActiva2)));
             

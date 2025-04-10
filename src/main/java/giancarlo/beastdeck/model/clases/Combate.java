@@ -29,8 +29,8 @@ public class Combate extends CombateConstructor{
         cartaRival.activarHabilidades(this, cartaPropia);
 
         float multiplicador = comprobarGanador(cartaPropia, cartaRival);
-        setPuntuacionTemporalPropia((cartaPropia.getFuerza()*multiplicador) * 100);
-        setPuntuacionTemporalRival((cartaRival.getFuerza()/multiplicador) * 100);
+        setPuntuacionTemporalPropia( (int)(((float) cartaPropia.getFuerza()*multiplicador) * 100));
+        setPuntuacionTemporalRival((int)(((float) cartaRival.getFuerza()/multiplicador) * 100));
 
         cartaPropia.activarHabilidades(this, cartaRival);
         cartaRival.activarHabilidades(this, cartaPropia);

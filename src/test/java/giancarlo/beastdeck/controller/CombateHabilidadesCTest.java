@@ -16,40 +16,90 @@ import giancarlo.beastdeck.model.enums.EnumTipos;
 public class CombateHabilidadesCTest {
 
     private Combate combateController;
-    private HabilidadActiva habilidad;
     private Carta carta1;
     private Carta carta2;
+    private Carta carta3;
+    private final HabilidadActiva habilidadActiva1 = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, pero la divide si pierdes", EnumRarezas.R, true);
+    private final HabilidadActiva habilidadActiva1C = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, pero la divide si pierdes", EnumRarezas.R, true);
+    private final HabilidadActiva habilidadActiva2 = new HabilidadActiva(2, "Inutilidad", "baja a la mitad la fuerza del rival", EnumRarezas.C, true);
+    private final HabilidadActiva habilidadActiva3 = new HabilidadActiva(3, "adaptativo", "si tienes desventaja de tipo, cambia tu tipo aleatoriamente", EnumRarezas.R, true);
 
 
     @BeforeEach
     void beforeEach() {
         combateController = new Combate();
-        habilidad = new HabilidadActiva(0, "null", "null", EnumRarezas.C, true);
-        carta1 = new Carta(1, "nombre", "descripcion", EnumRarezas.C, EnumTipos.AGUA, new ArrayList<>(Arrays.asList(habilidad)), new ArrayList<>(), 1, 5, false, null);
-        carta2 = new Carta(2, "nombre", "descripcion", EnumRarezas.R, EnumTipos.AGUA, new ArrayList<>(), new ArrayList<>(), 1, 5, false, null);
+        carta1 = new Carta(1, "nombre", "descripcion", EnumRarezas.C, EnumTipos.AGUA, new ArrayList<>(Arrays.asList(habilidadActiva1)), new ArrayList<>(), 2, 0, false, null);
+        carta2 = new Carta(2, "nombre", "descripcion", EnumRarezas.R, EnumTipos.AGUA, new ArrayList<>(), new ArrayList<>(), 2, 0, false, null);
+        carta3 = new Carta(3, "nombre", "descripcion", EnumRarezas.C, EnumTipos.AGUA, new ArrayList<>(Arrays.asList(habilidadActiva1C)), new ArrayList<>(), 2, 0, false, null);
         
     }
 
     @Test
-    void habilidadGenericaTest() {
-        combateController.ronda(carta1, carta2);
-        Assertions.assertEquals(100, combateController.getPuntuacionPropia());
-        Assertions.assertEquals(100, combateController.getPuntuacionRival());
-    }
-
-    @Test
-    void habilidad1Test() {
-        habilidad.setId(1);
+    void habilidad1EmpateTest() {
         combateController.ronda(carta1, carta2);
         Assertions.assertEquals(200, combateController.getPuntuacionPropia());
+        Assertions.assertEquals(200, combateController.getPuntuacionRival());
+    }
+
+    @Test
+    void habilidad1gana() {
+        carta1.setTipo(EnumTipos.PLANTA);
+        combateController.ronda(carta1, carta2);
+        Assertions.assertEquals(800, combateController.getPuntuacionPropia());
         Assertions.assertEquals(100, combateController.getPuntuacionRival());
     }
 
     @Test
-    void habilidad2Test() {
-        habilidad.setId(2);
+    void habilidad1Pierde() {
+        carta1.setTipo(EnumTipos.FUEGO);
         combateController.ronda(carta1, carta2);
+        Assertions.assertEquals(50, combateController.getPuntuacionPropia());
+        Assertions.assertEquals(400, combateController.getPuntuacionRival());
+    }
+
+    @Test
+    void habilidad1EmpateRivalTest() {
+        combateController.ronda(carta2, carta1);
+        Assertions.assertEquals(200, combateController.getPuntuacionPropia());
+        Assertions.assertEquals(200, combateController.getPuntuacionRival());
+    }
+
+    @Test
+    void habilidad1Rivalgana() {
+        carta1.setTipo(EnumTipos.PLANTA);
+        combateController.ronda(carta2, carta1);
         Assertions.assertEquals(100, combateController.getPuntuacionPropia());
-        Assertions.assertEquals(0, combateController.getPuntuacionRival());
+        Assertions.assertEquals(800, combateController.getPuntuacionRival());
+    }
+
+    @Test
+    void habilidad1RivalPierde() {
+        carta1.setTipo(EnumTipos.FUEGO);
+        combateController.ronda(carta2, carta1);
+        Assertions.assertEquals(400, combateController.getPuntuacionPropia());
+        Assertions.assertEquals(50, combateController.getPuntuacionRival());
+    }
+
+    @Test
+    void habilidad1SameEmpateTest() {
+        combateController.ronda(carta1, carta3);
+        Assertions.assertEquals(200, combateController.getPuntuacionPropia());
+        Assertions.assertEquals(200, combateController.getPuntuacionRival());
+    }
+
+    @Test
+    void habilidad1SameGana() {
+        carta1.setTipo(EnumTipos.PLANTA);
+        combateController.ronda(carta1, carta3);
+        Assertions.assertEquals(800, combateController.getPuntuacionPropia());
+        Assertions.assertEquals(50, combateController.getPuntuacionRival());
+    }
+
+    @Test
+    void habilidad1SamePierde() {
+        carta1.setTipo(EnumTipos.FUEGO);
+        combateController.ronda(carta1, carta3);
+        Assertions.assertEquals(50, combateController.getPuntuacionPropia());
+        Assertions.assertEquals(800, combateController.getPuntuacionRival());
     }
 }
