@@ -13,13 +13,13 @@ public abstract class HabilidadPasivaConstructor {
     public HabilidadPasivaConstructor() {
     }
 
-    public HabilidadPasivaConstructor(int id, String nombre, String descripcion, boolean continua, boolean gastada, boolean bot) {
+    public HabilidadPasivaConstructor(int id, String nombre, String descripcion, boolean continua, boolean bot) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.activada = continua;
         this.continua = continua;
-        this.gastada = gastada;
+        this.gastada = false;
         this.bot = bot;
     }
 
@@ -57,6 +57,10 @@ public abstract class HabilidadPasivaConstructor {
 
     public void setActivada(boolean activada) {
         this.activada = activada;
+    }
+
+    public void setActivada(){
+        activada = !activada;
     }
 
     public boolean isContinua() {

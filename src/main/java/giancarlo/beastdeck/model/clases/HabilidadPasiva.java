@@ -8,7 +8,7 @@ public class HabilidadPasiva extends HabilidadPasivaConstructor{
     }
 
     public HabilidadPasiva(int id, String nombre, String descripcion, boolean continua, boolean gastada, boolean bot) {
-        super(id, nombre, descripcion, continua, gastada, bot);
+        super(id, nombre, descripcion, continua, bot);
     }
 
     /**
@@ -22,10 +22,6 @@ public class HabilidadPasiva extends HabilidadPasivaConstructor{
             return;
         }
 
-        if (!getContinua()) {
-            setContinua(false);
-            setGastada(true);
-        }
         switch (getId()) {
             default -> throw new AssertionError("habilidad no existente");
         }

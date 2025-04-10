@@ -75,7 +75,7 @@ public class InicioController extends AbstractController{
             ConfigManager.ConfigObjects.setJugador(new Jugador(new Deck(cartasRival)));
 
             
-            cambiarPagina(newRunBoton, "combate", 1000, 600);
+            cambiarPagina(newRunBoton, "combate");
         } catch (SQLException e) {
             e.printStackTrace();
         }

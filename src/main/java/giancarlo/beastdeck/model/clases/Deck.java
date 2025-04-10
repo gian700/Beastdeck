@@ -1,14 +1,17 @@
 package giancarlo.beastdeck.model.clases;
 
+import java.util.ArrayList;
 import java.util.List;
 /**
  * @author Giancarlo
  * @version 1.0.0
  */
 public class Deck {
+
     private List<Carta> deck; 
 
     public Deck() {
+        this.deck = new ArrayList<>();
     }
 
     public Deck(List<Carta> deck) {
@@ -23,20 +26,26 @@ public class Deck {
         this.deck = deck;
     }
 
-    public List<Deck> getCopia(){
-        
-        return null;
-    }
-
-    @Override
-    public String toString() {
-        return getDeck().toString();
-    }
-
-    public void activar(){
+    public void activarContinuas(Combate combate, Carta cartaRival){
         for (Carta carta : deck) {
-            
+            carta.activarHabilidadContinua(combate);
         }
+    }
+
+    public void activarPasiva(Combate combate, Carta cartaRival){
+        for (Carta carta : deck) {
+            carta.activarPasiva(combate, cartaRival);
+        }
+    }
+
+    public Deck Copy(){
+        Deck deckCopia = new Deck();
+
+        for (Carta carta : deck) {
+            Carta cartaCopia = new Carta(carta);
+            deckCopia.create(cartaCopia);
+        }
+        return deckCopia;
     }
 
     /**
@@ -46,9 +55,6 @@ public class Deck {
      */
     public boolean create(Carta carta){
         if (carta == null) {
-            return false;
-        }
-        if (deck.contains(carta)) {
             return false;
         }
         deck.add(carta);
@@ -104,5 +110,10 @@ public class Deck {
             return null;
         }
         return deck.get(posicion);
+    }
+    
+    @Override
+    public String toString() {
+        return getDeck().toString();
     }
 }

@@ -21,13 +21,9 @@ public abstract class AbstractController {
      * @param pagina
      */
     protected void cambiarPagina(Button boton, String pagina) {
-        cambiarPagina(boton, pagina, 500, 600);
-    }
-
-    protected void cambiarPagina(Button boton, String pagina, int width, int heigh) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(PrincipalApplication.class.getResource(pagina+".fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), width, heigh);
+            Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) boton.getScene().getWindow();
             stage.setResizable(false);
             stage.setTitle(pagina);

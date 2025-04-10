@@ -24,6 +24,22 @@ public class Carta extends CartaConstructor{
         super(id, nombre, descripcion, rareza, tipo, habilidadesActivas, habilidadesPasivas, fuerza, ordenRecomendado, desbloqueada, imagen);
     }
 
+    public Carta(Carta carta){
+        super(
+            carta.getId(),
+            carta.getNombre(),
+            carta.getDescripcion(),
+            carta.getRareza(),
+            carta.getTipo(),
+            carta.getHabilidadesActivas(),
+            carta.getHabilidadesPasivas(),
+            carta.getFuerza(),
+            carta.getOrdenRecomendado(),
+            carta.isDesbloqueada(),
+            carta.getImagen()
+        );
+    }
+
     /**
      * Metodo que activa las habilidades de uso de una carta
      * @param combate
@@ -44,18 +60,33 @@ public class Carta extends CartaConstructor{
      * @param combate
      * @param cartaRival
      */
-    public void activarHabilidadPasiva(Combate combate, Carta cartaRival){
+    public void activarHabilidadContinua(Combate combate){
+
         for (HabilidadPasiva habilidad : getHabilidadesPasivas()) {
-            if (habilidad.getActivada() && !habilidad.getGastada()) {
-                habilidad.activar(this, combate, cartaRival);
-            }
-            if (!habilidad.getContinua()) {
-                habilidad.setActivada(false);
+            if (habilidad.getActivada() && habilidad.getContinua()) {
+                habilidad.activar(this, combate, null);
             }
         }
     }
 
+    /*
+     * Metodo que permite cambiar el estado de las habilidades pasivas
+     */
+    public void cambiarEstado(Combate combate, Carta cartaRival){
+        for (HabilidadPasiva habilidad : getHabilidadesPasivas()) {
+            if (!habilidad.getBot() || !habilidad.getGastada()) {
+                habilidad.setActivada();
+            }
+        }
+    }
 
+    public void activarPasiva(Combate combate, Carta cartaRival){
+        for (HabilidadPasiva habilidad : getHabilidadesPasivas()) {
+            if (habilidad.getActivada()) {
+                habilidad.activar(this, combate, cartaRival);
+            }
+        }
+    }
 
     @Override
     public String toString() {
