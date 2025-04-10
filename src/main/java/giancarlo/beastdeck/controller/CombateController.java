@@ -81,8 +81,8 @@ public class CombateController extends AbstractController{
     @FXML
     private ImageView imageViewRival;
 
-    //@FXML
-    //private Button botonRival;
+    @FXML
+    private Button botonRival;
 
     @FXML
     private Button usarBoton;
@@ -182,21 +182,25 @@ public class CombateController extends AbstractController{
                 imageView1.setImage(null);
                 boton1.setStyle("-fx-background-color: #000");
                 boton1.setDisable(true);
+                botonPropio.setId("boton1");
             }
             case 1 -> { 
                 imageView2.setImage(null);
                 boton2.setStyle("-fx-background-color: #000");
                 boton2.setDisable(true);
+                botonPropio.setId("boton2");
             }
             case 2 -> { 
                 imageView3.setImage(null);
                 boton3.setStyle("-fx-background-color: #000");
                 boton3.setDisable(true);
+                botonPropio.setId("boton3");
             }
             case 3 -> { 
                 imageView4.setImage(null);
                 boton4.setStyle("-fx-background-color: #000");
                 boton4.setDisable(true);
+                botonPropio.setId("boton4");
             }
         }
         switch (posicionRival){ 
@@ -204,21 +208,25 @@ public class CombateController extends AbstractController{
                 imageView5.setImage(null);
                 boton5.setStyle("-fx-background-color: #000");
                 boton5.setDisable(true);
+                botonRival.setId("boton5");
             }
             case 1 -> { 
                 imageView6.setImage(null);
                 boton6.setStyle("-fx-background-color: #000");
                 boton6.setDisable(true);
+                botonRival.setId("boton6");
             }
             case 2 -> { 
                 imageView7.setImage(null);
                 boton7.setStyle("-fx-background-color: #000");
                 boton7.setDisable(true);
+                botonRival.setId("boton7");
             }
             case 3 -> { 
                 imageView8.setImage(null);
                 boton8.setStyle("-fx-background-color: #000");
                 boton8.setDisable(true);
+                botonRival.setId("boton8");
             }
         }
 
@@ -226,6 +234,7 @@ public class CombateController extends AbstractController{
         botonPropio.setStyle("-fx-background-color: " + color(cartaSeleccionada));
         Carta cRival = combate.getDeckRival().get(posicionRival);
         imageViewRival.setImage(new Image("file:src/main/resources/imagenes/" + cRival.getImagen()));
+        botonRival.setStyle("-fx-background-color: " + color(cRival));
         
     }
 
