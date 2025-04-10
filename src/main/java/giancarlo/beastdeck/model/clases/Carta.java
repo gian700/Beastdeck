@@ -49,6 +49,9 @@ public class Carta extends CartaConstructor{
             if (habilidad.getActivada() && !habilidad.getGastada()) {
                 habilidad.activar(this, combate, cartaRival);
             }
+            if (!habilidad.getContinua()) {
+                habilidad.setActivada(false);
+            }
         }
     }
 
