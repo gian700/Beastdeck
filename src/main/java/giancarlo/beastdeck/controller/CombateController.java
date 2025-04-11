@@ -20,9 +20,6 @@ import javafx.scene.text.Text;
  * @version 1.0.0
  */
 public class CombateController extends AbstractController{
-
-    
-
     @FXML
     private ImageView imageView1;
 
@@ -115,6 +112,7 @@ public class CombateController extends AbstractController{
         usarBoton.setText(ConfigManager.ConfigProperties.getProperty("usar"));
         activarBoton.setText(ConfigManager.ConfigProperties.getProperty("activar"));
         combate = new Combate(ConfigManager.ConfigObjects.getJugador(), ConfigManager.ConfigObjects.getRival());
+        //combate.continuas();
         cambiarImagen();
     }
 

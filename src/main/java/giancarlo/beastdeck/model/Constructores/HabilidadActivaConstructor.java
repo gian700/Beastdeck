@@ -51,7 +51,9 @@ public abstract class HabilidadActivaConstructor {
     public String toString() {
         return
             getNombre() + ": \n" +
-            getDescripcion() + "\n";
+            getDescripcion() + "\n"
+            + getId();
+            
     }
 
 }

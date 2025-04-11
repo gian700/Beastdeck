@@ -151,4 +151,26 @@ public class CartaManager extends DatabaseManager{
         return false;
     }
 
+    public boolean updateCarta(Carta carta) throws SQLException{
+        if (carta == null) {
+            return false;
+        }
+        String query = "update carta set habActivas=? where id=?";
+
+        try {
+            PreparedStatement pStatement = conectar().prepareStatement(query);
+            pStatement.setInt(2, carta.getId());
+            pStatement.setString(1, carta.getCodigoActivas());
+            if (pStatement.executeUpdate() == 1) {
+                cerrar();
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            cerrar();
+        }
+        return false;
+    }
+
 }

@@ -23,9 +23,11 @@ public class HabilidadActManager extends DatabaseManager{
             int idint;
 
             for (String idFor : idArray) {
-                idint = Integer.parseInt(idFor);
-                String sql = "SELECT * FROM  " + "where id='"+idint+"'";
+                if (!idFor.equals("0") && !idFor.isBlank()) {
+                    idint = Integer.parseInt(idFor);
+                String sql = "SELECT * FROM HabilidadActiva " + "where id='"+idint+"'";
                 obtenerHabAct(sql, habilidades);
+                }
             }
         return habilidades;
         } catch (Exception e) {
@@ -35,7 +37,7 @@ public class HabilidadActManager extends DatabaseManager{
     }
 
     public List<HabilidadActiva> obtenerHabAct() throws SQLException {
-        String sql = "SELECT * FROM habActiva";
+        String sql = "SELECT * FROM HabilidadActiva";
         List<HabilidadActiva> habilidades = new ArrayList<>();
         return obtenerHabAct(sql, habilidades);
     }
@@ -58,7 +60,7 @@ public class HabilidadActManager extends DatabaseManager{
                 Integer id = resultado.getInt("id");
                 String nombre = resultadoIdioma.getString("nombreHabAct");
                 String descripcion = resultadoIdioma.getString("descHabAct");
-                Boolean rapida = resultado.getBoolean("rapida");
+                Boolean rapida = resultado.getString("rapida").equals("true");
                
                 HabilidadActiva habilidadActiva =  new HabilidadActiva(id, nombre, descripcion, rapida);
                 habilidades.add(habilidadActiva);

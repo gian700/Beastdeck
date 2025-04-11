@@ -26,7 +26,7 @@ public class Deck {
         this.deck = deck;
     }
 
-    public void activarContinuas(Combate combate, Carta cartaRival){
+    public void activarContinuas(Combate combate){
         for (Carta carta : deck) {
             carta.activarHabilidadContinua(combate);
         }

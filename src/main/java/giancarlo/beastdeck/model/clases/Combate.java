@@ -42,6 +42,11 @@ public class Combate extends CombateConstructor{
         turnoM();
     }
 
+    public void continuas(){
+        getJugador().getDeck().activarContinuas(this);
+        getRival().getDeck().activarContinuas(this);
+    }
+
     @Override
     public String toString() {
         return super.toString();
