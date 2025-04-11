@@ -19,10 +19,10 @@ public class CombateHabilidadesCTest {
     private Carta carta1;
     private Carta carta2;
     private Carta carta3;
-    private final HabilidadActiva habilidadActiva1 = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, pero la divide si pierdes", EnumRarezas.R, true);
-    private final HabilidadActiva habilidadActiva1C = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, pero la divide si pierdes", EnumRarezas.R, true);
-    private final HabilidadActiva habilidadActiva2 = new HabilidadActiva(2, "Inutilidad", "baja a la mitad la fuerza del rival", EnumRarezas.C, true);
-    private final HabilidadActiva habilidadActiva3 = new HabilidadActiva(3, "adaptativo", "si tienes desventaja de tipo, cambia tu tipo aleatoriamente", EnumRarezas.R, true);
+    private final HabilidadActiva habilidadActiva1 = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, pero la divide si pierdes", true);
+    private final HabilidadActiva habilidadActiva1C = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, pero la divide si pierdes", true);
+    private final HabilidadActiva habilidadActiva2 = new HabilidadActiva(2, "Inutilidad", "baja a la mitad la fuerza del rival", true);
+    private final HabilidadActiva habilidadActiva3 = new HabilidadActiva(3, "adaptativo", "si tienes desventaja de tipo, cambia tu tipo aleatoriamente", true);
 
 
     @BeforeEach

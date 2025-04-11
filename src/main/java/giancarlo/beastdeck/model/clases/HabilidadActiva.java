@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.List;
 
 import giancarlo.beastdeck.model.Constructores.HabilidadActivaConstructor;
-import giancarlo.beastdeck.model.enums.EnumRarezas;
 import giancarlo.beastdeck.model.enums.EnumTipos;
 
 /**
@@ -18,8 +17,8 @@ public class HabilidadActiva extends HabilidadActivaConstructor{
 
     public HabilidadActiva(){}
     
-    public HabilidadActiva(int id, String nombre, String descripcion, EnumRarezas rareza, boolean rapida) {
-        super(id, nombre, descripcion, rareza, rapida);
+    public HabilidadActiva(int id, String nombre, String descripcion, boolean rapida) {
+        super(id, nombre, descripcion, rapida);
     }
     
     /**

@@ -1,21 +1,17 @@
 package giancarlo.beastdeck.model.Constructores;
 
-import giancarlo.beastdeck.model.enums.EnumRarezas;
-
 public abstract class HabilidadActivaConstructor {
     int id;
     String nombre;
     String descripcion;
-    EnumRarezas rareza;
     boolean rapida;
 
     public HabilidadActivaConstructor(){}
 
-    public HabilidadActivaConstructor(int id, String nombre, String descripcion, EnumRarezas rareza, boolean rapida) {
+    public HabilidadActivaConstructor(int id, String nombre, String descripcion, boolean rapida) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.rareza = rareza;
         this.rapida = rapida;
     }
 
@@ -41,14 +37,6 @@ public abstract class HabilidadActivaConstructor {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public EnumRarezas getRareza() {
-        return this.rareza;
-    }
-
-    public void setRareza(EnumRarezas rareza) {
-        this.rareza = rareza;
     }
 
     public boolean getRapida(){

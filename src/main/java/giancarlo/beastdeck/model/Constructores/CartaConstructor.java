@@ -154,9 +154,10 @@ public abstract class CartaConstructor {
     }
 
     public String getCodigoActivas(){
-        String codigo = "0";
+        String codigo = "";
+        
         for (HabilidadActiva habilidadActiva : habilidadesActivas) {
-            codigo += ","+ habilidadActiva.getId();
+            codigo += habilidadActiva.getId() + ",";
         }
         return codigo;
     }

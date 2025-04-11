@@ -14,7 +14,7 @@ import giancarlo.beastdeck.model.clases.HabilidadActiva;
 import giancarlo.beastdeck.model.clases.Jugador;
 import giancarlo.beastdeck.model.clases.Rival;
 import giancarlo.beastdeck.model.database.CartaManager;
-import giancarlo.beastdeck.model.enums.EnumRarezas;
+import giancarlo.beastdeck.model.database.HabilidadActManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -54,11 +54,11 @@ public class InicioController extends AbstractController{
         try {
             //TODO: cuando la base de datos este lista arreglar lo de abajo
 
-            HabilidadActiva habilidadActiva1 = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, \npero la divide si pierdes", EnumRarezas.R, true);
-            HabilidadActiva habilidadActiva1C = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, \npero la divide si pierdes", EnumRarezas.R, true);
-            HabilidadActiva habilidadActiva2 = new HabilidadActiva(2, "Inutilidad", "baja a la mitad la fuerza del rival", EnumRarezas.C, true);
-            HabilidadActiva habilidadActiva2C = new HabilidadActiva(2, "Inutilidad", "baja a la mitad la fuerza del rival", EnumRarezas.C, true);
-            HabilidadActiva habilidadActiva3 = new HabilidadActiva(3, "adaptativo", "si tienes desventaja de tipo, cambia tu tipo aleatoriamente", EnumRarezas.R, true);
+            HabilidadActiva habilidadActiva1 = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, \npero la divide si pierdes", true);
+            HabilidadActiva habilidadActiva1C = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, \npero la divide si pierdes", true);
+            HabilidadActiva habilidadActiva2 = new HabilidadActiva(2, "Inutilidad", "baja a la mitad la fuerza del rival", true);
+            HabilidadActiva habilidadActiva2C = new HabilidadActiva(2, "Inutilidad", "baja a la mitad la fuerza del rival", true);
+            HabilidadActiva habilidadActiva3 = new HabilidadActiva(3, "adaptativo", "si tienes desventaja de tipo, cambia tu tipo aleatoriamente", true);
             List<Carta> cartas = new CartaManager().obtenerCartas();
             cartas.get(0).setHabilidadesActivas(new ArrayList<>(Arrays.asList(habilidadActiva1)));
             cartas.get(2).setHabilidadesActivas(new ArrayList<>(Arrays.asList(habilidadActiva1C, habilidadActiva2C)));
@@ -85,6 +85,20 @@ public class InicioController extends AbstractController{
 
     @FXML
     protected void coleccionClick(){
+        HabilidadActiva habilidadActiva1 = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, \npero la divide si pierdes", true);
+        HabilidadActiva habilidadActiva2 = new HabilidadActiva(2, "Inutilidad", "baja a la mitad la fuerza del rival", true);
+        HabilidadActiva habilidadActiva3 = new HabilidadActiva(3, "adaptativo", "si tienes desventaja de tipo, cambia tu tipo aleatoriamente", true);
+        try {
+            HabilidadActManager habilidades = new HabilidadActManager();
+            habilidades.crearHabAct(habilidadActiva1);
+            habilidades.crearHabAct(habilidadActiva2);
+            habilidades.crearHabAct(habilidadActiva3);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        
+
         cambiarPagina(coleccionBoton, "coleccion");
     }
 

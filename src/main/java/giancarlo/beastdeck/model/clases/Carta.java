@@ -80,6 +80,11 @@ public class Carta extends CartaConstructor{
         }
     }
 
+    /**
+     * Metodo que activa las habilidades de campo de una carta
+     * @param combate
+     * @param cartaRival
+     */
     public void activarPasiva(Combate combate, Carta cartaRival){
         for (HabilidadPasiva habilidad : getHabilidadesPasivas()) {
             if (habilidad.getActivada()) {

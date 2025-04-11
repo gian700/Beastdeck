@@ -105,13 +105,10 @@ public class CartaManager extends DatabaseManager{
                 int fuerza = resultado.getInt("fuerza");
                 int ordenRecomendado = resultado.getInt("ordenRec");
                 boolean desbloqueada = true;
-                String imagen = resultado.getString("Imagen");
-
-                    List<HabilidadPasiva> habilidadesPasivas = new ArrayList<>();
-                
-                    //String habActCode = resultado.getString("habActivas");
-                
-                List<HabilidadActiva> habilidadesActivas = new ArrayList<>();
+                String imagen = resultado.getString("Imagen"); 
+                String habActCode = resultado.getString("habActivas");
+                    List<HabilidadActiva> habilidadesActivas = new HabilidadActManager().obtenerHabActivaPorid(habActCode);
+                List<HabilidadPasiva> habilidadesPasivas = new ArrayList<>();
                 
                 Carta carta = new Carta(id, nombre, descripcion, rareza, tipo, habilidadesActivas, habilidadesPasivas, fuerza, ordenRecomendado, desbloqueada, imagen);
                 Cartas.add(carta);
