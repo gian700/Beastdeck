@@ -35,7 +35,7 @@ public class Rival {
 
         for (int i = 0; i < deck.getDeck().size(); i++) {
             carta = deck.getDeck().get(i);
-            if (!carta.getUtilizada()) {   
+            if (!carta.getUtilizada()) {
             orden = carta.getOrdenRecomendado();
 
             for (int j = 0; j < deckUsuario.size(); j++) {
@@ -63,9 +63,7 @@ public class Rival {
 
     @Override
     public String toString() {
-        return "{" +
-            " deck='" + getDeck() +
-            "}";
+        return ""+getDeck();
     }
 
 }

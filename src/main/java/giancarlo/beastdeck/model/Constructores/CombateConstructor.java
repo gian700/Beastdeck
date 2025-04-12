@@ -28,7 +28,7 @@ private Jugador jugador;
         this.jugador = jugador;
         this.deckPropio = jugador.getDeck();
         this.rival = rival;
-        this.deckRival = rival.getDeck().Copy();
+        this.deckRival = rival.getDeck();
         this.puntuacionPropia = 0;
         this.puntuacionRival = 0;
         this.puntuacionTemporalPropia = 0;

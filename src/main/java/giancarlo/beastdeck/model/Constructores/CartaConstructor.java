@@ -1,7 +1,9 @@
 package giancarlo.beastdeck.model.Constructores;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import giancarlo.beastdeck.config.ConfigManager;
 import giancarlo.beastdeck.model.clases.HabilidadActiva;
 import giancarlo.beastdeck.model.clases.HabilidadPasiva;
 import giancarlo.beastdeck.model.enums.EnumRarezas;
@@ -164,13 +166,15 @@ public abstract class CartaConstructor {
 
     @Override
     public String toString() {
+        String habilidadesActivasStr = getHabilidadesActivas().stream().map(HabilidadActiva::toString).collect(Collectors.joining("\n"));
+        String habilidadesPasivasStr = getHabilidadesPasivas().stream().map(HabilidadPasiva::toString).collect(Collectors.joining("\n"));
+
         return 
             (getUtilizada() ? "Utilizada \n": "")+ 
-            "id: " + getId() +" "+ getTipo() +" "+ getFuerza() +" \n" + 
-            getNombre() +" "+ getRareza() +"\n"+
-            getDescripcion() + "\n" +
-
-            (habilidadesActivas.isEmpty() ? "" : "Al usarla: \n" + getHabilidadesActivas() + "\n") +
-            (habilidadesPasivas.isEmpty() ? "" : "Al Tenerla en el campo: \n" + getHabilidadesActivas());
+            getTipo() +", "+ getFuerza() +" \n" + 
+            getNombre() +", "+ getRareza() +"\n"+
+            getDescripcion() + "\n" + "\n" +
+            (getHabilidadesActivas().isEmpty() ? "" : ConfigManager.ConfigProperties.getProperty("alUsarla") +"\n" + habilidadesActivasStr) +
+            (getHabilidadesPasivas().isEmpty() ? "" : ConfigManager.ConfigProperties.getProperty("enElCampo") +"\n" + habilidadesPasivasStr );
     }
 }
