@@ -13,10 +13,10 @@ private Jugador jugador;
     private Deck deckPropio;
     private Rival rival;
     private Deck deckRival;
-    private float puntuacionPropia;
-    private float puntuacionRival;
-    private float puntuacionTemporalPropia;
-    private float puntuacionTemporalRival;
+    private int puntuacionPropia;
+    private int puntuacionRival;
+    private int puntuacionTemporalPropia;
+    private int puntuacionTemporalRival;
     private int turno;
 
 
@@ -69,39 +69,39 @@ private Jugador jugador;
         this.deckRival = deckRival;
     }
 
-    public float getPuntuacionPropia() {
+    public int getPuntuacionPropia() {
         return this.puntuacionPropia;
     }
 
-    public void setPuntuacionPropia(float puntuacionPropia) {
+    public void setPuntuacionPropia(int puntuacionPropia) {
         this.puntuacionPropia = puntuacionPropia;
     }
 
-    public float getPuntuacionRival() {
+    public int getPuntuacionRival() {
         return this.puntuacionRival;
     }
 
-    public void setPuntuacionRival(float puntuacionRival) {
+    public void setPuntuacionRival(int puntuacionRival) {
         this.puntuacionRival = puntuacionRival;
     }
 
-    public float getPuntuacionTemporalPropia() {
+    public int getPuntuacionTemporalPropia() {
         return this.puntuacionTemporalPropia;
     }
 
-    public void setPuntuacionTemporalPropia(float puntuacionTemporalPropia) {
+    public void setPuntuacionTemporalPropia(int puntuacionTemporalPropia) {
         this.puntuacionTemporalPropia = puntuacionTemporalPropia;
     }
 
-    public float getPuntuacionTemporalRival() {
+    public int getPuntuacionTemporalRival() {
         return this.puntuacionTemporalRival;
     }
 
-    public void setPuntuacionTemporalRival(float puntuacionTemporalRival) {
+    public void setPuntuacionTemporalRival(int puntuacionTemporalRival) {
         this.puntuacionTemporalRival = puntuacionTemporalRival;
     }
 
-    public float getTurno() {
+    public int getTurno() {
         return this.turno;
     }
 

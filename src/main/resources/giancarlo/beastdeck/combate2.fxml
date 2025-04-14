@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<Pane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="giancarlo.beastdeck.controller.CombateController">
+   <children>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="487.0" spacing="15.0">
+               <children>
+                  <ImageView fx:id="imageViewGrande" fitHeight="203.0" fitWidth="233.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Pictures/Captura.PNG" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <TextArea fx:id="descripcionText" editable="false" prefHeight="200.0" prefWidth="116.0">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </TextArea>
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="58.0" prefWidth="480.0">
+                     <children>
+                        <VBox prefHeight="76.0" prefWidth="135.0">
+                           <children>
+                              <TextField fx:id="puntuacionPropia" alignment="CENTER" editable="false" text="0" />
+                              <TextField fx:id="puntuacionTemporalPropia" alignment="CENTER" editable="false" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="58.0" prefWidth="126.0">
+                           <children>
+                              <TextField fx:id="puntuacionRival" alignment="CENTER" editable="false" text="0" />
+                              <TextField fx:id="puntuacionTemporalRival" alignment="CENTER" editable="false" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="480.0" spacing="30.0">
+                     <children>
+                        <Button fx:id="usarBoton" mnemonicParsing="false" onAction="#usarClick" prefHeight="40.0" prefWidth="98.0" text="Usar" />
+                        <Button fx:id="activarBoton" mnemonicParsing="false" onAction="#botonActivar" prefHeight="40.0" prefWidth="88.0" text="Activar" />
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="600.0" prefWidth="521.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="207.0" prefWidth="520.0" spacing="20.0">
+                     <children>
+                        <Button fx:id="boton5" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
+                           <graphic>
+                              <ImageView fx:id="imageView5" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="boton6" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
+                           <graphic>
+                              <ImageView fx:id="imageView6" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="boton7" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
+                           <graphic>
+                              <ImageView fx:id="imageView7" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="boton8" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
+                           <graphic>
+                              <ImageView fx:id="imageView8" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <VBox alignment="CENTER" prefHeight="183.0" prefWidth="230.0" spacing="15.0">
+                     <children>
+                        <Button fx:id="botonRival" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="110.0" prefWidth="90.0">
+                           <graphic>
+                              <ImageView fx:id="imageViewRival" fitHeight="100.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                        <Line endX="100.0" startX="-418.24615478515625" startY="-3.0029377937316895" />
+                        <Button fx:id="botonPropio" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="110.0" prefWidth="90.0">
+                           <graphic>
+                              <ImageView fx:id="imageViewPropio" fitHeight="100.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="207.0" prefWidth="520.0" spacing="20.0">
+                     <children>
+                        <Button fx:id="boton1" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
+                           <graphic>
+                              <ImageView fx:id="imageView1" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="boton2" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
+                           <graphic>
+                              <ImageView fx:id="imageView2" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="boton3" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
+                           <graphic>
+                              <ImageView fx:id="imageView3" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="boton4" mnemonicParsing="false" onAction="#botonVerCarta" prefHeight="60.0" prefWidth="45.0">
+                           <graphic>
+                              <ImageView fx:id="imageView4" fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Text fx:id="textMensage" layoutX="69.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="265.0" />
+      <Line endX="100.0" layoutX="380.0" layoutY="-1.0" startX="100.0" startY="603.0" />
+   </children>
+</Pane>

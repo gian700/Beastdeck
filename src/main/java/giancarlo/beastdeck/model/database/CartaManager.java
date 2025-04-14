@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import giancarlo.beastdeck.config.ConfigManager;
@@ -15,9 +14,6 @@ import giancarlo.beastdeck.model.enums.EnumRarezas;
 import giancarlo.beastdeck.model.enums.EnumTipos;
 
 public class CartaManager extends DatabaseManager{
-
-    List<EnumTipos> tipos = new ArrayList<>(Arrays.asList(EnumTipos.AGUA, EnumTipos.FUEGO, EnumTipos.PLANTA, EnumTipos.BESTIA, EnumTipos.TIERRA, EnumTipos.ELECTRICO, EnumTipos.VOLADOR));
-    List<EnumRarezas> rarezas = new ArrayList<>(Arrays.asList(EnumRarezas.C, EnumRarezas.R, EnumRarezas.SR, EnumRarezas.UR, EnumRarezas.LEGENDARY));
 
     public CartaManager() throws SQLException {
         super();
@@ -40,8 +36,7 @@ public class CartaManager extends DatabaseManager{
 
     public List<Carta> obtenerCartaPorRareza(EnumRarezas rareza) {
         try {
-            int posicion = rarezas.indexOf(rareza);
-            String sql = "SELECT * FROM Carta " + "where rareza='"+posicion+"'";
+            String sql = "SELECT * FROM Carta " + "where rareza='"+rareza.toString()+"'";
             ArrayList<Carta> cartas = obtenerCarta(sql);
             return cartas;
 
@@ -53,8 +48,7 @@ public class CartaManager extends DatabaseManager{
 
     public List<Carta> obtenerCartaPorTipo(EnumTipos tipo) {
         try {
-            int posicion = tipos.indexOf(tipo);
-            String sql = "SELECT * FROM Carta " + "where tipo='"+posicion+"'";
+            String sql = "SELECT * FROM Carta " + "where tipo='"+tipo.toString()+"'";
             ArrayList<Carta> cartas = obtenerCarta(sql);
             return cartas;
 
@@ -65,10 +59,8 @@ public class CartaManager extends DatabaseManager{
     }
 
     public List<Carta> obtenerCartaPorRarezayTipo(EnumRarezas rareza, EnumTipos tipo ) {
-        int posicionT = tipos.indexOf(tipo);
-        int posicionR = rarezas.indexOf(rareza);
         try {
-            String sql = "SELECT * FROM Carta " + "where rareza='"+posicionR+"' AND tipo='" + posicionT + "'";
+            String sql = "SELECT * FROM Carta " + "where rareza='"+rareza.toString()+"' AND tipo='" + tipo.toString() + "'";
             ArrayList<Carta> Cartas = obtenerCarta(sql);
             
             return Cartas;
@@ -100,8 +92,8 @@ public class CartaManager extends DatabaseManager{
                 Integer id = resultado.getInt("id");
                 String nombre = resultadoIdioma.getString("nombreCarta");
                 String descripcion = resultadoIdioma.getString("descCarta");
-                EnumRarezas rareza = rarezas.get(resultado.getInt("rareza"));
-                EnumTipos tipo = tipos.get(resultado.getInt("tipo"));
+                EnumRarezas rareza = EnumRarezas.valueOf(resultado.getString("rareza"));
+                EnumTipos tipo = EnumTipos.valueOf(resultado.getString("tipo"));
                 int fuerza = resultado.getInt("fuerza");
                 int ordenRecomendado = resultado.getInt("ordenRec");
                 boolean desbloqueada = true;
@@ -131,13 +123,13 @@ public class CartaManager extends DatabaseManager{
         try {
             PreparedStatement pStatement = conectar().prepareStatement(query);
             pStatement.setInt(1, carta.getId());
-            pStatement.setInt(2, rarezas.indexOf(carta.getRareza()));
-            pStatement.setInt(3, tipos.indexOf(carta.getTipo()));
+            pStatement.setString(2, carta.getRareza().toString());
+            pStatement.setString(3, carta.getTipo().toString());
             pStatement.setString(4, carta.getCodigoActivas());
             pStatement.setString(5, "0");
             pStatement.setInt(6, carta.getFuerza());
             pStatement.setInt(7, carta.getOrdenRecomendado());
-            pStatement.setInt(8, 1);
+            pStatement.setString(8, (carta.getDesbloqueada()? "true":"false"));
             pStatement.setString(9, carta.getImagen());
             if (pStatement.executeUpdate() == 1) {
                 cerrar();

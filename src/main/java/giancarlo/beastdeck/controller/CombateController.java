@@ -7,13 +7,18 @@ import giancarlo.beastdeck.config.ConfigManager;
 import giancarlo.beastdeck.controller.abstracta.AbstractController;
 import giancarlo.beastdeck.model.clases.Carta;
 import giancarlo.beastdeck.model.clases.Combate;
+import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 /*
  * @author Giancarlo
@@ -93,10 +98,16 @@ public class CombateController extends AbstractController{
     private Text textMensage;
 
     @FXML
-    private Text puntuacionRival;
+    private TextField puntuacionRival;
 
     @FXML
-    private Text puntuacionPropia;
+    private TextField puntuacionPropia;
+
+    @FXML
+    private TextField puntuacionTemporalRival;
+
+    @FXML
+    private TextField puntuacionTemporalPropia;
 
     @FXML
     private TextArea descripcionText;
@@ -106,6 +117,8 @@ public class CombateController extends AbstractController{
     private Carta cartaSeleccionada;
 
     private int posicion;
+
+    private Timeline animacionPuntuacionGeneral;
 
     @FXML
     protected void initialize() {
@@ -120,6 +133,7 @@ public class CombateController extends AbstractController{
 
     @FXML
     protected void botonVerCarta(ActionEvent event){
+        cancelarAnimacion();
         Button boton = (Button) event.getSource();
         String id = boton.getId();
 
@@ -152,16 +166,19 @@ public class CombateController extends AbstractController{
             textMensage.setText(ConfigManager.ConfigProperties.getProperty("utilizada"));
             return;
         }
-
+        
         int opcionRival = combate.getRival().mejorOpcion(combate.getDeckPropio());
         Carta cRival = combate.getDeckRival().get(opcionRival);
+        int valorInicial = combate.getPuntuacionPropia();
+        int valorInicialRival = combate.getPuntuacionRival();
         cRival.setUtilizada(true);
         cartaSeleccionada.setUtilizada(true);
         combate.ronda(cartaSeleccionada, cRival);
         cambiarImagen(opcionRival);
         descripcionText.setText(cartaSeleccionada.toString());
-        puntuacionPropia.setText(""+combate.getPuntuacionPropia());
-        puntuacionRival.setText(""+combate.getPuntuacionRival());
+        puntuacionTemporalRival.setText(""+combate.getPuntuacionTemporalRival());
+        puntuacionTemporalPropia.setText(""+combate.getPuntuacionTemporalPropia());
+        animacionNumeros(valorInicial, valorInicialRival);
 
         if (combate.getTurno()==0) {
             if (combate.getPuntuacionPropia()>combate.getPuntuacionRival()) {
@@ -245,9 +262,13 @@ public class CombateController extends AbstractController{
         this.posicion=posicion;
         if (posicion<4) {
             carta = combate.getDeckPropio().get(posicion);
+            puntuacionTemporalRival.setText("");
+            puntuacionTemporalPropia.setText(""+ carta.getFuerza()*100);
         }else{
             posicion -= 4;
             carta = combate.getDeckRival().get(posicion);
+            puntuacionTemporalPropia.setText("");
+            puntuacionTemporalRival.setText(""+ carta.getFuerza()*100);
         }
         imageViewGrande.setImage(new Image("file:src/main/resources/imagenes/" + carta.getImagen()));
         descripcionText.setText(carta.toString());
@@ -286,5 +307,60 @@ public class CombateController extends AbstractController{
             return;
         }
         cambiarPagina(activarBoton, "inicio");
+    }
+
+    protected void animacionNumeros(int valorInicial, int valorInicialRival){
+        if (animacionPuntuacionGeneral != null) animacionPuntuacionGeneral.stop();
+
+            PauseTransition pausa = new PauseTransition(Duration.seconds(1));
+            pausa.setOnFinished(event -> {
+                Timeline anim1 = crearAnimacionPuntuacion(puntuacionPropia, valorInicial, combate.getPuntuacionPropia());
+                Timeline anim2 = crearAnimacionPuntuacion(puntuacionRival, valorInicialRival, combate.getPuntuacionRival());
+                Timeline anim3 = crearAnimacionPuntuacion(puntuacionTemporalPropia, combate.getPuntuacionTemporalPropia(), 0);
+                Timeline anim4 = crearAnimacionPuntuacion(puntuacionTemporalRival, combate.getPuntuacionTemporalRival(), 0);
+            
+                animacionPuntuacionGeneral = new Timeline();
+                animacionPuntuacionGeneral.getKeyFrames().addAll(anim1.getKeyFrames());
+                animacionPuntuacionGeneral.getKeyFrames().addAll(anim2.getKeyFrames());
+                animacionPuntuacionGeneral.getKeyFrames().addAll(anim3.getKeyFrames());
+                animacionPuntuacionGeneral.getKeyFrames().addAll(anim4.getKeyFrames());
+            
+                animacionPuntuacionGeneral.play();
+            });
+            pausa.play();
+    }
+
+    protected Timeline crearAnimacionPuntuacion(TextField texto, int inicio, int fin) {
+        Timeline timeline = new Timeline();
+        int duracion = 900;
+        int pasos = 50;
+        double incremento = (double)(fin - inicio) / pasos;
+    
+        for (int i = 0; i <= pasos; i++) {
+            int frame = i;
+            KeyFrame keyFrame = new KeyFrame(
+                Duration.millis(i * (duracion / pasos)),
+                e -> {
+                    if (puntuacionTemporalRival.getText().isEmpty()) {
+                        
+                        cancelarAnimacion();
+                        return;
+                    }
+
+                    int valor = inicio + (int)Math.round(incremento * frame);
+                    texto.setText(String.valueOf(valor));
+                }
+            );
+            timeline.getKeyFrames().add(keyFrame);
+        }
+        return timeline;
+    }
+
+    public void cancelarAnimacion() {
+        if (animacionPuntuacionGeneral != null) {
+            animacionPuntuacionGeneral.stop();
+            puntuacionPropia.setText(""+combate.getPuntuacionPropia());
+            puntuacionRival.setText("" +combate.getPuntuacionRival()); 
+        }
     }
 }

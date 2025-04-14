@@ -50,16 +50,9 @@ public class InicioController extends AbstractController{
     @FXML
     protected void newRunClick(){
         try {
-            //TODO: cuando la base de datos este lista arreglar lo de abajo
+
             List<Carta> cartas = new CartaManager().obtenerCartas();
-/*
-            HabilidadActiva habilidadActiva1 = new HabilidadActiva(1, "Apuesta clara", "multiplica por 2 la fuerza de la carta si ganas en tipo, \npero la divide si pierdes", true);
-            HabilidadActiva habilidadActiva2 = new HabilidadActiva(2, "Inutilidad", "baja a la mitad la fuerza del rival", true);
-            HabilidadActiva habilidadActiva3 = new HabilidadActiva(3, "adaptativo", "si tienes desventaja de tipo, cambia tu tipo aleatoriamente", true);
-            */
-            
-            //TODO: cuando la base de datos este lista arreglar lo de encima
-            
+
             Collections.shuffle(cartas);
             List<Carta> cartasPropias = new ArrayList<>(Arrays.asList(cartas.get(0), cartas.get(1), cartas.get(2), cartas.get(3)));
             List<Carta> cartasRival = new ArrayList<>(Arrays.asList(cartas.get(4), cartas.get(5), cartas.get(6), cartas.get(7)));
@@ -68,7 +61,7 @@ public class InicioController extends AbstractController{
             ConfigManager.ConfigObjects.setJugador(new Jugador(new Deck(cartasRival)));
 
             
-            cambiarPagina(newRunBoton, "combate");
+            cambiarPagina(newRunBoton, "combate2");
         } catch (SQLException e) {
             e.printStackTrace();
         }

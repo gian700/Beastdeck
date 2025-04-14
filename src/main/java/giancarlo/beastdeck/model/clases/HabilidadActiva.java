@@ -51,11 +51,11 @@ public class HabilidadActiva extends HabilidadActivaConstructor{
     }
 
     /**
-     * Habilidad que le baja a la mitad la fuerza, redondeando hacia bajo en caso, 
+     * Habilidad que le baja 1 la fuerza a la carta rival 
      * @param cartaRival
      */
     private void inutilidad(Carta cartaRival){
-        cartaRival.setFuerza(cartaRival.getFuerza()/2);
+        cartaRival.setFuerza(cartaRival.getFuerza()-1);
     }
 
     /**
