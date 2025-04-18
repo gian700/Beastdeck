@@ -164,6 +164,15 @@ public abstract class CartaConstructor {
         return codigo;
     }
 
+    public String getCodigoPasivas(){
+        String codigo = "";
+        
+        for (HabilidadPasiva habilidadPasiva : habilidadesPasivas) {
+            codigo += habilidadPasiva.getId() + ",";
+        }
+        return codigo;
+    }
+
     @Override
     public String toString() {
         String habilidadesActivasStr = getHabilidadesActivas().stream().map(HabilidadActiva::toString).collect(Collectors.joining("\n"));

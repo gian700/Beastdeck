@@ -85,10 +85,10 @@ public class Carta extends CartaConstructor{
      * @param combate
      * @param cartaRival
      */
-    public void activarPasiva(Combate combate, Carta cartaRival){
+    public void activarPasiva(Combate combate, Carta cartaPropia, Carta cartaRival){
         for (HabilidadPasiva habilidad : getHabilidadesPasivas()) {
-            if (habilidad.getActivada()) {
-                habilidad.activar(this, combate, cartaRival);
+            if (habilidad.getActivada() && !habilidad.getContinua()) {
+                habilidad.activar(cartaPropia, combate, cartaRival);
             }
         }
     }

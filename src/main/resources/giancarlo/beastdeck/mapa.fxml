@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="giancarlo.beastdeck.controller.MapaController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="200.0" prefWidth="427.0">
+         <children>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="opcion8" onAction="#usarClick" mnemonicParsing="false" styleClass="boton-circular" />
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="132.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="atras"  mnemonicParsing="false" text="&lt;-" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" />
+                        <Button fx:id="adelante" mnemonicParsing="false" text="-&gt;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="opcion1" onAction="#usarClick" mnemonicParsing="false" styleClass="boton-circular" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+               </children>
+            </VBox>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="opcion2" onAction="#usarClick" mnemonicParsing="false" styleClass="boton-circular" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="200.0" prefWidth="450.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="opcion7" onAction="#usarClick" mnemonicParsing="false" styleClass="boton-circular" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="inicio" mnemonicParsing="false" styleClass="boton-circular" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="opcion3" onAction="#usarClick" mnemonicParsing="false" styleClass="boton-circular" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="200.0" prefWidth="450.0">
+         <children>
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="opcion6" onAction="#usarClick" mnemonicParsing="false" styleClass="boton-circular" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="opcion5" onAction="#usarClick" mnemonicParsing="false" styleClass="boton-circular" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="opcion4" onAction="#usarClick" mnemonicParsing="false" styleClass="boton-circular" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

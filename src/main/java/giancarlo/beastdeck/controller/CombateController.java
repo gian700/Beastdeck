@@ -12,7 +12,10 @@ import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -25,99 +28,14 @@ import javafx.util.Duration;
  * @version 1.0.0
  */
 public class CombateController extends AbstractController{
-    @FXML
-    private ImageView imageView1;
-
-    @FXML
-    private Button boton1;
-
-    @FXML
-    private ImageView imageView2;
-
-    @FXML
-    private Button boton2;
-
-    @FXML
-    private ImageView imageView3;
-
-    @FXML
-    private Button boton3;
-
-    @FXML
-    private ImageView imageView4;
-
-    @FXML
-    private Button boton4;
-
-    @FXML
-    private ImageView imageView5;
-
-    @FXML
-    private Button boton5;
-
-    @FXML
-    private ImageView imageView6;
-
-    @FXML
-    private Button boton6;
-
-    @FXML
-    private ImageView imageView7;
-
-    @FXML
-    private Button boton7;
-
-    @FXML
-    private ImageView imageView8;
-
-    @FXML
-    private Button boton8;
-
-    @FXML
-    private ImageView imageViewGrande;
-
-    @FXML
-    private ImageView imageViewPropio;
-
-    @FXML
-    private Button botonPropio;
-
-    @FXML
-    private ImageView imageViewRival;
-
-    @FXML
-    private Button botonRival;
-
-    @FXML
-    private Button usarBoton;
-
-    @FXML
-    private Button activarBoton;
-
-    @FXML
-    private Text textMensage;
-
-    @FXML
-    private TextField puntuacionRival;
-
-    @FXML
-    private TextField puntuacionPropia;
-
-    @FXML
-    private TextField puntuacionTemporalRival;
-
-    @FXML
-    private TextField puntuacionTemporalPropia;
-
-    @FXML
-    private TextArea descripcionText;
-
+    @FXML private Button boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, botonPropio, botonRival, usarBoton, activarBoton;
+    @FXML private ImageView imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7, imageView8, imageViewGrande, imageViewPropio, imageViewRival;
+    @FXML private Text textMensage;
+    @FXML private TextField puntuacionRival, puntuacionPropia, puntuacionTemporalRival, puntuacionTemporalPropia;
+    @FXML private TextArea descripcionText;
     private Combate combate;
-
     private Carta cartaSeleccionada;
-
     private int posicion;
-
     private Timeline animacionPuntuacionGeneral;
 
     @FXML
@@ -125,12 +43,14 @@ public class CombateController extends AbstractController{
         usarBoton.setText(ConfigManager.ConfigProperties.getProperty("usar"));
         activarBoton.setText(ConfigManager.ConfigProperties.getProperty("activar"));
         combate = new Combate(ConfigManager.ConfigObjects.getJugador(), ConfigManager.ConfigObjects.getRival());
-        //combate.continuas();
+        combate.continuas();
         cambiarImagen();
     }
 
-    
-
+    /**
+     * Boton que permite ver en grande la carta seleccionada
+     * @param event
+     */
     @FXML
     protected void botonVerCarta(ActionEvent event){
         cancelarAnimacion();
@@ -149,7 +69,9 @@ public class CombateController extends AbstractController{
         }
     }
 
-
+    /**
+     * Metodo que utiliza la carta seleccionada
+     */
     @FXML
     protected void usarClick() {
         if (cartaSeleccionada == null){
@@ -179,17 +101,15 @@ public class CombateController extends AbstractController{
         puntuacionTemporalRival.setText(""+combate.getPuntuacionTemporalRival());
         puntuacionTemporalPropia.setText(""+combate.getPuntuacionTemporalPropia());
         animacionNumeros(valorInicial, valorInicialRival);
-
-        if (combate.getTurno()==0) {
-            if (combate.getPuntuacionPropia()>combate.getPuntuacionRival()) {
-                activarBoton.setText(ConfigManager.ConfigProperties.getProperty("ganar"));
-            }else{
-                activarBoton.setText(ConfigManager.ConfigProperties.getProperty("perder"));
-            }
-        }
-         
+        if (combate.getTurno()<=0) {
+            AlertaResultados();
+        }   
     }
 
+    /**
+     * Metodo que cambia la carta seleccionada
+     * @param posicionRival
+     */
     protected void cambiarImagen(int posicionRival){
         cambiarEstado(false);
         cambiarImagen();
@@ -248,13 +168,17 @@ public class CombateController extends AbstractController{
         }
 
         imageViewPropio.setImage(new Image("file:src/main/resources/imagenes/" + cartaSeleccionada.getImagen()));
-        botonPropio.setStyle("-fx-background-color: " + color(cartaSeleccionada));
+        botonPropio.setStyle("-fx-background-color: " + color(cartaSeleccionada.getTipo()));
         Carta cRival = combate.getDeckRival().get(posicionRival);
         imageViewRival.setImage(new Image("file:src/main/resources/imagenes/" + cRival.getImagen()));
-        botonRival.setStyle("-fx-background-color: " + color(cRival));
+        botonRival.setStyle("-fx-background-color: " + color(cRival.getTipo()));
     }
 
-
+    /**
+     * Metodo que cambia la imagen de la carta seleccionada
+     * @param boton
+     * @param posicion
+     */
     protected void cambiarImagen(Button boton, int posicion){
 
         textMensage.setText("");
@@ -275,6 +199,9 @@ public class CombateController extends AbstractController{
         cartaSeleccionada = carta;
     }
 
+    /**
+     * Metodo que prepara la imagen de todas las cartas
+     */
     protected void cambiarImagen(){
         List<ImageView> imageViews = List.of(imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7, imageView8);
         List<Button> botones = List.of(boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8);
@@ -286,10 +213,14 @@ public class CombateController extends AbstractController{
         for (int i = 0; i < cartas.size(); i++) {
             Carta carta = cartas.get(i);
             imageViews.get(i).setImage(new Image("file:src/main/resources/imagenes/" + carta.getImagen()));
-            botones.get(i).setStyle("-fx-background-color: " + color(carta));
+            botones.get(i).setStyle("-fx-background-color: " + color(carta.getTipo()));
         }
     }
 
+    /**
+     * Metodo que cambia el estado de todos los botones
+     * @param value
+     */
     protected void cambiarEstado(boolean value){
         boton1.setDisable(value);
         boton2.setDisable(value);
@@ -301,6 +232,10 @@ public class CombateController extends AbstractController{
         boton8.setDisable(value);
     }
 
+    /**
+     * TODO:metodo aun no hecho
+     */
+    @FXML
     public void botonActivar(){
         if (activarBoton.getText().equals(ConfigManager.ConfigProperties.getProperty("activar"))) {
             textMensage.setText(ConfigManager.ConfigProperties.getProperty("proximamente"));
@@ -309,10 +244,15 @@ public class CombateController extends AbstractController{
         cambiarPagina(activarBoton, "inicio");
     }
 
+    /**
+     * Metodo que permite animar los valores de puntuacion
+     * @param valorInicial
+     * @param valorInicialRival
+     */
     protected void animacionNumeros(int valorInicial, int valorInicialRival){
         if (animacionPuntuacionGeneral != null) animacionPuntuacionGeneral.stop();
 
-            PauseTransition pausa = new PauseTransition(Duration.seconds(1));
+            PauseTransition pausa = new PauseTransition(Duration.millis(300));
             pausa.setOnFinished(event -> {
                 Timeline anim1 = crearAnimacionPuntuacion(puntuacionPropia, valorInicial, combate.getPuntuacionPropia());
                 Timeline anim2 = crearAnimacionPuntuacion(puntuacionRival, valorInicialRival, combate.getPuntuacionRival());
@@ -330,6 +270,13 @@ public class CombateController extends AbstractController{
             pausa.play();
     }
 
+    /**
+     * Metodo que comprueba cuando tiene que cambiar los valores
+     * @param texto
+     * @param inicio
+     * @param fin
+     * @return
+     */
     protected Timeline crearAnimacionPuntuacion(TextField texto, int inicio, int fin) {
         Timeline timeline = new Timeline();
         int duracion = 900;
@@ -356,11 +303,41 @@ public class CombateController extends AbstractController{
         return timeline;
     }
 
-    public void cancelarAnimacion() {
+    /**
+     * Acceso rapido para cancelar la animacion
+     */
+    protected void cancelarAnimacion() {
         if (animacionPuntuacionGeneral != null) {
             animacionPuntuacionGeneral.stop();
             puntuacionPropia.setText(""+combate.getPuntuacionPropia());
             puntuacionRival.setText("" +combate.getPuntuacionRival()); 
+        }
+    }
+
+    /**
+     * Configuracion del alert de fin del combate
+     */
+    protected void AlertaResultados(){
+        Alert alerta = new Alert(Alert.AlertType.NONE);
+        DialogPane dialogPane = alerta.getDialogPane();
+        dialogPane.setPrefSize(400, 100);
+
+        alerta.setTitle("Resultado del Combate");
+        alerta.setHeaderText(null);
+        ButtonType botonCerrar = new ButtonType("volver al menu");
+        if (combate.getPuntuacionPropia()>combate.getPuntuacionRival()) {
+            alerta.setContentText(ConfigManager.ConfigProperties.getProperty("ganar"));
+        }else{
+            alerta.setHeaderText(ConfigManager.ConfigProperties.getProperty("perder"));
+        }
+        alerta.getButtonTypes().setAll(botonCerrar);
+        alerta.initOwner(activarBoton.getScene().getWindow());
+    
+        alerta.showAndWait(); 
+        if (combate.getPuntuacionPropia()>combate.getPuntuacionRival()) {
+            cambiarPagina(boton1, "mapa");
+        }else{
+            cambiarPagina(boton1, "inicio");
         }
     }
 }

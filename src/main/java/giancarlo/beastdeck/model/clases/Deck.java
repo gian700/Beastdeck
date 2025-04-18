@@ -32,9 +32,9 @@ public class Deck {
         }
     }
 
-    public void activarPasiva(Combate combate, Carta cartaRival){
+    public void activarPasiva(Combate combate, Carta cartaPropia, Carta cartaRival){
         for (Carta carta : deck) {
-            carta.activarPasiva(combate, cartaRival);
+            carta.activarPasiva(combate, cartaPropia, cartaRival);
         }
     }
 

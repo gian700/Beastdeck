@@ -99,8 +99,9 @@ public class CartaManager extends DatabaseManager{
                 boolean desbloqueada = true;
                 String imagen = resultado.getString("Imagen"); 
                 String habActCode = resultado.getString("habActivas");
+                String habPasCode = resultado.getString("habPass");
                     List<HabilidadActiva> habilidadesActivas = new HabilidadActManager().obtenerHabActivaPorid(habActCode);
-                List<HabilidadPasiva> habilidadesPasivas = new ArrayList<>();
+                List<HabilidadPasiva> habilidadesPasivas = new HabilidadPasivaManager().obtenerHabPasivaPorid(habPasCode);
                 
                 Carta carta = new Carta(id, nombre, descripcion, rareza, tipo, habilidadesActivas, habilidadesPasivas, fuerza, ordenRecomendado, desbloqueada, imagen);
                 Cartas.add(carta);
@@ -126,7 +127,7 @@ public class CartaManager extends DatabaseManager{
             pStatement.setString(2, carta.getRareza().toString());
             pStatement.setString(3, carta.getTipo().toString());
             pStatement.setString(4, carta.getCodigoActivas());
-            pStatement.setString(5, "0");
+            pStatement.setString(5, carta.getCodigoPasivas());
             pStatement.setInt(6, carta.getFuerza());
             pStatement.setInt(7, carta.getOrdenRecomendado());
             pStatement.setString(8, (carta.getDesbloqueada()? "true":"false"));

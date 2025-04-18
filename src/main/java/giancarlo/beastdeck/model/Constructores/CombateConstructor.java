@@ -49,6 +49,10 @@ private Jugador jugador;
         return this.deckPropio.getDeck();
     }
 
+    public Deck getDeckPropioDeck() {
+        return this.deckPropio;
+    }
+
     public void setDeckPropio(Deck deckPropio) {
         this.deckPropio = deckPropio;
     }
@@ -63,6 +67,10 @@ private Jugador jugador;
 
     public List<Carta> getDeckRival() {
         return this.deckRival.getDeck();
+    }
+
+    public Deck getDeckRivalDeck() {
+        return this.deckRival;
     }
 
     public void setDeckRival(Deck deckRival) {
