@@ -6,20 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class InicioController extends AbstractController{
-    @FXML
-    private Button ajustesBoton;
-
-    @FXML
-    private Button newRunBoton;
-
-    @FXML
-    private Button coleccionBoton;
-
-    @FXML
-    private Button logrosBroton;
-
-    @FXML
-    private Button usuarioBoton;
+    @FXML private Button ajustesBoton, newRunBoton, coleccionBoton, logrosBroton, usuarioBoton;
 
     @FXML
     protected void initialize() {

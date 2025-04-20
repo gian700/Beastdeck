@@ -25,6 +25,9 @@ public class Combate extends CombateConstructor{
         if (cartaPropia == null || cartaRival == null) {
             throw new IllegalArgumentException("Carta nula");
         }
+        this.setCartaPropia(cartaPropia);
+        this.setCartaRival(cartaRival);
+        
         getDeckPropioDeck().activarPasiva(this, cartaPropia, cartaRival);
         getDeckRivalDeck().activarPasiva(this, cartaPropia, cartaRival);
         

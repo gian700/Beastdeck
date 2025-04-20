@@ -9,15 +9,12 @@ import giancarlo.beastdeck.model.clases.Jugador;
 import giancarlo.beastdeck.model.clases.Rival;
 
 public abstract class CombateConstructor extends TipoFuncionamiento{
-private Jugador jugador;
+    private Jugador jugador;
     private Deck deckPropio;
     private Rival rival;
     private Deck deckRival;
-    private int puntuacionPropia;
-    private int puntuacionRival;
-    private int puntuacionTemporalPropia;
-    private int puntuacionTemporalRival;
-    private int turno;
+    private int puntuacionPropia, puntuacionRival, puntuacionTemporalPropia, puntuacionTemporalRival, turno;
+    private Carta cartaPropia, cartaRival;
 
 
     public CombateConstructor() {
@@ -120,6 +117,23 @@ private Jugador jugador;
     public void turnoM(){
         this.turno = turno-1;
     }
+
+    public Carta getCartaPropia() {
+        return this.cartaPropia;
+    }
+
+    public void setCartaPropia(Carta cartaPropia) {
+        this.cartaPropia = cartaPropia;
+    }
+
+    public Carta getCartaRival() {
+        return this.cartaRival;
+    }
+
+    public void setCartaRival(Carta cartaRival) {
+        this.cartaRival = cartaRival;
+    }
+
     @Override
     public String toString() {
         return "{" +

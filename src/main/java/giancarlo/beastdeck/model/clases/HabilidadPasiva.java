@@ -35,7 +35,6 @@ public class HabilidadPasiva extends HabilidadPasivaConstructor{
                 carta.setFuerza(carta.getFuerza()+1);
             }
         }
-        
     }
 
     @Override

@@ -32,6 +32,17 @@ public class HabilidadActiva extends HabilidadActivaConstructor{
             case 1 -> apuestaClara(combate, cartaPropia, cartaRival);
             case 2 -> inutilidad(cartaRival);
             case 3 -> adaptativo(combate, cartaPropia, cartaRival);
+            case 4 -> explosionPuntual(combate, cartaPropia);
+            case 5 -> explosionCancelable(combate, cartaPropia, cartaRival);
+            case 6 -> neutralidad(combate, cartaPropia, cartaRival, EnumTipos.AGUA);
+            case 7 -> neutralidad(combate, cartaPropia, cartaRival, EnumTipos.FUEGO);
+            case 8 -> neutralidad(combate, cartaPropia, cartaRival, EnumTipos.BESTIA);
+            case 9 -> neutralidad(combate, cartaPropia, cartaRival, EnumTipos.VOLADOR);
+            case 10 -> CambiarTipo(cartaPropia, EnumTipos.AGUA);
+            case 11 -> CambiarTipo(cartaPropia, EnumTipos.TIERRA);
+            case 12 -> CambiarTipo(cartaPropia, EnumTipos.PLANTA);
+            case 13 -> CambiarTipo(cartaPropia, EnumTipos.ELECTRICO);
+            case 14 -> robaFuerzas(cartaPropia, cartaRival);
             default -> throw new AssertionError("habilidad no existente");
         }
     }
@@ -70,10 +81,87 @@ public class HabilidadActiva extends HabilidadActivaConstructor{
             List<EnumTipos> tipos = new ArrayList<>(Arrays.asList(EnumTipos.AGUA, EnumTipos.FUEGO, EnumTipos.PLANTA, EnumTipos.BESTIA, EnumTipos.TIERRA, EnumTipos.ELECTRICO, EnumTipos.VOLADOR));
             tipos.remove(cartaPropia.getTipo());
             Collections.shuffle(tipos);
-            cartaPropia.setTipo(tipos.get(0));
+            CambiarTipo(cartaPropia, tipos.get(0));
         }
     }
 
+    /**
+     * Metodo que cambia una carta de tipo
+     * @param cambiar
+     * @param tipo
+     */
+    private void CambiarTipo(Carta cambiar, EnumTipos tipo){
+        cambiar.setTipo(tipo);
+    }
+
+    /**
+     * Habilidad que multiplica la puntuacion total, dependiendo del turno 
+     * @param cartaRival
+     */
+    private void explosionPuntual(Combate combate, Carta cartaPropia){
+        boolean esPropia = cartaPropia.equals(combate.getCartaPropia());
+        int nuevaPuntuacion = (esPropia ? combate.getPuntuacionPropia() : combate.getPuntuacionRival()) * (combate.getTurno() - 1);
+
+        if (esPropia) {
+            combate.setPuntuacionPropia(nuevaPuntuacion);
+        } else {
+            combate.setPuntuacionRival(nuevaPuntuacion);
+        }
+    }
+
+    /**
+         * Habilidad que multiplica la puntuacion total en el 3 turno si no pierdes por tipo, en el ultimo turno la multiplicacion sera de 0
+     * @param cartaRival
+     */
+    private void explosionCancelable(Combate combate, Carta cartaPropia, Carta cartaRival){
+
+        float ganador = combate.comprobarGanador(cartaPropia, cartaRival);
+        if (combate.getTurno() > 2 || ganador == 0.5) {
+            return;
+        }
+
+        boolean esPropia = cartaPropia.equals(combate.getCartaPropia());
+        int nuevaPuntuacion = (esPropia ? combate.getPuntuacionPropia() : combate.getPuntuacionRival()) * (combate.getTurno()==2 ? 3:0);
+        
+        if (esPropia) {
+            combate.setPuntuacionPropia(nuevaPuntuacion);
+        } else {
+            combate.setPuntuacionRival(nuevaPuntuacion);
+        }
+    }
+
+    /**
+     * Habilidad que hace la batalla neutra si el rival es de un tipo especificado
+     * @param cartaPropia
+     * @param cartaRival
+     */
+    private void neutralidad(Combate combate, Carta cartaPropia, Carta cartaRival, EnumTipos tipo){
+        if (cartaRival.getTipo() != tipo) {
+            return;
+        }
+        float ganador = combate.comprobarGanador(cartaPropia, cartaRival);
+        if (ganador == 2) {
+            cartaPropia.setFuerza(cartaPropia.getFuerza()/2);
+            cartaRival.setFuerza(cartaRival.getFuerza()*2);
+        }
+        if (ganador == 0.5) {
+            cartaPropia.setFuerza(cartaPropia.getFuerza()*2);
+            cartaRival.setFuerza(cartaRival.getFuerza()/2);
+        }
+    }
+
+    /**
+     * Habilidad que intercambia la fuerza de las cartas
+     * @param cartaPropia
+     * @param cartaRival
+     */
+    private void robaFuerzas(Carta cartaPropia, Carta cartaRival){
+        int fuerza = cartaPropia.getFuerza();
+        cartaPropia.setFuerza(cartaRival.getFuerza());
+        cartaRival.setFuerza(fuerza);
+    }
+
+    
 
     @Override
     public String toString() {
