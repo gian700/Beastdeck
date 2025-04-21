@@ -21,6 +21,8 @@ public abstract class CartaConstructor {
     private int ordenRecomendado;
     private boolean utilizada;
     private boolean desbloqueada;
+    private boolean pasivasActivadas;
+    private boolean gastada;
     private String imagen;
 
 
@@ -154,6 +156,27 @@ public abstract class CartaConstructor {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+
+    public boolean getPasivasActivadas() {
+        return this.pasivasActivadas;
+    }
+
+    public void setPasivasActivadas(boolean pasivasActivadas) {
+        this.pasivasActivadas = pasivasActivadas;
+    }
+
+    public void setPasivasActivadas() {
+        this.pasivasActivadas = !pasivasActivadas;
+    }
+
+    public boolean getGastada() {
+        return this.gastada;
+    }
+
+    public void setGastada(boolean gastada) {
+        this.gastada = gastada;
+    }
+
 
     public String getCodigoActivas(){
         String codigo = "";

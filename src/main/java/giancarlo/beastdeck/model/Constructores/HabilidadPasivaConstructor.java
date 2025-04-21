@@ -5,9 +5,7 @@ public abstract class HabilidadPasivaConstructor {
     private int id;
     private String nombre;
     private String descripcion;
-    private boolean activada;
     private boolean continua;
-    private boolean gastada;
     private boolean bot;
 
     public HabilidadPasivaConstructor() {
@@ -17,9 +15,7 @@ public abstract class HabilidadPasivaConstructor {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.activada = continua;
         this.continua = continua;
-        this.gastada = false;
         this.bot = bot;
     }
 
@@ -47,44 +43,12 @@ public abstract class HabilidadPasivaConstructor {
         this.descripcion = descripcion;
     }
 
-    public boolean isActivada() {
-        return this.activada;
-    }
-
-    public boolean getActivada() {
-        return this.activada;
-    }
-
-    public void setActivada(boolean activada) {
-        this.activada = activada;
-    }
-
-    public void setActivada(){
-        activada = !activada;
-    }
-
-    public boolean isContinua() {
-        return this.continua;
-    }
-
     public boolean getContinua() {
         return this.continua;
     }
 
     public void setContinua(boolean continua) {
         this.continua = continua;
-    }
-
-    public boolean isGastada() {
-        return this.gastada;
-    }
-
-    public boolean getGastada() {
-        return this.gastada;
-    }
-
-    public void setGastada(boolean gastada) {
-        this.gastada = gastada;
     }
 
     public boolean isBot() {
@@ -122,7 +86,7 @@ public abstract class HabilidadPasivaConstructor {
             return "";
         }
         return 
-            getNombre() + (gastada ? "Habilidad gastada":"") + "\n" 
+            getNombre() + "\n" 
             + getDescripcion();
     }
     

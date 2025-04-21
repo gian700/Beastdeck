@@ -30,8 +30,8 @@ import javafx.util.Duration;
 public class CombateController extends AbstractController{
     @FXML private Button boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, botonPropio, botonRival, usarBoton, activarBoton;
     @FXML private ImageView imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7, imageView8, imageViewGrande, imageViewPropio, imageViewRival;
-    @FXML private Text textMensage;
     @FXML private TextField puntuacionRival, puntuacionPropia, puntuacionTemporalRival, puntuacionTemporalPropia;
+    @FXML private Text textMensage;
     @FXML private TextArea descripcionText;
     private Combate combate;
     private Carta cartaSeleccionada;
@@ -43,7 +43,6 @@ public class CombateController extends AbstractController{
         usarBoton.setText(ConfigManager.ConfigProperties.getProperty("usar"));
         activarBoton.setText(ConfigManager.ConfigProperties.getProperty("activar"));
         combate = new Combate(ConfigManager.ConfigObjects.getJugador(), ConfigManager.ConfigObjects.getRival());
-        combate.continuas();
         cambiarImagen();
     }
 
@@ -93,9 +92,9 @@ public class CombateController extends AbstractController{
         Carta cRival = combate.getDeckRival().get(opcionRival);
         int valorInicial = combate.getPuntuacionPropia();
         int valorInicialRival = combate.getPuntuacionRival();
+        combate.ronda(cartaSeleccionada, cRival);
         cRival.setUtilizada(true);
         cartaSeleccionada.setUtilizada(true);
-        combate.ronda(cartaSeleccionada, cRival);
         cambiarImagen(opcionRival);
         descripcionText.setText(cartaSeleccionada.toString());
         puntuacionTemporalRival.setText(""+combate.getPuntuacionTemporalRival());

@@ -55,29 +55,18 @@ public class Carta extends CartaConstructor{
         }
     }
 
-    /**
-     * Metodo que activa las habilidades de uso de una carta
-     * @param combate
-     * @param cartaRival
-     */
-    public void activarHabilidadContinua(Combate combate){
-
-        for (HabilidadPasiva habilidad : getHabilidadesPasivas()) {
-            if (habilidad.getActivada() && habilidad.getContinua()) {
-                habilidad.activar(this, combate, null);
-            }
-        }
-    }
-
     /*
      * Metodo que permite cambiar el estado de las habilidades pasivas
      */
-    public void cambiarEstado(Combate combate, Carta cartaRival){
+    public boolean cambiarEstado(){
+        setPasivasActivadas();
         for (HabilidadPasiva habilidad : getHabilidadesPasivas()) {
-            if (!habilidad.getBot() || !habilidad.getGastada()) {
-                habilidad.setActivada();
+            if (!habilidad.getBot() && !getGastada()) {
+                setPasivasActivadas();
+                return false;
             }
         }
+        return true;
     }
 
     /**
@@ -86,11 +75,15 @@ public class Carta extends CartaConstructor{
      * @param cartaRival
      */
     public void activarPasiva(Combate combate, Carta cartaPropia, Carta cartaRival){
+        boolean gastada = false;
         for (HabilidadPasiva habilidad : getHabilidadesPasivas()) {
-            if (habilidad.getActivada() && !habilidad.getContinua()) {
-                habilidad.activar(cartaPropia, combate, cartaRival);
+            if (!habilidad.getContinua()) {
+                gastada = true;
             }
+            habilidad.activar(cartaPropia, combate, cartaRival);
         }
+        setGastada(gastada);
+        
     }
 
     @Override

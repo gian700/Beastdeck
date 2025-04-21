@@ -26,15 +26,11 @@ public class Deck {
         this.deck = deck;
     }
 
-    public void activarContinuas(Combate combate){
-        for (Carta carta : deck) {
-            carta.activarHabilidadContinua(combate);
-        }
-    }
-
     public void activarPasiva(Combate combate, Carta cartaPropia, Carta cartaRival){
         for (Carta carta : deck) {
-            carta.activarPasiva(combate, cartaPropia, cartaRival);
+            if (carta.getPasivasActivadas()) {
+                carta.activarPasiva(combate, cartaPropia, cartaRival);
+            }
         }
     }
 
