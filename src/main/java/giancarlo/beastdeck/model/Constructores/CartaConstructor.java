@@ -43,7 +43,9 @@ public abstract class CartaConstructor {
         this.habilidadesPasivas = habilidadesPasivas;
         this.fuerza = fuerza;
         this.ordenRecomendado = ordenRecomendado;
+        this.pasivasActivadas = false;
         this.utilizada = false;
+        this.gastada = false;
         this.desbloqueada = desbloqueada;
         this.imagen = imagen;
     }

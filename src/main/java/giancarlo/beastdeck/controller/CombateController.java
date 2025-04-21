@@ -237,10 +237,9 @@ public class CombateController extends AbstractController{
     @FXML
     public void botonActivar(){
         if (activarBoton.getText().equals(ConfigManager.ConfigProperties.getProperty("activar"))) {
+            cartaSeleccionada.cambiarEstado();
             textMensage.setText(ConfigManager.ConfigProperties.getProperty("proximamente"));
-            return;
         }
-        cambiarPagina(activarBoton, "inicio");
     }
 
     /**
