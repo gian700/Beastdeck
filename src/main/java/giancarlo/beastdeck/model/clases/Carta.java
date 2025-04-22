@@ -2,7 +2,7 @@ package giancarlo.beastdeck.model.clases;
 
 import java.util.List;
 
-import giancarlo.beastdeck.model.Constructores.CartaConstructor;
+import giancarlo.beastdeck.model.constructores.CartaConstructor;
 import giancarlo.beastdeck.model.enums.EnumRarezas;
 import giancarlo.beastdeck.model.enums.EnumTipos;
 

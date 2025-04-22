@@ -1,4 +1,4 @@
-package giancarlo.beastdeck.model.Constructores;
+package giancarlo.beastdeck.model.constructores;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,7 +33,10 @@ public abstract class CartaConstructor {
         this.id = id;
     }
 
-    public CartaConstructor(int id, String nombre, String descripcion, EnumRarezas rareza, EnumTipos tipo, List<HabilidadActiva> habilidadesActivas, List<HabilidadPasiva> habilidadesPasivas, int fuerza, int ordenRecomendado, boolean desbloqueada, String imagen) {
+    public CartaConstructor(int id, String nombre, String descripcion,
+     EnumRarezas rareza, EnumTipos tipo, List<HabilidadActiva> habilidadesActivas,
+      List<HabilidadPasiva> habilidadesPasivas, int fuerza, int ordenRecomendado, 
+      boolean desbloqueada, String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import giancarlo.beastdeck.model.clases.Carta;
 import giancarlo.beastdeck.model.clases.Combate;
+import giancarlo.beastdeck.model.clases.Deck;
 import giancarlo.beastdeck.model.clases.HabilidadActiva;
 import giancarlo.beastdeck.model.enums.EnumRarezas;
 import giancarlo.beastdeck.model.enums.EnumTipos;
@@ -28,6 +29,8 @@ public class CombateHabilidadesCTest {
     @BeforeEach
     void beforeEach() {
         combateController = new Combate();
+        combateController.setDeckPropio(new Deck(new ArrayList<>()));
+        combateController.setDeckRival(new Deck(new ArrayList<>()));
         carta1 = new Carta(1, "nombre", "descripcion", EnumRarezas.C, EnumTipos.AGUA, new ArrayList<>(Arrays.asList(habilidadActiva1)), new ArrayList<>(), 2, 0, false, null);
         carta2 = new Carta(2, "nombre", "descripcion", EnumRarezas.R, EnumTipos.AGUA, new ArrayList<>(), new ArrayList<>(), 2, 0, false, null);
         carta3 = new Carta(3, "nombre", "descripcion", EnumRarezas.C, EnumTipos.AGUA, new ArrayList<>(Arrays.asList(habilidadActiva1C)), new ArrayList<>(), 2, 0, false, null);

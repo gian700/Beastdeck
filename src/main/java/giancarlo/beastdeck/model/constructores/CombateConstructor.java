@@ -1,4 +1,4 @@
-package giancarlo.beastdeck.model.Constructores;
+package giancarlo.beastdeck.model.constructores;
 
 import java.util.List;
 
@@ -13,7 +13,11 @@ public abstract class CombateConstructor extends TipoFuncionamiento{
     private Deck deckPropio;
     private Rival rival;
     private Deck deckRival;
-    private int puntuacionPropia, puntuacionRival, puntuacionTemporalPropia, puntuacionTemporalRival, turno;
+    private int puntuacionPropia; 
+    private int  puntuacionRival;
+    private int  puntuacionTemporalPropia;
+    private int  puntuacionTemporalRival;
+    private int  turno;
     private Carta cartaPropia, cartaRival;
 
 
@@ -26,10 +30,6 @@ public abstract class CombateConstructor extends TipoFuncionamiento{
         this.deckPropio = jugador.getDeck();
         this.rival = rival;
         this.deckRival = rival.getDeck();
-        this.puntuacionPropia = 0;
-        this.puntuacionRival = 0;
-        this.puntuacionTemporalPropia = 0;
-        this.puntuacionTemporalRival = 0;
         this.turno = 4;
     }
     

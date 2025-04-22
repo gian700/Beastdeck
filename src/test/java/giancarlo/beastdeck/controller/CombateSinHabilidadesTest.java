@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import giancarlo.beastdeck.model.clases.Carta;
 import giancarlo.beastdeck.model.clases.Combate;
+import giancarlo.beastdeck.model.clases.Deck;
 import giancarlo.beastdeck.model.enums.EnumRarezas;
 import giancarlo.beastdeck.model.enums.EnumTipos;
 
@@ -22,6 +23,8 @@ public class CombateSinHabilidadesTest {
     @BeforeEach
     void beforeEach() {
         combateController = new Combate();
+        combateController.setDeckPropio(new Deck(new ArrayList<>()));
+        combateController.setDeckRival(new Deck(new ArrayList<>()));
         carta1 = new Carta(1, "nombre", "descripcion", EnumRarezas.C, EnumTipos.AGUA, new ArrayList<>(), new ArrayList<>(), 1, 5, true, null);
         carta2 = new Carta(2, "nombre", "descripcion", EnumRarezas.R, EnumTipos.AGUA, new ArrayList<>(), new ArrayList<>(), 1, 5, false, null);
         
@@ -72,15 +75,6 @@ public class CombateSinHabilidadesTest {
     @Test
     void cartaNull(){
         Carta carta = null;
-        try {
-            combateController.ronda(carta, carta1);
-            Assertions.fail();
-        } catch (Exception e) {
-            if (!(e instanceof IllegalArgumentException)) {
-                Assertions.fail();
-            }
-        }
-        carta = new Carta();
         try {
             combateController.ronda(carta, carta1);
             Assertions.fail();

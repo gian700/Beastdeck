@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import giancarlo.beastdeck.model.Constructores.HabilidadActivaConstructor;
+import giancarlo.beastdeck.model.constructores.HabilidadActivaConstructor;
 import giancarlo.beastdeck.model.enums.EnumTipos;
 
 /**

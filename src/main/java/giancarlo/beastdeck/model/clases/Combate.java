@@ -1,6 +1,6 @@
 package giancarlo.beastdeck.model.clases;
 
-import giancarlo.beastdeck.model.Constructores.CombateConstructor;
+import giancarlo.beastdeck.model.constructores.CombateConstructor;
 
 /**
  * @author Giancarlo

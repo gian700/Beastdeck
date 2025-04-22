@@ -1,4 +1,4 @@
-package giancarlo.beastdeck.model.Constructores;
+package giancarlo.beastdeck.model.constructores;
 
 public abstract class HabilidadActivaConstructor {
     int id;

@@ -1,6 +1,6 @@
 package giancarlo.beastdeck.model.clases;
 
-import giancarlo.beastdeck.model.Constructores.HabilidadPasivaConstructor;
+import giancarlo.beastdeck.model.constructores.HabilidadPasivaConstructor;
 
 public class HabilidadPasiva extends HabilidadPasivaConstructor{
 

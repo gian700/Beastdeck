@@ -1,4 +1,4 @@
-package giancarlo.beastdeck.model.Constructores;
+package giancarlo.beastdeck.model.constructores;
 import java.util.Objects;
 
 public abstract class HabilidadPasivaConstructor {
