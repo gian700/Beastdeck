@@ -27,7 +27,7 @@ public abstract class CombateConstructor extends TipoFuncionamiento{
 
     public CombateConstructor(Jugador jugador, Rival rival) {
         this.jugador = jugador;
-        this.deckPropio = jugador.getDeck();
+        this.deckPropio = jugador.getDeck().Copy();
         this.rival = rival;
         this.deckRival = rival.getDeck();
         this.turno = 4;
